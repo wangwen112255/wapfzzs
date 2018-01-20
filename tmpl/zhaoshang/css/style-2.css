@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+@media screen and (min-width:1020px)
+{
+.page3 h2{
+	font-size: 24px;
+	color:#ffc36e;
+	line-height: 54px;
+	padding-top:50px; 
+	padding-bottom: 70px;
+}	
+	.page5 h1{
+    text-align:center;
+    font-size:44px;
+	color:#ffc36e; 
+	padding-top: 50px;
+}
+
+.hezuo img{
+	width:660px;
+	height:1008px;
+	margin: 0 auto;
+	padding-top: 90px;
+}
+	
+}

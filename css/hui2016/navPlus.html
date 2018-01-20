@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 侧滑菜单 (原生窗口模式)</h1>
+	<div id="HUI_Back"></div>
+	<div id="HUI_Nav"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:20px 10px;"><img src="img/logo.png" width="100%" /></div>
+	<div style="padding:15px; line-height:1.8em;">
+		<h2>多功能菜单内可以放置任何内容，关闭方式：</h2>
+		<p style="padding-top:8px;">
+			1、js代码，详见教程<br />
+			2、点击除菜单外的空白处<br />
+			3、按下返回键<br /><br />
+			点击右上角的导航菜单体验吧 ^_^
+		</p>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+var cView;    //当前窗口
+var menuView; //菜单窗口
+var menuStatus = false; //菜单显示状态
+hui.plusReady(function(){
+	//初始化窗口
+	cView    = plus.webview.currentWebview();
+	cView.zindex = 100;
+	//注意zindex的值
+	menuView = hui.create('navPlusMenu.html',{left:'30%', width:'70%', zindex:1}, 'no');	
+	//绑定菜单按钮
+	var nav = hui('#HUI_Nav');
+	nav.click(function(){
+		//注意层级高返回会绑定在层级高的视图上
+		cView.setStyle({zindex:9,mask:"rgba(0,0,0,0.1)"});
+		menuView.show();
+		menuStatus = true;
+		setTimeout(function(){cView.setStyle({left:'-70%',transition:{duration:350}});}, 50);
+	});
+	//绑定遮罩层
+	cView.addEventListener("maskClick",function(){
+		hui.Back();
+	},false);
+	//左滑展开菜单
+	hui().swipeLeft(function(e){nav.trigger('click');});
+});
+//重写Back
+hui.Back = function(){
+	if(menuStatus){
+		menuStatus = false;
+		cView.setStyle({left:0, mask:"none", transition:{duration:150}});
+	}else{
+		menuView.hide("slide-out-right");
+		cView.hide('slide-out-right');
+	}
+}
+</script>
+</body>
+</html>

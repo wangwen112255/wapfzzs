@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+<style>
+/* 必要的css  */
+#huiImgCuter{width:80%; height:80%; position:absolute; left:10%; top:10%; z-index:9; background:rgb(255,255,255,0); border:1px solid #FFFFFF;}
+.huiCuterMask{width:100%; height:10px; position:absolute; left:0px; top:0px; z-index:8; background:rgba(0,0,0,0.8);}
+#huiImgCutImgIn{width:100%;}
+#huiCuterCanvas{position:fixed; display:none; z-index:20; top:60px; right:10px; width:100px; border:1px solid #FFFFFF; font-size:0px;}
+#huiCuterCanvas canvas{width:100%;}
+#huiImgCutFile{display:block; position:absolute; width:100%; height:40px; z-index:2; background:rgba(0,0,0,0); opacity:0; -moz-opacity:0; -webkit-opacity:0;}
+</style>
+</head>
+<body>
+<div id="HUI_Header">
+	<button type="button" class="HUI_ButtonSmall HUI_FR" style="background:#FFFFFF; margin:8px 10px; color:#3283FA;" id="uploadNow">上传照片</button>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<!-- 图片裁切核心区域  -->
+	<div id="huiImgCutShow" style="position:relative; font-size:0px;"></div>
+	<!-- huiCanvas 用户保存剪裁后的图片信息 -->
+	<div id="huiCuterCanvas"><canvas id="huiCanvas" width="360" height="200"></canvas></div>
+	<!-- 底部选择图片按钮 -->
+	<div style="position:fixed; background:rgba(0,0,0,0.8); z-index:10; left:0px; bottom:0px; height:40px; padding:8px 1%; width:98%;">
+		<input type="file" id="huiImgCutFile" />
+		<button type="button" class="HUI_Button HUI_Icons HUI_Icons_add" style="width:100%;" id="chooseImg"> 选择照片</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/huiImgCuter.js"></script>
+<script>
+//选择图片
+document.getElementById('huiImgCutFile').onchange = function(event){  
+	var file = this.files[0];
+    if(!/image\/\w+/.test(file.type)){
+    	hui.toast("文件为应该图像类型");
+    	return false;
+    }
+    var reader = new FileReader();
+	reader.readAsDataURL(file);
+	reader.onload = function(e){
+		hui('#huiImgCutShow').html('<div id="huiImgCutImgIn"><img src="'+this.result+'" /></div>');
+		hui('#huiImgCutShow').find('img').eq(0).css({'display':'none'});
+		hui('#huiImgCutShow').find('img').eq(0).dom[0].onload = function(){
+			hui('#huiImgCutShow').find('img').eq(0).show();
+			imgCuter = null;
+			imgCuter = new huiImgCuter('#huiImgCutShow', '90%', '100%');
+		}
+	}
+}
+var imgCuter;
+//选择照片
+hui('#chooseImg').click(function(){
+	hui('#huiImgCutFile').trigger('click');
+});
+//上传照片
+hui('#uploadNow').click(function(){
+	var res = huiImgCuterPlay();
+	if(res){
+		//读取照片数据 读取的格式 base64code
+		var canvas      = document.getElementById('huiCanvas');
+		var data = canvas.toDataURL();
+		hui.toast('上传功能请看手册');
+		/*
+		hui.post(
+			'您的远程服务器地址',
+			{pd:data},
+			function(data){
+				hui.centerLoading(true);
+				console.log(data);
+			}
+		);
+		*/
+	}
+});
+</script>
+</body>
+</html>

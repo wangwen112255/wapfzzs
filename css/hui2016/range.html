@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body style="background:#EFEFF4;">
+<div id="HUI_Header">
+	<h1>HUI - 滑块</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:30px 20px;">
+		<div style="line-height:30px;" id="showValue">
+			滑块值: 
+		</div>
+		<div class="HUI_Range">
+			<input type="range" name="" id="range1" min="0" max="100" value="20" />
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+hui.ready(function(){
+	hui('#range1').ranging(function(value){
+		hui('#showValue').html('滑块值: '+value);
+	});
+});
+</script>
+</body>

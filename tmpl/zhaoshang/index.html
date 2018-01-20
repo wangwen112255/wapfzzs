@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>权益亨通资产优化商城招商说明</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui"/>
+<meta name="format-detection" content="email=no" />
+<meta name="format-detection" content="address=no" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/min-css.css" type="text/css">
+<link rel="stylesheet" href="css/min-1.css">
+<link rel="stylesheet" href="css/style-2.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+</head>
+<body>
+    <div id="wrap" class="wrapper">
+        <div id="pages">
+            <div class="page page1">
+               <div class="box">
+               		<img src="images/logo.png">
+                </div>
+                <h1>权益亨通资产优化商城招商说明</h1> 
+                <h2>全国资产优化大数据存储中心<br>
+                    安徽中政信息科技有限公司
+                </h2>
+                <div class="box1"><img src="images/zi.png"></div>
+            </div>
+            <div class="page page2">
+                <h1>权益亨通商城<br>
+                	专业的债事处置平台
+                </h1>
+     			
+                <h2>       权益亨通商城是由安徽中政信息科<br>
+                技有限公司打造的综合性、创新性居间<br>解决债事的中介服务平台！“权益亨<br>
+                通”拥有专业解债师！是不良债权置换<br>的先行者！专业帮您解决各种债权债务问题。</h2>
+                <div class="box2">
+                   <img src="images/tu1.jpg"> 
+                </div>
+            </div>
+            <div class="page page3">
+                <h1>债事问题的个人及企业，商铺老板  ：</h1>
+                <h2>权益亨通资产优化商城<br>
+                （www.quanyihengtong.com）利用<br>价值大流通，己进入高效货币化服务，<br>
+                可快速帮助生产厂家去库存，化解债<br>权、债务，帮助实体店提升营业额。<br>
+                用我们的权益亨通商城消费记权卡直接<br>兑换你的消费券或产品，快速增加客流<br>
+                量和营业额，不交一分钱服务费，就让<br>你生意好起来。凡有债权者，可咨询、<br>
+                联系、合作，只要愿意，立即解决债权。</h2>
+                <div class="box3">
+                   <img src="images/logo-2.png">
+                </div>
+            </div>
+            <div class="page page4">
+           		 <h1>关于我们</h1>
+           		 <h2>       权益亨通“不碰钱、不碰账，不讨<br>
+           		 债、不集资、不诉讼、不涉黑”，运用商<br>
+           		 业精算模型，向社会不间断输入债务减量<br>
+           		 工具，为社会利益最大化提供服务，同时<br>
+           		 通过搭建债务链，实现债务大流通，采用<br>
+           		 债务链闭合、兑换、对冲、置换等减量工<br>具为进入负债死局的企业和个人实现债务<br>
+          		 的减少减除。<br>
+           		        同时协助政府解决“去产能、去库<br>
+           		        存、去杠杆”等经济和民生问题，为经济<br>
+           		        下行期企业摆脱困境寻找一条创新之路。<br>同时，权益亨通的“众合从业”也顺应了<br>
+           		        党和政府“大众创业、万众创新”的号<br>召，为众多债事者和创业者提供了一条<br>
+           		        新路，必将为促进社会和谐、稳定做出应<br>有的贡献。
+           		 </h2>
+            
+            
+            </div>
+            <div class="page page5">
+				<h1>战略合作单位</h1>
+           		<div class="hezuo"><img src="images/hezuo (1).png"></div>
+           		
+            </div>
+        </div>
+        
+    </div>
+	<script type="text/javascript" src="js/pageSwitch.js"></script>
+    <script>
+    var reg=location.search.match(/ts=([^&]*)/),
+		ts=reg&&reg[1]||'scroll',
+		a=new pageSwitch('pages',{
+        duration:1000,
+        start:0,
+        direction:1,
+        loop:false,
+        ease:'ease',
+        transition:ts,
+		freeze:false,
+		mouse:true,
+        mousewheel:true,
+        arrowkey:true
+    });
+	
+	document.getElementById('tssel').onchange=function(){
+		location.href='?ts='+this.value;
+	}
+	
+	var options=document.getElementById('tssel').options,
+		i=0,op;
+	while(op=options[i++]){
+		if(op.value===ts){
+			op.selected=true;
+			break;
+		}
+	}
+	
+	function colorRand(){
+		return parseInt(Math.random()*255);
+	}
+	
+	function createPage(){
+		var div=document.createElement('div');
+		div.style.backgroundColor='rgb('+colorRand()+','+colorRand()+','+colorRand()+')';
+		return div;
+	}
+    </script>
+</body>
+</html>

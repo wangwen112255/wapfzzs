@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-combined.min.css"> -->
+     <!-- <link rel="stylesheet" href="../../css/wizard/assets/formvalidation/bootstrap-combined.min.css"> -->
+     <link rel="stylesheet" href="../../css/wizard/assets/formvalidation/bootstrap.min.css">
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../css/wizard/assets/formvalidation/bootstraps.min.js"></script>
+    <!-- <script type="text/javascript" src="../../js/zepto.min.js"></script> -->
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <!-- <script type="text/javascript" src="../../js/config.js"></script> -->
+</head>
+<body>
+<script type="text/html" id="info">
+    <table class="table table-bordered table-hover" style="width: 18cm; height: 26cm;" align="center" contenteditable="true">
+    <thead>
+        <tr>
+            <th colspan="4" style="text-align: center; vertical-align: middle; height: 50px;">
+            <h3>富之债事债权备案信息确认表</h3>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="1" rowspan="5" style="text-align: center; vertical-align: middle;"><strong>债务基本情况</strong></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务金额</td>
+            <td  style="text-align: center; vertical-align: middle;" colspan="2" rowspan="1">&nbsp;<%= amount %>元</td>
+        </tr>
+        <tr class="error">
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">借款时间</td>
+            <td  style="text-align: center; vertical-align: middle;background-color: rgb(255, 255, 255);" colspan="2" rowspan="1">&nbsp;<%= amount %>元</td>
+
+        </tr>
+        <tr class="warning">
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">约定还款时间</td>
+            <td  style="text-align: center; vertical-align: middle;background-color: rgb(255, 255, 255);"  >&nbsp;<%= returntime %></td>
+
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">诉讼与否</td>
+            <td  style="text-align: center; vertical-align: middle;"  >&nbsp;<%= islaw%></td>
+
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">抵押物是否可抵债</td>
+            <!-- <td colspan="2" style="background-color: rgb(255, 255, 255);">&nbsp;</td> -->
+            <td  style="text-align: center; vertical-align: middle;"  >&nbsp;<%= iscover %></td>
+
+        </tr>
+        <tr class="info">
+            <td colspan="1" rowspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><strong>债权方基本情况</strong></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">债权方姓名</td>
+            <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= name %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">债权方手机号</td>
+            <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= mobile %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债权方证件号</td>
+            <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= numcard %></td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="8" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><strong>债务方基本情况</strong></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债权方姓名</td>
+            <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= zw_name %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务方手机号</td>
+            <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= zw_mobile %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务方证件号</td>
+            <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= zw_numcard %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务方地址</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= province %><%= city %><%= district %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务方工作状况</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= zw_job %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务方婚姻状况</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= zw_marriage %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务方学历状况</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= zw_education %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务方身体状况</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= zw_health %></td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="5" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><strong>担保方基本情况</strong></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">担保方姓名</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= gu_name %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">担保方手机号</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= gu_mobile %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">担保方证件号</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">担保方能否联系</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;<%= iscontact %></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">担保方经济状况</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;
+            <%= gu_economy %>
+            </td>
+        </tr>
+       
+        <tr>
+            <td colspan="4" style="background-color: rgb(255, 255, 255); text-align: right; vertical-align: bottom;">    <%= time %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="background-color: rgb(255, 255, 255); border-top:solid 2px #fff;text-align: right; vertical-align: bottom;">签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</script>    
+<div id="showinfo"></div>
+     <script type="text/javascript">
+     $(function(){
+      var infojson=JSON.parse(localStorage.getItem('info'));
+      var myDate=new Date();
+       var nowtime=myDate.getFullYear()+'年'+(myDate.getMonth()+1)+"月"+myDate.getDay()+"日";
+      infojson.time=nowtime;
+      console.log(infojson);
+            var html = template.render('info', infojson);
+                   $("#showinfo").html(html);
+
+     })
+      
+
+     </script>       
+</div>
+</body>
+</html>
+<!-- ///// -->
+嵌入进去
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button id="print" style="float:right;margin-right:20px;" class="btn btn-primary">点击打印</button>
+                <h3 class="modal-title" id="myModalLabel">请确认您的备案信息并打印</h3>
+
+            </div>
+            <div class="modal-body">
+                
+            <script type="text/html" id="info">
+            <div id="view">
+                <table class="table table-bordered table-hover" style="width: 18cm; height: 25cm;margin-top:20px;" align="center" contenteditable="true" >
+                <thead>
+                    <tr style="position: relative;">
+                        <th colspan="6" style="text-align: center; vertical-align: middle; height: 50px;">
+                        <h3>富之债事债权备案信息确认表</h3>
+                        <p style="position: absolute;top:0px;color:#666;font-size:10px;right:0px;margin-top: 10px;margin-right: 20px;">编号:13298310589</p>
+                        <p style="position: absolute;top:0px;color:#666;font-size:10px;right:0px;margin-top: 30px;margin-right: 20px;">填表日期:13298310589</p>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="info">
+                        <td colspan="1" rowspan="13" style="width:20px;background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><strong>客户信息</strong></td>
+                        <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle; width: 130px;height: 30px; background-color: rgb(255, 255, 255);">债权方基本信息</td>
+                        <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">客户姓名</td>
+                        <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= name %></td>
+                         <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">联系方式</td>
+                         <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= mobile %></td>
+                    </tr>
+                <!--     <tr >
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">联系方式 </td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+                    </tr> -->
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= numcard %></td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">证件类型</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                            </label>
+                           
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="7" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">债务方基本情况</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">债务人姓名</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_name %></td>
+                          <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">联系方式</td>
+                            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_mobile %></td>
+
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_numcard %></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件类型</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                            </label>
+                         
+                          
+                        </td>
+
+                    </tr>
+                   
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">通讯地址</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <%= province %><%= city %><%= district %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;text-align: center; vertical-align: middle;">工作状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==0){%> checked<% }%>  > 教师
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==1){%> checked<% }%> > 工程师
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==2){%> checked<% }%> > it软件
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==3){%> checked<% }%> > 会计师
+                            </label>
+                          
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==4){%> checked<% }%> > 其他
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">婚姻状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_marriage==0){%> checked<% }%> > 未婚
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_marriage==1){%> checked<% }%> > 已婚
+                            </label>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">学历状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==0){%> checked<% }%> > 硕士及以上
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==1){%> checked<% }%> > 本科
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==2){%> checked<% }%> > 专科
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==3){%> checked<% }%> > 高中及以下
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">身体状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==0){%> checked<% }%> > 身体好
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==1){%> checked<% }%>> 中等
+                            </label> 
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==2){%> checked<% }%>> 身体差
+                            </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==3){%> checked<% }%>> 不了解
+                            </label>
+                            
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">担保方基本情况(选填)</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">姓名</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><% if(!gu_name) {%>无<% }else{ %><%=gu_name %><% } %></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">联系方式</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <% if(!gu_mobile) {%>无<% }else{ %><%=gu_mobile %><% } %>
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <% if(!gu_numcard) {%>无<% }else{ %><%=gu_numcard %><% } %>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件类型</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                            </label>
+                          
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">能否联系</td>
+                        <td colspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(iscontact==0){%> checked<% }%> > 能
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(iscontact==1){%> checked<% }%> >不能
+                            </label> 
+                        
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">经济状况</td>
+                        <td colspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(gu_economy==0){%> checked<% }%> > 条件好
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(gu_economy==1){%> checked<% }%> > 条件中等
+                            </label> 
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="" <% if(gu_economy==2){%> checked<% }%> > 条件差
+                            </label>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="4" style="text-align: center; vertical-align: middle;width：20px;
+                        20px;"><strong>债务基本情况</strong></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">债务金额(元)</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;" colspan="4" rowspan="1"><%= amount %></td>
+                    </tr>
+                    <tr class="warning">
+                        <td colspan="1" rowspan="1"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">借款时间</td>
+                        <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle; "><%= createtime %></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">还款时间</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle; "><%= returntime %></td>
+                    </tr>
+
+                    <tr class="warning">
+                       
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">诉讼与否</td>
+                        <td colspan="2" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align:">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(islaw==0){%> checked<% }%>> 已诉讼
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(islaw==1){%> checked<% }%>> 未诉讼
+                            </label> 
+                        
+                            
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">抵押物有否</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align:">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(iscover==0){%> checked<% }%>> 有
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(iscover==1){%> checked<% }%>> 没有
+                            </label> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="4" style="text-align: center; vertical-align: middle;width:20px;height: 100px;
+                        "><strong>证件信息</strong></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;height: 35px;" colspan="2">债权人身份证照片</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;" height: 35px; colspan="2">债务人身份证照片</td>
+                          <td style="text-align: center; vertical-align: middle; width: 130px;" height: 35px; colspan="1">债务人身份证照片</td>
+                               </tr>
+                    <tr class="error">
+                        <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);height: 60px">
+                            <img class="imgshow" src="<%= card_img1 %>">
+                        </td>
+                         <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= card_img2 %>">
+                             
+                         </td>
+                         <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= card_img3 %>">
+                             
+                         </td>
+                         <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= card_img4 %>">
+                             
+                         </td>
+                       
+                        <td  rowspan="3" colspan="1" style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= zw_img_1 %>">
+                            
+                        </td>
+                    <!--     <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255);">&nbsp;</td> -->
+                    </tr>
+
+                    <tr class="warning">
+                       
+                    </tr>
+                    
+                    <tr class="warning">
+                       
+                    </tr>
+                 
+                 
+                   <!--  <tr>
+                        <td colspan="6" style="background-color: rgb(255, 255, 255); text-align: right; vertical-align: bottom;">签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <!-- <div>签名：王文</div> -->
+            </div>
+                  
+           
+
+            </script> 
+            <div id="showinfo"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+               
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+.....
+<div class="modal-body">
+    
+<script type="text/html" id="info">
+<div id="view">
+    <table class="table table-bordered table-hover" style="width: 18cm; height: 28cm;" align="center" contenteditable="true" >
+    <thead>
+        <tr style="position: relative;">
+            <th colspan="6" style="text-align: center; vertical-align: middle; height: 50px;">
+            <h3>富之债事债权备案信息确认表</h3>
+            <p style="position: absolute;top:0px;color:#666;font-size:10px;right:0px;margin-top: 30px;margin-right: 20px;">编号:13298310589</p>
+            <p style="position: absolute;top:0px;color:#666;font-size:10px;right:0px;margin-top: 50px;margin-right: 20px;">填表日期:13298310589</p>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="info">
+            <td colspan="1" rowspan="13" style="width:20px;background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><strong>客户信息</strong></td>
+            <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle; width: 130px;height: 30px; background-color: rgb(255, 255, 255);">债权方基本信息</td>
+            <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">客户姓名</td>
+            <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= name %></td>
+             <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">联系方式</td>
+             <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= mobile %></td>
+        </tr>
+    <!--     <tr >
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">联系方式 </td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+        </tr> -->
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= numcard %></td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">证件类型</td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                </label>
+               
+              
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="7" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">债务方基本情况</td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务人姓名</td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_name %></td>
+              <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">联系方式</td>
+                <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_mobile %></td>
+
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_numcard %></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">证件类型</td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                </label>
+             
+              
+            </td>
+
+        </tr>
+       
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">通讯地址</td>
+            <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <%= province %><%= city %><%= district %>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;text-align: center; vertical-align: middle;">工作状况</td>
+            <td colspan="3" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==0){%> checked<% }%>  > 教师
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==1){%> checked<% }%> > 工程师
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==2){%> checked<% }%> > it软件
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==3){%> checked<% }%> > 会计师
+                </label>
+              
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==4){%> checked<% }%> > 其他
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">婚姻状况</td>
+            <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_marriage==0){%> checked<% }%> > 未婚
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_marriage==1){%> checked<% }%> > 已婚
+                </label>
+            </td>
+           
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">学历状况</td>
+            <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==0){%> checked<% }%> > 硕士及以上
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==1){%> checked<% }%> > 本科
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==2){%> checked<% }%> > 专科
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==3){%> checked<% }%> > 高中及以下
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">身体状况</td>
+            <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==0){%> checked<% }%> > 身体好
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==1){%> checked<% }%>> 中等
+                </label> 
+                <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==2){%> checked<% }%>> 身体差
+                </label>
+                <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==3){%> checked<% }%>> 不了解
+                </label>
+                
+            
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">担保方基本情况(选填)</td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">姓名</td>
+            <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><% if(!gu_name) {%>无<% }else{ %><%=gu_name %><% } %></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">联系方式</td>
+            <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <% if(!gu_mobile) {%>无<% }else{ %><%=gu_mobile %><% } %>
+            </td>
+        </tr>
+      
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+            <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <% if(!gu_numcard) {%>无<% }else{ %><%=gu_numcard %><% } %>
+            </td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">证件类型</td>
+            <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                </label>
+              
+              
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">能否联系</td>
+            <td colspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(iscontact==0){%> checked<% }%> > 能
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(iscontact==1){%> checked<% }%> >不能
+                </label> 
+            
+                
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">经济状况</td>
+            <td colspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(gu_economy==0){%> checked<% }%> > 条件好
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="" <% if(gu_economy==1){%> checked<% }%> > 条件中等
+                </label> 
+                <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" value="" <% if(gu_economy==2){%> checked<% }%> > 条件差
+                </label>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="4" style="text-align: center; vertical-align: middle;width：20px;
+            20px;"><strong>债务基本情况</strong></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;">债务金额(元)</td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;" colspan="4" rowspan="1"><%= amount %></td>
+        </tr>
+        <tr class="error">
+            <td colspan="1" rowspan="1"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">借款时间</td>
+            <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle; "><%= createtime %></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">约定还款时间</td>
+            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle; "><%= returntime %></td>
+        </tr>
+
+        <tr class="warning">
+           
+        </tr>
+        <tr>
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">诉讼与否</td>
+            <td colspan="2" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align:">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(islaw==0){%> checked<% }%>> 已诉讼
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(islaw==1){%> checked<% }%>> 未诉讼
+                </label> 
+            
+                
+            </td>
+            <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">抵押物有否</td>
+            <td colspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align:">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(iscover==0){%> checked<% }%>> 有
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value=""  <% if(iscover==1){%> checked<% }%>> 没有
+                </label> 
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="4" style="text-align: center; vertical-align: middle;width：20px;
+            20px;"><strong>证件信息</strong></td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;" colspan="2">债权人身份证照片</td>
+            <td style="text-align: center; vertical-align: middle; width: 130px;" colspan="2">债务人身份证照片</td>
+              <td style="text-align: center; vertical-align: middle; width: 130px;" colspan="1">债务人身份证照片</td>
+                   </tr>
+        <tr class="error">
+            <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);height: 80px">
+                <img class="imgshow" src="<%= card_img1 %>">
+            </td>
+             <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                <img class="imgshow" src="<%= card_img2 %>">
+                 
+             </td>
+             <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                <img class="imgshow" src="<%= card_img3 %>">
+                 
+             </td>
+             <td colspan="1" rowspan=2"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                <img class="imgshow" src="<%= card_img4 %>">
+                 
+             </td>
+           
+            <td  rowspan="2" colspan="1" style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                <img class="imgshow" src="<%= zw_img_1 %>">
+                
+            </td>
+        <!--     <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255);">&nbsp;</td> -->
+        </tr>
+
+        <tr class="warning">
+           
+        </tr>
+        
+        <tr class="warning">
+           
+        </tr>
+    <!--  
+        <tr style="height: 150px;">
+            <td colspan="6" style="background-color: rgb(255, 255, 255); text-align: left;">
+                <p style="color:#333;padding-top:10px;text-indent: 6px;"> 我本人郑重声明：在此次办理 ，所提交的申请材料（目录附后）内容和所附资料均真实、合法，如有不实之处，愿负相应的法律责任，并承担由此产生的一切后果。特此声明!</p>
+                <div style="float: right;padding-right: 50px;">
+                <p>2017年12月11日</p>
+                <p>签名/盖章:</p>
+                </div>
+         </td>
+
+        </tr> -->
+       <!--  <tr>
+            <td colspan="6" style="background-color: rgb(255, 255, 255); text-align: right; vertical-align: bottom;">签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr> -->
+    </tbody>
+</table>
+</div>
+      
+
+
+</script> 
+<div id="showinfo"></div>
+</div>
+<!-- dfsdfsdfsdf配的 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button id="print" style="float:right;margin-right:20px;" class="btn btn-primary">点击打印</button>
+                <h3 class="modal-title" id="myModalLabel">请确认您的备案信息并打印</h3>
+
+            </div>
+            <div class="modal-body">
+                
+            <script type="text/html" id="info">
+            <div id="view">
+                <table class="table table-bordered table-hover" style="width: 18cm; height: 25cm;margin-top:20px;" align="center" contenteditable="true" >
+                <thead>
+                    <tr style="position: relative;">
+                        <th colspan="6" style="text-align: center; vertical-align: middle; height: 50px;">
+                        <h3>富之债事债权备案信息确认表</h3>
+                        <p style="position: absolute;top:0px;color:#666;font-size:10px;right:0px;margin-top: 10px;margin-right: 20px;">编号:13298310589</p>
+                        <p style="position: absolute;top:0px;color:#666;font-size:10px;right:0px;margin-top: 30px;margin-right: 20px;">填表日期:13298310589</p>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="info">
+                        <td colspan="1" rowspan="13" style="width:20px;background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><strong>客户信息</strong></td>
+                        <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle; width: 130px;height: 30px; background-color: rgb(255, 255, 255);">债权方基本信息</td>
+                        <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">客户姓名</td>
+                        <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= name %></td>
+                         <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">联系方式</td>
+                         <td  style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= mobile %></td>
+                    </tr>
+                <!--     <tr >
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">联系方式 </td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">&nbsp;</td>
+                    </tr> -->
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= numcard %></td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">证件类型</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                            </label>
+                           
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="7" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">债务方基本情况</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">债务人姓名</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_name %></td>
+                          <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">联系方式</td>
+                            <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_mobile %></td>
+
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><%= zw_numcard %></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件类型</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                            </label>
+                         
+                          
+                        </td>
+
+                    </tr>
+                   
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">通讯地址</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <%= province %><%= city %><%= district %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;text-align: center; vertical-align: middle;">工作状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==0){%> checked<% }%>  > 教师
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==1){%> checked<% }%> > 工程师
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==2){%> checked<% }%> > it软件
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==3){%> checked<% }%> > 会计师
+                            </label>
+                          
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(zw_job==4){%> checked<% }%> > 其他
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">婚姻状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_marriage==0){%> checked<% }%> > 未婚
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_marriage==1){%> checked<% }%> > 已婚
+                            </label>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">学历状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==0){%> checked<% }%> > 硕士及以上
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==1){%> checked<% }%> > 本科
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==2){%> checked<% }%> > 专科
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_education==3){%> checked<% }%> > 高中及以下
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">身体状况</td>
+                        <td colspan="3" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==0){%> checked<% }%> > 身体好
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==1){%> checked<% }%>> 中等
+                            </label> 
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==2){%> checked<% }%>> 身体差
+                            </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="" <% if(zw_health==3){%> checked<% }%>> 不了解
+                            </label>
+                            
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">担保方基本情况(选填)</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">姓名</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;"><% if(!gu_name) {%>无<% }else{ %><%=gu_name %><% } %></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">联系方式</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <% if(!gu_mobile) {%>无<% }else{ %><%=gu_mobile %><% } %>
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件号</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <% if(!gu_numcard) {%>无<% }else{ %><%=gu_numcard %><% } %>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">证件类型</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" checked> 身份证
+                            </label>
+                          
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">能否联系</td>
+                        <td colspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(iscontact==0){%> checked<% }%> > 能
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(iscontact==1){%> checked<% }%> >不能
+                            </label> 
+                        
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">经济状况</td>
+                        <td colspan="4" style="background-color: rgb(255, 255, 255); text-align: center; vertical-align: middle;">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(gu_economy==0){%> checked<% }%> > 条件好
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value="" <% if(gu_economy==1){%> checked<% }%> > 条件中等
+                            </label> 
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="" <% if(gu_economy==2){%> checked<% }%> > 条件差
+                            </label>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="4" style="text-align: center; vertical-align: middle;width：20px;
+                        20px;"><strong>债务基本情况</strong></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">债务金额(元)</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;" colspan="4" rowspan="1"><%= amount %></td>
+                    </tr>
+                    <tr class="warning">
+                        <td colspan="1" rowspan="1"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">借款时间</td>
+                        <td colspan="2" rowspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle; "><%= createtime %></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">还款时间</td>
+                        <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align: middle; "><%= returntime %></td>
+                    </tr>
+
+                    <tr class="warning">
+                       
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">诉讼与否</td>
+                        <td colspan="2" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align:">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(islaw==0){%> checked<% }%>> 已诉讼
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(islaw==1){%> checked<% }%>> 未诉讼
+                            </label> 
+                        
+                            
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">抵押物有否</td>
+                        <td colspan="1" style="background-color: rgb(255, 255, 255);text-align: center; vertical-align:">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(iscover==0){%> checked<% }%>> 有
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="inlineCheckbox1" value=""  <% if(iscover==1){%> checked<% }%>> 没有
+                            </label> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="4" style="text-align: center; vertical-align: middle;width:20px;height: 100px;
+                        "><strong>证件信息</strong></td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;height: 35px;" colspan="2">债权人身份证照片</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;" height: 35px; colspan="2">债务人身份证照片</td>
+                          <td style="text-align: center; vertical-align: middle; width: 130px;" height: 35px; colspan="1">债务人身份证照片</td>
+                               </tr>
+                    <tr class="error">
+                        <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);height: 60px">
+                            <img class="imgshow" src="<%= card_img1 %>">
+                        </td>
+                         <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= card_img2 %>">
+                             
+                         </td>
+                         <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= card_img3 %>">
+                             
+                         </td>
+                         <td colspan="1" rowspan="3"  style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= card_img4 %>">
+                             
+                         </td>
+                       
+                        <td  rowspan="3" colspan="1" style="text-align: center; vertical-align: middle; width: 130px; background-color: rgb(255, 255, 255);">
+                            <img class="imgshow" src="<%= zw_img_1 %>">
+                            
+                        </td>
+                    <!--     <td colspan="1" rowspan="1" style="background-color: rgb(255, 255, 255);">&nbsp;</td> -->
+                    </tr>
+
+                    <tr class="warning">
+                       
+                    </tr>
+                    
+                    <tr class="warning">
+                       
+                    </tr>
+                 
+                 
+                   <!--  <tr>
+                        <td colspan="6" style="background-color: rgb(255, 255, 255); text-align: right; vertical-align: bottom;">签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <!-- <div>签名：王文</div> -->
+            </div>
+                  
+           
+
+            </script> 
+            <div id="showinfo"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+               
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

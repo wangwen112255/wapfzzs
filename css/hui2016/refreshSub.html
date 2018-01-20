@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div class="HUI_Wrap">
+	<div class="HUI_List" id="list1"></div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+hui.plusReady(function(){
+	hui.refresh(refreshFunc);
+	refreshFunc();
+});
+function refreshFunc(){
+	hui.centerLoading();
+	hui.get('http://hoa.hcoder.net/index.php?user=hcoder&pwd=hcoder&m=list1&page=1', function(data){
+		hui.endRefresh();
+		hui.centerLoading(true);
+		if(data == 'null'){return false;}
+        var arr  = data.split('--hcSplitor--'), html = '';
+        for(var i = 0; i < arr.length; i++){html += '<li><a>'+arr[i]+'</a></li>';}
+		hui('#list1').html('<ul>'+html+'</ul>');
+	});
+}
+//重写返回函数: 将子窗口的返回功能转给父窗口
+hui.Back = function(){
+	var paretnView = hui.getView('refresh.html');
+	paretnView.evalJS('hui.Back();');
+}
+</script>
+</body>
+</html>

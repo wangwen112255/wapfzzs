@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body style="background:#F8F8F8;">
+<div id="HUI_Header">
+	<h1>HUI - 瀑布流插件</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div class="HUI_Waterfall" id="HUI_Waterfall"></div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/huiWaterfall.js"></script>
+<script type="text/javascript">
+//第一步 初始化瀑布流dom布局
+var Waterfall = new huiWaterfall('#HUI_Waterfall');
+/*
+ * 第二步 使用waterfall对象的 addItems()函数为瀑布流增加内容 
+ * 一般情况下瀑布流内的内容会通过远程服务器获取，hui支持的瀑布流内容格式为：
+ * <div class="HUI_WaterFallItems">
+ *     <a herf="hui.toast('您的链接');">
+ *         <div><img src="图片地址" /></div>
+ *         <div class="HUI_WaterFallItemText">文本</div>
+ *     </a>
+ * </div>
+ * 后端服务器重复输出以上dom结构内容即可，支持使用上拉加载更多，加载后再次调用addItems()函数即可。
+ * 以下是一个模拟的例子
+ */
+//str 就是模拟服务器返回的瀑布流选项内容 模拟了10个项目，为了ui效果后端输出时保持每页偶数个项目（最后一页除外）
+var str = '<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl1.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目1</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl2.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目2</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl3.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目3</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl4.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目4</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl5.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目5</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl6.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目6</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl7.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目7</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl8.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目8</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl9.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目9</div>'+
+'	</a>'+
+'</div>'+
+'<div class="HUI_WaterFallItems">'+
+'	<a herf="hui.toast(\'test\');">'+
+'		<div class="HUI_WaterFallItemImg"><img src="img/pbl10.jpg" /></div>'+
+'		<div class="HUI_WaterFallItemText">项目10</div>'+
+'	</a>'+
+'</div>';
+//使用addItems()函数增加项目即可 如果是ajax远程加载 ajax获取数据完成后执行即可
+//addItems() 的参数是瀑布流项目的html
+Waterfall.addItems(str);
+</script>
+</body>
+</html>

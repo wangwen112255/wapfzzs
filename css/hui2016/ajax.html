@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - ajax请求</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:20px;">
+		<div id="test1" style="line-height:1.8em;">测试结果会输出在这里</div>
+		<div>
+			<button type="button" class="HUI_Button" id="btn1">get 测试</button>
+		</div>
+		<div id="test2" style="line-height:1.8em; margin-top:28px;">测试结果会输出在这里</div>
+		<div>
+			<button type="button" class="HUI_Button" id="btn2">post 测试</button>
+		</div>
+		<div id="test3" style="line-height:1.8em; margin-top:28px;">测试结果会输出在这里</div>
+		<div>
+			<button type="button" class="HUI_Button" id="btn3">getJson 测试</button>
+		</div>
+		<div id="test4" style="line-height:1.8em; margin-top:28px;">测试结果会输出在这里</div>
+		<div>
+			<button type="button" class="HUI_Button" id="btn4">postJson 测试</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+hui('#btn1').click(function(){
+	var btn1 = hui(this);
+	if(btn1.btnIsLoading()){return;}
+	btn1.btnLoading();
+	hui.ajax('./ajaxdata.php', function(msg){
+		btn1.btnLoadingRest();
+		hui('#test1').html(msg);
+		
+	},function(){
+		btn1.btnLoadingRest();
+		hui.toast('连接服务器失败');
+	},{'type':'get',backType:'text'});
+});
+hui('#btn2').click(function(){
+	var btn = hui(this);
+	if(btn.btnIsLoading()){return;}
+	btn.btnLoading();
+	hui.post('./ajaxdata.php', {'name':'hcoder', age:10}, function(msg){
+		btn.btnLoadingRest();
+		hui('#test2').html(msg);
+	});
+});
+hui('#btn3').click(function(){
+	var btn = hui(this);
+	if(btn.btnIsLoading()){return;}
+	btn.btnLoading();
+	hui.getJSON('./ajaxdata.php?c=json', function(jsonObj){
+		btn.btnLoadingRest();
+		hui('#test3').html(JSON.stringify(jsonObj));
+	},function(){
+		btn.btnLoadingRest();
+		hui.toast('连接服务器失败');
+	});
+});
+hui('#btn4').click(function(){
+	var btn = hui(this);
+	if(btn.btnIsLoading()){return;}
+	btn.btnLoading();
+	hui.postJSON('./ajaxdata.php?c=json', {name:'hcoder', say:'hi...'}, function(jsonObj){
+		btn.btnLoadingRest();
+		hui('#test4').html(JSON.stringify(jsonObj));
+	},function(){
+		btn.btnLoadingRest();
+		hui.toast('连接服务器失败');
+	});
+});
+</script>
+</body>
+</html>

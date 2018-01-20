@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div class="HUI_Wrap">
+	<div style="text-align:center; padding:30px 0px 18px 0px;"><img src="img/logo.png" width="300" /></div>
+	<div class="HUI_List">
+		<ul>
+			<li><a class="HUI_Arrow" href="list.html">普通列表、数字标示</a></li>
+			<li><a class="HUI_Arrow" href="listMedia.html">图文列表 ( 图上文下 )</a></li>
+			<li><a class="HUI_Arrow" href="listMedia1.html">左右布局的图文列表 </a></li>
+			<li><a class="HUI_Arrow" href="listMedia2.html">图文表格</a></li>
+			<li><a class="HUI_Arrow" href="listNews.html">动态图文组合( 类似一点资讯 )</a></li>
+			<li><a class="HUI_Arrow" href="dialog.html">常用消息框</a></li>
+			<li><a class="HUI_Arrow" href="tab.html">Tab 选项卡</a></li>
+			<li><a class="HUI_Arrow" href="slide.html">轮播组件 ( 自动构建 )</a></li>
+			<li><a class="HUI_Arrow" href="lazyload.html">图片懒加载</a></li>
+			<li><a class="HUI_Arrow" href="loadingbtn.html">按钮及 Loading 按钮</a></li>
+			<li><a class="HUI_Arrow" href="form.html">常用表单元素</a></li>
+			<li><a class="HUI_Arrow" href="formcheck.html">表单验证</a></li>
+			<li><a class="HUI_Arrow" href="numberbox.html">数字输入框</a></li>
+			<li><a class="HUI_Arrow" href="switch.html">switch 开关</a></li>
+			<li><a class="HUI_Arrow" href="select.html">select 美化</a></li>
+			<li><a class="HUI_Arrow" href="picker.html">picker ( 选择器 )</a></li>
+			<li><a class="HUI_Arrow" href="progressbar.html">进度条</a></li>
+			<li><a class="HUI_Arrow" href="centerLoading.html">居中Loading</a></li>
+			<li><a class="HUI_Arrow" href="icons.html">图标及图标列</a></li>
+			<li><a class="HUI_Arrow" href="range.html">滑块</a></li>
+			<li><a class="HUI_Arrow" href="star.html">星级评价插件</a></li>
+			<li><a class="HUI_Arrow" href="popoverMsg.html">popover消息及菜单</a></li>
+			<li><a class="HUI_Arrow" href="waterfall.html">瀑布流插件</a></li>
+			<li><a class="HUI_Arrow" href="scrollx.html">横向滚动区域</a></li>
+			<li><a class="HUI_Arrow" href="scrolly.html">竖向滚动区域</a></li>
+			<li><a class="HUI_Arrow" href="imgview.html">图片预览及缩放</a></li>
+			<li><a class="HUI_Arrow" href="imgcut.html">图片裁切</a></li>
+			<li><a class="HUI_Arrow" href="startBanner.html">启动动画</a></li>
+			<li><a class="HUI_Arrow" href="touchpwd.html">手势密码</a></li>
+			<li><a class="HUI_Arrow" href="nav.html">侧滑菜单 (div 模式)</a></li>
+			<li><a class="HUI_Arrow" href="extend.html">插件扩展</a></li>
+			<li><a class="HUI_Arrow" href="swipe.html">滑动事件演示</a></li>
+			<li><a class="HUI_Arrow" href="ajax.html">http 请求 ( ajax )</a></li>
+			<li><a class="HUI_Arrow" href="indexList.html">索引列表</a></li>
+			<li><a class="HUI_Arrow" href="register.html">用户注册界面 ( 登陆界面雷同 )</a></li>
+			<li><a class="HUI_Arrow" href="account.html">用户中心界面</a></li>
+		</ul>
+	</div>
+</div>
+<div style="height:60px;">&nbsp;</div>
+<div id="HUI_Bar">
+	<a href="javascript:home();" class="HUI_Bar_Active">
+		<div class="HUI_Bar_Icons HUI_Icons_home"></div>
+		<div class="HUI_Bar_Text">首页</div>
+	</a>
+	<a href="javascript:home();" id="jieshao">
+		<div class="HUI_Bar_Icons HUI_Icons_detail"></div>
+		<div class="HUI_Bar_Text">介绍</div>
+	</a>
+	<div class="HUI_FL" style="text-align:center; width:20%;"><img src="img/logoSmall.png" height="40" /></div>
+	<a href="javascript:home();" id="zanzhu">
+		<div class="HUI_Bar_Icons HUI_Icons_costincluded"></div>
+		<div class="HUI_Bar_Text">赞助</div>
+	</a>
+	<a href="javascript:home();" id="jiaoliu">
+		<div class="HUI_Bar_Icons HUI_Icons_huati2"></div>
+		<div class="HUI_Bar_Text">交流</div>
+	</a>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script>
+//底部红点消息
+hui('#jieshao').pointMsg();
+hui('#zanzhu').pointMsg('hot', null, null, null, '1px');
+hui('#jiaoliu').pointMsg(90);
+function home(){hui.toast('底部导航演示链接');}
+</script>
+</body>
+</html>

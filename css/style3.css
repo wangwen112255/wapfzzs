@@ -1,0 +1,215 @@
+  .box {
+          max-width: 750px;
+          background-color: #ebebeb;
+  }
+
+  .grxx {
+
+          height: 200px;
+          background-color: #f5f5f5;
+          background: url(../img/bg.jpg) no-repeat;
+          background-size: 100% 100%;
+
+  }
+  .grxx .gr-top {
+          display: flex;
+      /*  flex-direction: column;
+        justify-content: center;*/
+          align-items: center;
+          height: 160px;
+  }
+  .grxx .gr-top i {
+
+          border-radius: 100%;
+          width:72px;
+          height: 72px;
+          margin-left: 15%;
+  }
+  .grxx .gr-top i img {
+          border-radius: 100%;
+          width:100%;
+          cursor: pointer;
+          box-sizing: border-box;
+  }
+
+  .grxx .gr-top p {
+          font-size: 15px;
+          margin-top: 12.5px;
+          margin-left: 15px;
+          color: #FFFFFF;
+  }
+
+  .grxx .gr-top .she {
+          margin-top: -25%;
+          margin-left:26%;
+  }
+
+  .grxx .gr-a {
+          height: 30px;
+          line-height: 20px;
+  }
+
+  .grxx .gr-a .a1,.a2{
+          line-height: 30px;
+          text-align: center;
+          width: 50%;
+
+          float: left;
+  }
+
+  .grxx .gr-a .a1 a p{
+          font-size: 16px;
+          font-family: 微软雅黑;
+          color: #FFFFFF;
+  }
+
+  .grxx .gr-a .a2 a p{
+          font-size: 16px;
+          font-family: 微软雅黑;
+          color: #FFFFFF;
+          border-left: 1px solid #FFFFFF;
+  }
+
+  .grxx .gr-a .a1 a p span{
+      height: 30px; text-align: center;display: table; margin-left: 78%; margin-top: -13%;
+  }
+  .grxx .gr-a .a2 a p span{
+      height: 30px; text-align: center;display: table; margin-left: 78%; margin-top: -13%;
+  }
+
+  .grxx .gr-foot {
+          margin: 0 auto;
+          width: 100%;
+          height: 20px;
+  }
+
+  .grxx .gr-foot ul {
+          clear: both;
+  }
+
+  .grxx .gr-foot ul li  {
+          float: left;
+          width: 32.2%;
+          text-align: center;
+  }
+
+  .grxx .gr-foot ul li a i {
+          text-align: center;
+          color: #FFFFFF;
+          font-size: 15px;
+  }
+  .grxx .gr-foot ul li a p {
+          text-align: center;
+          color: #FFFFFF;
+          font-size: 15px;
+  }
+  .infor{
+	width:100%;
+  	height:60px;
+    background-color: white;
+  	padding:14px 0;
+
+  }
+  .infor .f1,.f2,.f3,.f4{
+    float:left;
+	width:24%;
+  	height:50px;
+    text-align:center;
+  }
+  .infor .f4{
+      float:left;
+	border-left:#e5e5e5 solid 1px;
+  }
+
+.infor p{
+	color:#666666;
+	padding-top:5px;
+	font-size:0.8em;
+}
+.infor-center{
+	width:100%;
+	height:160px;
+	background-color:white;
+}
+  .infor-center a{
+      color: #666666;
+      font-family:微软雅黑;
+      font-size: 17px;
+  }
+.biao1{
+	height:35px;
+	padding-left:4%;
+	border-top:#e5e5e5 solid 1px;
+	padding-top:2%;
+	padding-bottom:2%;
+	position:relative;
+}
+.biao1 li{
+	float:left;
+}
+.zhanghu{
+	line-height:30px;
+	padding-left:2%;
+	padding-right:40%;
+}
+.zhanghu1{
+	line-height:30px;
+	position:absolute;
+	left:45%;
+}
+.zhanghu2{
+	line-height:30px;
+	position:absolute;
+	left:89%;
+}
+  .grgn {
+          background-color: #fff;
+          margin-top: 0px;
+  }
+  .grgn .gn-center .my-list {
+
+          display: inline-block;
+          width: 32%;
+          height: 100px;
+          border-bottom: 1px solid #dcdcdc;
+        
+          text-align: center;
+
+  }
+  .grgn .gn-center a{
+            margin-top: 60px;
+  }
+  .grgn .gn-center a img {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          margin: 25px 20px 5px 15px;
+  }
+  .grgn .gn-center a div {
+          color: #7d7d7d;
+          font-size: 15px;
+
+  }
+  .grgn .gn-center a span {
+          position:absolute;
+          margin-left:90%;
+  }
+
+  .gn-center a:nth-child(3n+0) {
+          border-right: none;
+  }
+
+  .gn-center a:nth-child(3n+0) {
+          border-right: none;
+  }
+
+  .gx-zx button {
+          display: inline-block;
+          font-size: 15px;
+          width: 375px;
+          height: 45px;
+          color: #ffffff;
+          background-color: #d93600;
+  }
+
+/*# sourceMappingURL=style.css.map */

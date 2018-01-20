@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 表单元素</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div class="HUI_Inputs">
+		<div class="HUI_Input">
+			<label>姓名</label>
+			<input type="text" class="HUI_Input_Clear" value="" />
+		</div>
+		<div class="HUI_Input">
+			<label>年龄</label>
+			<input type="number" class="HUI_Input_Clear" value="" />
+		</div>
+		<div class="HUI_Input">
+			<label>性别</label>
+			<div class="HUI_Radios">
+				<input type="radio" value="1" name="gnder" id="r1" checked="checked" /><label for="r1">男</label>
+				<input type="radio" value="2" name="gnder" id="r2" /><label for="r2">女</label>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>年份</label>
+			<div class="HUI_Select">
+				<select name="year">
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+				</select>
+				<select name="year">
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+				</select>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>爱好</label>
+			<div class="HUI_Radios">
+				<input type="checkbox" value="1" name="aihao[]" id="c1" /><label for="c1">读书</label>
+				<input type="checkbox" value="2" name="aihao[]" id="c2" /><label for="c2">写字</label>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>密码</label>
+			<input type="password" class="HUI_Input_Pwd" value="" />
+		</div>
+		<div class="HUI_Input">
+			<label>密码</label>
+			<input type="password" class="HUI_Input_Pwd" value="" />
+		</div>
+		<div class="HUI_Input">
+			<label>描述</label>
+			<textarea name="" rows="" cols=""></textarea>
+		</div>
+		<div class="HUI_Input HUI_ClearBorder">
+			<button type="button" class="HUI_Button HUI_FR">提交</button>
+		</div>
+	</div>
+</div>
+
+<div class="HUI_Wrap">
+	<div style="padding:10px;">
+		<div class="HUI_Input">
+			<label>姓名</label>
+			<input type="text" class="HUI_Input_Clear" value="" />
+		</div>
+		<div class="HUI_Input">
+			<label>年龄</label>
+			<input type="text" class="HUI_Input_Clear" value="" />
+		</div>
+		<div class="HUI_Input">
+			<label>性别</label>
+			<div class="HUI_Radios">
+				<div style="padding:5px 0px;"><input type="radio" value="1" name="gnder" id="r3" /><label for="r3">男</label></div>
+				<div style="padding:5px 0px;"><input type="radio" value="2" name="gnder" id="r4" /><label for="r4">女</label></div>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>爱好</label>
+			<div class="HUI_Radios">
+				<div style="padding:5px 0px;"><input type="checkbox" value="1" name="aihao[]" id="c3" /><label for="c3" style="width:100%">读书</label></div>
+				<div style="padding:5px 0px;"><input type="checkbox" value="2" name="aihao[]" id="c4" /><label for="c4" style="width:100%">写字</label></div>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>年份</label>
+			<div class="HUI_Select">
+				<select name="year">
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+				</select>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>密码</label>
+			<input type="password" class="HUI_Input_Pwd" value="" />
+		</div>
+		<div class="HUI_Input">
+			<label>描述</label>
+			<textarea name="" rows="" cols=""></textarea>
+		</div>
+		<div class="HUI_Input HUI_ClearBorder">
+			<input type="button" class="HUI_Button HUI_ButtonRed HUI_FR" value="提交" />
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/huiForm.js"></script>
+<script type="text/javascript">
+hui.ready(function(){
+	hui.formInit();
+});
+</script>
+</body>
+</html>

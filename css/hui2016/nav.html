@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 侧滑菜单 (div 模式)</h1>
+	<div id="HUI_Back"></div>
+	<div id="HUI_Nav"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:20px 10px;"><img src="img/logo.png" width="100%" /></div>
+	<div style="padding:15px; line-height:1.8em;">
+		<h2>多功能菜单内可以放置任何内容，关闭方式：</h2>
+		<p style="padding-top:8px;">
+			1、js代码: "hui.closeNav();"<br />
+			2、点击除菜单外的空白处<br />
+			3、按下返回键<br /><br />
+			点击右上角的导航菜单体验吧 ^_^
+		</p>
+	</div>
+</div>
+<div id="HUI_Nav_Menus">
+	<div style="padding:12px;">
+		<br />侧滑菜单示例，您可以在这里放置任何内容；
+	</div>
+	<div class="HUI_List">
+		<ul>
+			<li><a href="javascript:hui.open('list.html');" class="HUI_Arrow">功能菜单1</a></li>
+			<li><a href="javascript:void();">功能菜单2</a></li>
+			<li><a href="javascript:void();">功能菜单3</a></li>
+			<li><a href="javascript:void();">功能菜单4</a></li>
+		</ul>
+	</div>
+	<div style="padding:10px;">
+		<button type="button" class="HUI_Button" style="width:100%;" onclick="hui.closeNav();">关闭菜单</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+hui.ready(function(){
+	var navObj = hui('#HUI_Nav');
+	navObj.nav();
+	navObj.trigger('click');
+	//侧滑绑定
+	hui().swipeLeft(function(e){navObj.trigger('click');});
+	//返回按钮
+	hui.BackDo = function(){
+		var HUI_Nav_Menus = hui('#HUI_Nav_Menus');
+		if(HUI_Nav_Menus.length){
+			if(HUI_Nav_Menus.dom[0].style.display != 'none'){
+				hui.closeNav();
+				return false;
+			}else{
+				return true;
+			}
+		}
+	}
+});
+</script>
+</body>
+</html>

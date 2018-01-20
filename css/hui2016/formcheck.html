@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 表单验证</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<form action="" id="form1">
+	<div class="HUI_Inputs">
+		<div class="HUI_Input">
+			<label>姓名</label>
+			<input type="text" class="HUI_Input_Clear" value="张三" checkType="string" checkData="2,4" checkMsg="请输入姓名(2-4个字符)" />
+		</div>
+		<div class="HUI_Input">
+			<label>年龄</label>
+			<input type="number" class="HUI_Input_Clear" value="18" id="age" checkType="between" checkData="1,200" checkMsg="年龄应该为1-200的数字" />
+		</div>
+		<div class="HUI_Input">
+			<label>性别</label>
+			<div class="HUI_Radios" id="gender">
+				<input type="radio" value="1" name="gnder" id="r1" /><label for="r1">男</label>
+				<input type="radio" value="2" name="gnder" id="r2" /><label for="r2">女</label>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>年份</label>
+			<div class="HUI_Select">
+				<select name="year" checkType="notSame" checkData="0" checkMsg="请选择年份">
+					<option value="0">年份</option>
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+				</select>
+				<select name="month" checkType="notSame" checkData="0" checkMsg="请选择月份">
+					<option value="0">月份</option>
+					<option value="1">1月</option>
+					<option value="2">2月</option>
+					<option value="3">3月</option>
+				</select>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>爱好</label>
+			<div class="HUI_Radios" id="aihao">
+				<input type="checkbox" value="1" name="aihao[]" id="c1" /><label for="c1">读书</label>
+				<input type="checkbox" value="2" name="aihao[]" id="c2" /><label for="c2">写字</label>
+			</div>
+		</div>
+		<div class="HUI_Input">
+			<label>密码</label>
+			<input type="password" class="HUI_Input_Pwd" value="888888" id="pwd1" checkType="string" checkData="6," checkMsg="密码至少6个字符" />
+		</div>
+		<div class="HUI_Input">
+			<label>密码</label>
+			<input type="password" class="HUI_Input_Pwd" value="888888" checkType="sameWithId" checkData="#pwd1" checkMsg="两次密码输入不一致"  />
+		</div>
+		<div class="HUI_Input">
+			<label>描述</label>
+			<textarea name="" rows="" cols="" checkType="string" checkData="3," checkMsg="描述至少3个字符"></textarea>
+		</div>
+		<div class="HUI_Input HUI_ClearBorder">
+			<button type="button" class="HUI_Button HUI_FR" onclick="submitNow();">提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/huiForm.js"></script>
+<script type="text/javascript">
+hui.ready(function(){hui.formInit();});
+function submitNow(){
+	if(huiFormCheck('#form1')){alert('提交表单');}
+}
+function huiFormCheckAttach(){
+	//检查单选 - 性别
+	var genders = hui('#gender').find('input'), selectVal = null;
+	for(var i = 0; i < genders.dom.length; i++){
+		var checked = genders.dom[i].checked || genders.dom[i].getAttribute('checked');
+		if(checked){selectVal = genders.dom[i].value;}
+	}
+	if(!selectVal){hui.toast('请选择性别'); return false;}
+	//检查复选 - 爱好 selectVal 用于存储 选择结果
+	var aihao = hui('#aihao').find('input'), selectValForAiHao = '';
+	for(var i = 0; i < aihao.dom.length; i++){
+		var checkedAh = aihao.dom[i].checked || aihao.dom[i].getAttribute('checked');
+		if(checkedAh){selectValForAiHao += aihao.dom[i].value + ',';}
+	}
+	console.log(selectValForAiHao);
+	if(!selectValForAiHao){hui.toast('请选择爱好'); return false;}
+	//别忘记 return true
+	return true;
+}
+</script>
+</body>
+</html>

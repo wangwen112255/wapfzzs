@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 手势密码</h1>
+	<div id="HUI_Back"></div>
+	<div id="HUI_Nav"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:20px 0px; margin:0 auto;" id="H5LockIn"></div>
+	<div style="padding-top:30px; color:#666666; text-align:center;" onclick="redo();">重新绘制</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/huiH5Look.js"></script>
+<script type="text/javascript">
+var pwdres = null;
+hui.ready(function(){
+	var winInfo = hui.winInfo();
+	var looker = new huiH5Look({width:winInfo.width - 20, height:winInfo.width - 20, pointNum:3, wrapDiv:"H5LockIn"}, function(pwd){
+		if(pwd.length < 4){
+			hui.toast('密码至少包含4个点');
+			return false;
+		}
+		if(!pwdres){
+			pwdres = pwd;
+			hui.toast('请再次输入密码');
+			return false;
+		}
+		if(pwdres != pwd){
+			hui.toast('2次密码不一致');
+			return false;
+		}
+		hui.toast('密码设置成功');
+	});
+});
+function redo(){
+	pwdres = null;
+	hui.toast('请重新绘制密码');
+}
+</script>
+</body>
+</html>

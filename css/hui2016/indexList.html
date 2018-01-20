@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+<style>
+#HUI_IndexListBar{width:25px; height:100%; position:fixed; z-index:2; top:46px; right:0px; background:#E4E4E4; padding-top:8px;}
+#HUI_IndexListBar a{display:block; width:100%; height:20px; line-height:20px; text-align:center; font-size:13px; color:#A3A3A3;}
+.HUI_IndexListTitle{height:44px; background:#F8F8F8; line-height:44px; padding:0px 10px; border-bottom:1px solid #E4E3E6;}
+#HUI_IndexListSearch{width:100%; height:46px; border-bottom:1px solid #E4E3E6; position:fixed; top:46px; left:0px; background:#FFFFFF;  z-index:1;}
+#HUI_IndexListSearch input{width:100%; padding:0px 28px; height:46px; line-height:46px; border:0px; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box;}
+#HUI_IndexListSearch:before{content:'\e797'; width:28px; height:46px; line-height:46px; text-align:center; display:block; position:absolute; left:0px; top:0px; font-family:"iconfont"; font-size:16px;}
+</style>
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 索引列表</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap" style="padding-top:90px;">
+	<!-- 搜索 ipad 下输入法会影响搜索事件建议去掉搜索功能 -->
+	<div id="HUI_IndexListSearch">
+		<input type="text" name="seach" id="HUI_IndexListSearchInput" value="" placeholder="请输入关键字进行搜索" />
+	</div>
+	<!-- 列表数据 循环  HUI_IndexListTitle 和 HUI_List -->
+	<div class="HUI_IndexListTitle" id="HUI_IndexListTitle_A">A</div>
+	<div class="HUI_List">
+		<ul>
+			<li><a href="javascript:selectTodo('阿坝');">阿坝</a></li>
+			<li><a href="javascript:selectTodo('阿拉善');">阿拉善</a></li>
+			<li><a href="javascript:selectTodo('阿里');">阿里</a></li>
+			<li><a href="javascript:selectTodo('安康');">安康</a></li>
+			<li><a href="javascript:selectTodo('安庆');">安庆</a></li>
+			<li><a href="javascript:selectTodo('鞍山');">鞍山</a></li>
+			<li><a href="javascript:selectTodo('安顺');">安顺</a></li>
+			<li><a href="javascript:selectTodo('安阳');">安阳</a></li>
+			<li><a href="javascript:selectTodo('澳门');">澳门</a></li>
+		</ul>
+	</div>
+	<div class="HUI_IndexListTitle" id="HUI_IndexListTitle_B">B</div>
+	<div class="HUI_List">
+		<ul>
+			<li><a href="javascript:selectTodo('北京');">北京</a></li>
+			<li><a href="javascript:selectTodo('白银');">白银</a></li>
+			<li><a href="javascript:selectTodo('保定');">保定</a></li>
+			<li><a href="javascript:selectTodo('宝鸡');">宝鸡</a></li>
+			<li><a href="javascript:selectTodo('保山');">保山</a></li>
+			<li><a href="javascript:selectTodo('包头');">包头</a></li>
+			<li><a href="javascript:selectTodo('巴中');">巴中</a></li>
+			<li><a href="javascript:selectTodo('北海');">北海</a></li>
+			<li><a href="javascript:selectTodo('蚌埠');">蚌埠</a></li>
+			<li><a href="javascript:selectTodo('本溪');">本溪</a></li>
+			<li><a href="javascript:selectTodo('毕节');">毕节</a></li>
+			<li><a href="javascript:selectTodo('滨州');">滨州</a></li>
+			<li><a href="javascript:selectTodo('百色');">百色</a></li>
+			<li><a href="javascript:selectTodo('亳州');">亳州</a></li>
+		</ul>
+	</div>
+	<div class="HUI_IndexListTitle" id="HUI_IndexListTitle_C">C</div>
+	<div class="HUI_List">
+		<ul>
+			<li><a href="javascript:selectTodo('重庆');">重庆</a></li>
+			<li><a href="javascript:selectTodo('成都');">成都</a></li>
+			<li><a href="javascript:selectTodo('长沙');">长沙</a></li>
+			<li><a href="javascript:selectTodo('长春');">长春</a></li>
+			<li><a href="javascript:selectTodo('沧州');">沧州</a></li>
+			<li><a href="javascript:selectTodo('常德');">常德</a></li>
+			<li><a href="javascript:selectTodo('昌都');">昌都</a></li>
+			<li><a href="javascript:selectTodo('长治');">长治</a></li>
+			<li><a href="javascript:selectTodo('常州');">常州</a></li>
+			<li><a href="javascript:selectTodo('巢湖');">巢湖</a></li>
+			<li><a href="javascript:selectTodo('潮州');">潮州</a></li>
+			<li><a href="javascript:selectTodo('承德');">承德</a></li>
+			<li><a href="javascript:selectTodo('郴州');">郴州</a></li>
+			<li><a href="javascript:selectTodo('赤峰');">赤峰</a></li>
+			<li><a href="javascript:selectTodo('池州');">池州</a></li>
+			<li><a href="javascript:selectTodo('崇左');">崇左</a></li>
+			<li><a href="javascript:selectTodo('楚雄');">楚雄</a></li>
+			<li><a href="javascript:selectTodo('滁州');">滁州</a></li>
+			<li><a href="javascript:selectTodo('朝阳');">朝阳</a></li>
+		</ul>
+	</div>
+	<div class="HUI_IndexListTitle" id="HUI_IndexListTitle_D">D</div>
+	<div class="HUI_List">
+		<ul>
+			<li><a href="javascript:selectTodo('大连');">大连</a></li>
+			<li><a href="javascript:selectTodo('东莞');">东莞</a></li>
+			<li><a href="javascript:selectTodo('大理');">大理</a></li>
+			<li><a href="javascript:selectTodo('丹东');">丹东</a></li>
+			<li><a href="javascript:selectTodo('大庆');">大庆</a></li>
+			<li><a href="javascript:selectTodo('大同');">大同</a></li>
+			<li><a href="javascript:selectTodo('大兴安岭');">大兴安岭</a></li>
+			<li><a href="javascript:selectTodo('德宏');">德宏</a></li>
+			<li><a href="javascript:selectTodo('德阳');">德阳</a></li>
+			<li><a href="javascript:selectTodo('德州');">德州</a></li>
+			<li><a href="javascript:selectTodo('定西');">定西</a></li>
+			<li><a href="javascript:selectTodo('迪庆');">迪庆</a></li>
+			<li><a href="javascript:selectTodo('东营');">东营</a></li>
+		</ul>
+	</div>
+</div>
+<div id="HUI_IndexListBar">
+	<a>A</a>
+	<a>B</a>
+	<a>C</a>
+	<a>D</a>
+	<a>E</a>
+	<a>F</a>
+	<a>G</a>
+	<a>H</a>
+	<a>I</a>
+	<a>J</a>
+	<a>K</a>
+	<a>L</a>
+	<a>M</a>
+	<a>N</a>
+	<a>O</a>
+	<a>P</a>
+	<a>Q</a>
+	<a>R</a>
+	<a>S</a>
+	<a>T</a>
+	<a>U</a>
+	<a>V</a>
+	<a>W</a>
+	<a>X</a>
+	<a>Y</a>
+	<a>Z</a>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script>
+/*
+ * 说明:
+ * 城市例子展示到了 D，真实项目开发按照结构完成部署即可
+ * 请按照以下js实现 indexList
+ */
+//1、右侧字母序号点击事件绑定
+hui('#HUI_IndexListBar').find('a').click(function(){skipToIndex(this.innerHTML);});
+//2、跳转到指定字母开头处函数定义
+function skipToIndex(index){
+	var listTitle = hui('#HUI_IndexListTitle_'+index);
+	if(listTitle.length < 1){hui.toast('没有对应的数据，演示数据到D'); return;}
+	var sets = listTitle.offset();
+	//减掉46是头部导航的高度 根据实际需求设置
+	hui.scrollTop(sets.top - 90);
+}
+//3、定义列表数据点击函数 根据实际需求自行编写代码即可
+function selectTodo(val){
+	hui.toast(val);
+}
+//4、搜索
+var sreachInput = document.getElementById('HUI_IndexListSearchInput');
+sreachInput.addEventListener('keyup', function(){
+	console.log(1);
+	var k = this.value;
+	if(k.length < 1){return false;}
+	var lists = document.getElementsByTagName('li');
+	for(var i = 0; i < lists.length; i++){
+		if(lists[i].innerHTML.indexOf(k) != -1){
+			var sets = hui.offset(lists[i]);
+			console.log(sets.top);
+			hui.scrollTop(sets.top - 90);
+			break;
+		}
+	}
+});
+</script>
+</body>
+</html>

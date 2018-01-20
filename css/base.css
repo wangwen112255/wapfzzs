@@ -1,0 +1,153 @@
+/*
+* @Author: ZMZHSQ11
+* @Date:   2018-01-12 14:44:15
+* @Last Modified by:   ZMZHSQ11
+* @Last Modified time: 2018-01-12 15:10:35
+*/
+html{ font-size:62.5%; }
+div {
+    overflow: visible !important;
+}
+
+
+*{
+  color:#666;
+}
+
+.iconfont{
+  font-size:1.5rem !important;
+  color:#999;
+
+}
+
+.HUI_MemberMoney{
+  color:blue;
+
+}
+.HUI_MemberMoney li {
+  width:25%;
+  height:90px !important;
+  margin: 0px 0px;
+  padding: 0px;
+  border-bottom:solid 8px  #f3f3f3;
+}
+
+.HUI_MemberMoney h1 {
+       line-height: 15px;
+       height: 40px;
+       font-size: 14px;
+       font-weight: 400;
+       text-align: center;
+        font-size: 1.1rem; 
+
+}
+.HUI_MemberMoney span {
+    /*line-height: 30px;*/
+    font-size: 40px;
+    line-height: 70px;
+    height: 55px;
+    font-family: "iconfont";
+    overflow: hidden;
+    display: block;
+    color:#999;
+    font-size: 1.5rem;
+  } 
+  .HUI_MemberMoney .iconfont{
+    font-size: 2.8rem !important;
+  }
+    .HUI_MemberZhaiquan li {
+    width:33%;
+    height:80px !important;
+    margin: 0px 0px;
+    padding: 0px;
+    border-bottom:solid 8px  #f3f3f3;
+      }
+  
+      .HUI_MemberZhaiquan h1 {
+           line-height: 20px;
+           height: 40px;
+           font-weight: 400;
+           text-align: center;
+            font-size: 1.1rem; 
+            color:#999;
+
+      }
+      .HUI_MemberZhaiquan span {
+         font-size: 40px;
+         line-height: 60px;
+         height: 40px;
+         font-family: "iconfont";
+         overflow: hidden;
+         display: block;
+         color: #1D8FE4 !important;
+         font-size: 1.8rem;
+        } 
+        .HUI_MemberZhaiquan span a{
+          color: #1D8FE4 !important;
+          font-size: 1.8rem !important;
+        }
+  .p-left{
+  float:left;height:48px;width: 50%;padding-left: 10px;box-sizing:border-box;line-height: 48px;font-size:1.6rem; color: #333;border-bottom:solid 1px #f6f6f9;
+  }
+  .p-right{
+  float: right;height:48px;width:50%;text-align: right;padding-right:10px;box-sizing:border-box;line-height: 48px;font-size: 1.3rem;border-bottom:solid 1px #f6f6f9;
+  }
+  .HUI_MemberShiwu li {
+  width:33%;
+  height:85px !important;
+  margin: 0px 0px;
+  padding: 0px;
+  border-bottom:solid 1px  #f6f6f9;
+  border-right:solid 1px  #f6f6f9;
+    }
+  
+    .HUI_MemberShiwu h1 {
+         line-height: 20px;
+         height: 40px;
+         font-weight: 400;
+         text-align: center;
+          font-size: 1.2rem; 
+          color:#777;
+
+    }
+    .HUI_MemberShiwu span {
+       /*font-size: 40px;*/
+       line-height: 60px;
+       height: 45px;
+       font-family: "iconfont";
+       overflow: hidden;
+       display: block;
+       font-size: 2.6rem;
+      } 
+      .HUI_MemberShiwu .iconfont{
+        font-size: 2.4rem !important;
+      }
+      .p-left .iconfont{
+        font-size: 2.0rem !important;
+        color:#c0000a;
+        padding-right: 2px
+      }
+      .color-1{
+        color:#fba534;
+      }
+      .color-2{
+        color:#45cf79;
+      }
+      .color-3{
+        color:#ea51df;
+      }
+      .color-4{
+        color:#ea51df;
+      }
+      .color-5{
+        color:#fba534;
+      }
+      .color-6{
+        color:#45cf79;
+      }
+      .HUI_MemberYaoqing span{
+      font-size:1.2rem;
+      }
+      .icon-yincang1{
+        font-size: 2.4rem !important;
+      }

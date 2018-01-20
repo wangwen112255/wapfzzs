@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 进度条</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:20px;">
+		<div style="text-align:right; padding:5px 0px;">60%</div>
+		<div class="HUI_Progress" id="progress1">
+		    <span></span>
+		</div>
+		<div style="padding:5px 0px; padding-top:80px; text-align:center;">
+			带有子进度动画的进度条
+		</div>
+		<div style="text-align:right; padding:5px 0px;">20%</div>
+		<div class="HUI_Progress" id="progress2">
+		    <span></span>
+		    <div class="HUI_ProgressIng"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+hui.ready(function(){
+	hui('#progress1').progressBar(60);
+	hui('#progress2').progressBar(20);
+});
+</script>
+</body>
+</html>

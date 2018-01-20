@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - picker</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:20px; margin-top:50px;">
+		<div id="picker3" class="HUI_Icons HUI_Icons_down" style="border:1px solid #EEEEEE; line-height:40px; text-align:center; border-radius:3px;">
+			三级城市联动
+		</div>
+		<div id="picker2" class="HUI_Icons HUI_Icons_down" style="border:1px solid #EEEEEE; line-height:40px; text-align:center; border-radius:3px; margin-top:20px;">
+			二级城市联动
+		</div>
+		<div id="picker1" class="HUI_Icons HUI_Icons_down" style="border:1px solid #EEEEEE; line-height:40px; text-align:center; border-radius:3px; margin-top:20px;">
+			请选择类型
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/cities.js"></script>
+<script type="text/javascript" src="js/huiPicker.js"></script>
+<script>
+var a = 2;
+var b = a;
+a= 5;
+console.log(b);
+//----- 第1个picker -----------------------------
+var picker3 = new huiPicker('#picker3', function(){
+	var shengVal  = picker3.getVal(0);
+	var shengText = picker3.getText(0);
+	console.log(shengVal + shengText);
+	var shiVal  = picker3.getVal(1);
+	var shiText = picker3.getText(1);
+	console.log(shiVal + shiText);
+	var quVal  = picker3.getVal(2);
+	var quText = picker3.getText(2);
+	console.log(quVal + quText);
+	hui('#picker3').html(shengText+shiText+quText);
+});
+picker3.level = 3; //设置联动层级
+picker3.bindData(cities); //绑定数据 cityData 来自 cities.js
+
+//------ 第2个picker ---------------------------
+var picker2 = new huiPicker('#picker2', function(){
+	var shengVal  = picker2.getVal(0);
+	var shengText = picker2.getText(0);
+	console.log(shengVal + shengText);
+	var shiVal  = picker2.getVal(1);
+	var shiText = picker2.getText(1);
+	console.log(shiVal + shiText);
+	hui('#picker2').html(shengText+shiText);
+});
+picker2.level = 2; //设置联动层级
+picker2.bindData(cities); //绑定数据 cityData 来自 cities.js
+
+//----- 第3个picker -----------------------------
+var picker1 = new huiPicker('#picker1', function(){
+	var val1  = picker1.getVal(0);
+	console.log(val1);
+	var text1 = picker1.getText(0);
+	hui('#picker1').html(text1);
+});
+var data = [{value:1, text:'大衣'}, {value:2, text:'长裤'}, {value:3, text:'帽子'}, {value:4, text:'其他'}]
+picker1.bindData(data);
+</script>
+</body>
+</html>

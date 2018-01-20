@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 常用消息框</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:30px 20px; width:258px; margin:0 auto;">
+		<div>
+			<button type="button" style="width:100%;" class="HUI_Button"  onclick="hui.toast('自动消失的消息框');">自动消失的消息框</button>
+		</div>
+		<div style="padding-top:30px;">
+			<button type="button" style="width:100%;" class="HUI_Button" onclick="hui.alert('消息内容....','知道了', function(){console.log('ok');});">警告消息框</button>
+		</div>
+		<div style="padding-top:30px;">
+			<button type="button" style="width:100%;" class="HUI_Button" onclick="hui.confirm('您确定要这样做吗？',['取消','确定'], function(){console.log('do...');});">操作确认框</button>
+		</div>
+		<div style="padding-top:30px;">
+			<button type="button" style="width:100%;" class="HUI_Button" onclick="hui.inputDialog('请输入您的姓名？',['取消','确定'], function(val){hui.toast('您输入了: '+val);});">输入框</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+</body>
+</html>

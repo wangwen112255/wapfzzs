@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 图片预览及缩放</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div class="HUI_MediaList">
+		<ul>
+			<li>
+				<img src="img/media_1.jpg" class="ImageViews" />
+			</li>
+			<li>
+				<img src="img/media_2.jpg" class="ImageViews" />
+			</li>
+			<li>
+				<img src="img/media_3.jpg" class="ImageViews" />
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/huiImgView.js"></script>
+<script>
+hui.ready(function(){
+	hui.imgView('.ImageViews');
+	//安卓返回
+	hui.BackDo = function(){
+		var HUI_ImgView = hui('#HUI_ImgView');
+		if(HUI_ImgView.length){hui.closeImgView(); return false;}
+		return true;
+	}
+});
+</script>
+</body>
+</html>

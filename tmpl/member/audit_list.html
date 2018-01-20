@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>债权金转换</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+<header id="header"></header>
+<div class="voucher-list-wp" id="voucher-list"></div>
+<script type="text/html" id="voucher-list-tmpl">
+<div class="voucher-list">
+<% if (voucher_list && voucher_list.length > 0) { %>
+
+<% for (var k in voucher_list) { var v = voucher_list[k]; %>
+<%	if (v.status ==3 || v.status ==6) {%>
+	<div class="voucher-item">
+		<a href='<%=WapSiteUrl%>/tmpl/audit_pay.html?id=<%= v.id %>'>
+		<dl class="voucher-info"><dt class="voucher-title">债权人：<%= v.name %></dt>
+		<hr style="height:1px;border:none;border-top:1px solid #a1a1a1;" />
+		<dd>
+			债权转让金额：<span class="voucher-money">￥<%= v.total %></span><span style="border-right: 1px solid #b9b9b9;margin: 0px 15px;"></span><br/>
+			<span>债权转让状态：<% if (v.status ==1) { %> 等待审核 </span> <% }
+			else if (v.status == 3){ %> 债权金服务费未付 </span> <% } else if (v.status == 6){ %> 债权金服务费已付 </span><% }%>
+
+		</dd>
+		<hr style="height:1px;border:none;border-top:1px solid #a1a1a1;" />
+		<dd>债权人电话：<%= v.mobile %></dd>
+		<dd>申请日期：<%= tsToDateString(v.created_at) %></dd>
+		<% if (v.status==3){ %><div class="tishi">去支付</div><% }%>
+		
+		</dl></a>
+	</div>
+	<img src="../../images/tu.png" style="width:90%;margin:15px 5%;">
+<% }%>
+<% } %>
+
+    <div class="pagination mt10">
+        <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+        <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+    </div>
+<% } else { %>
+    <div class="no-record">
+        暂无记录
+    </div>
+<% } %>
+</div>
+</script>
+<div id="footer"></div>
+<script type="text/javascript" src="../../js/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/template.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/simple-plugin.js"></script>
+<script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+<script type="text/javascript" src="../../js/tmpl/voucher_list.js"></script>
+</body>
+</html>

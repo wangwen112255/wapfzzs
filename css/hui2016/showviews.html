@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 系统中已经打开的窗口</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div class="HUI_List">
+		<ul id="views"></ul>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script>
+hui.plusReady(function(){
+	var views = hui.listViews();
+	var html  = '';
+	for(var i = 0; i < views.length; i++){
+		html += '<li>'+views[i].id+'</li>';
+	}
+	hui('#views').html(html);
+	hui('#views').find('li').click(function(thisObj){
+		var id = this.innerHTML;
+		hui.close(id);
+		hui(this).remove();
+	});
+});
+</script>
+</body>
+</html>

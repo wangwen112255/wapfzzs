@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - popoverMsg</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:20px 10px; font-size:16px;" id="test1">
+		关于xx功能的说明 <span class="HUI_Icons HUI_Icons_wenhao"></span> 点击试试吧
+	</div>
+	<div style="padding:10px; padding-top:120px;">
+		<button type="button" id="btn1" class="HUI_Button HUI_FL">箭头在左侧的演示</button>
+		<button type="button" id="btn2" class="HUI_Button HUI_FR">箭头在右侧的演示</button>
+	</div>
+	<div style="padding:10px; padding-top:120px;">
+		<button type="button" class="HUI_Button HUI_FR" id="btn3">弹出多功能菜单</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript" src="js/hui.popoverMsg.js"></script>
+<script>
+hui('#test1').popoverMsg('down', 'left', '床前明月光，疑是地上霜。举头望明月，低头思故乡。', 200, 'auto', {left:10, top:-15});
+hui('#btn1').popoverMsg('up', 'left', '春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。', 200, null,{left:0, top:-22});
+hui('#btn2').popoverMsg('up', 'right', '<div style="border-bottom:1px solid #D1D1D1; padding-bottom:8px;">春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。</div><div style="text-align:center; padding-top:8px; color:#3283FA;" onclick="hui(\'#HUI_Mask\').trigger(\'click\');">知道了</div>', 200, null, {left:-40, top:-22});
+var menu = '<div class="HUI_List"><ul><li>菜单1</li><li>菜单2</li><li>菜单3</li><li>菜单4</li><li>菜单5</li><li>菜单6</li></ul></div>';
+hui('#btn3').popoverMsg('up', 'right', menu, 280, 200, {left:-140, top:-22});
+//模拟点击
+hui('#btn2').trigger('click');
+</script>
+</body>
+</html>

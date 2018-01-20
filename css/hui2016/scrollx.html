@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<style>
+.demoDiv{width:200px; height:100px; text-align:center; font-size:32px; float:left; margin-right:8px; background:#0062CC; color:#FFFFFF; line-height:100px;}
+</style>
+<body style="background:#F8F8F8;">
+<div id="HUI_Header">
+	<h1>HUI - 横向滚动区域</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:18px 8px 0px 8px; line-height:2em; padding-bottom:0px;">
+		<strong>说明</strong><br />
+		1、滚动内容需要设置为左浮动。<br />
+		2、滚动条在移动设备下隐藏。<br />
+		<strong>第一个例子</strong><br />
+		滚动区域内为img的例子(需在img父级增加一层div)
+	</div>
+	<div class="HUI_NewsList">
+		<ul>
+			<li>
+				<a href="javascript:hui.toast('hi...');">
+					<div class="HUI_NewsListTitile">
+						中国小伙娶乌克兰美女媳妇 回家乡办传统婚礼
+					</div>
+					<div class="HUI_NewsListImgs">
+						<div>
+							<img src="http://i1.go2yd.com/image.php?url=http://si1.go2yd.com/get-image/08L8YeehSzY&type=thumbnail_200x140" />
+							<img src="http://i1.go2yd.com/image.php?url=http://si1.go2yd.com/get-image/08L8ZvDfvxg&type=thumbnail_200x140" />
+							<img src="http://i1.go2yd.com/image.php?url=http://si1.go2yd.com/get-image/08L8X72MOki&type=thumbnail_200x140" />
+							<img src="http://i1.go2yd.com/image.php?url=0F9udQXAyP&type=thumbnail_200x140" />
+							<img src="http://i1.go2yd.com/image.php?url=0F9sx8iwKv&type=thumbnail_200x140" />
+						</div>
+					</div>
+					<div class="HUI_NewsListInfo">中青网 | 2016-11-07 13:52:11</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div style="padding:18px 10px; line-height:2em; padding-bottom:5px;">
+		<strong>第2个例子</strong><br />
+		滚动区域内为li的例子(注意在ul父级增加一层div)
+	</div>
+	<div class="HUI_MediaTable" style="margin:10px;">
+		<div>
+		<ul>
+			<li>
+				<a href="javascript:hui.toast('hi...');">
+					<div class="HUI_MediaListImg"><img src="img/media_21.png" /></div>
+					<div class="HUI_LInfo">
+						<h1>也许是奇花异草,但我觉得最美的风景是对他人无私的奉献</h1>
+						<p>在别人的眼中,最美的风景也许是高楼大厦,也许是奇花异草</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:hui.toast('hi...');">
+					<div class="HUI_MediaListImg"><img src="img/media_22.png" /></div>
+					<div class="HUI_LInfo">
+						<h1>图片的宽度 200*110 px</h1>
+						<p>请保持一个列表内图片的宽高比例</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:hui.toast('hi...');">
+					<div class="HUI_MediaListImg"><img src="img/media_23.png" /></div>
+					<div class="HUI_LInfo">
+						<h1>也许是奇花是对他人无私的奉献</h1>
+						<p>在别人的眼中,最美的风景也许是高楼大厦,也许是奇花异草</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:hui.toast('hi...');">
+					<div class="HUI_MediaListImg"><img src="img/media_24.png" /></div>
+					<div class="HUI_LInfo">
+						<h1>无私的奉献</h1>
+						<p>在别人的眼中,最美的风景也许是高楼大厦,也许是奇花异草</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:hui.toast('hi...');">
+					<div class="HUI_MediaListImg"><img src="img/media_25.png" /></div>
+					<div class="HUI_LInfo">
+						<h1>我觉得是对他人无私的奉献</h1>
+						<p>在别人的眼中,最美的风景也许是高楼大厦,也许是奇花异草</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+		</div>
+	</div>
+	<div style="padding:18px 10px; line-height:2em; padding-bottom:5px;">
+		<strong>第3个例子</strong><br />
+		滚动区域内为指定样式的div
+	</div>
+	<div style="margin:10px;" id="demoDiv">
+		<div>
+			<div class="demoDiv">1</div>
+			<div class="demoDiv">2</div>
+			<div class="demoDiv">3</div>
+			<div class="demoDiv">4</div>
+			<div class="demoDiv">5</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script>
+hui('.HUI_NewsListImgs').scrollX();
+hui('.HUI_MediaTable').scrollX(3, 'li');
+hui('#demoDiv').scrollX(3, '.demoDiv', 8);
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>债商品详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../icon/iconfont.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/new_main.css">
+	<link rel="stylesheet" type="text/css" href="../css/child.css">
+    <script type="text/javascript" src="../js/swiper-3.3.1.min.js"></script>
+	<style>
+	.goods_jl{ color:#d93600; font-size:22px;}
+	</style>
+</head>
+<body>
+	<header id="header"></header>
+	<div id="product_detail_wp"></div>
+	<footer id="footer" class="footer"></footer>
+	<script type="text/html" id="product_detail">
+	
+	<div class="swiper-container" style="width: 100%;height: auto;">
+    <div class="swiper-wrapper">
+        <% for(var i =0;i<goods_image.length;i++){　%>
+		  <div class="swiper-slide" style="width: 100%;"><img style="width: 100%;" src="<%=goods_image[i]%>"/></div>
+	   <%}%>
+    </div>
+    <div class="swiper-pagination">
+    </div>
+</div>
+
+<div class="spxq-main">
+	<div class="title">
+		<div style="font-size: 28px;"><%=goods_info.goods_name%><span class="pd-coll">收藏</span></div>
+		<div class="goods_jl"><%=goods_info.goods_jingle%></div>
+	</div>
+	<div class="price in">
+		<p>市场价：<span>￥<em><%=goods_info.goods_marketprice%></em></span>商城价：<val>￥<em><%=goods_info.goodsn_price%></em></val></p>
+		<div id="member_read"><p>应付款：<val>￥<em><%=goods_info.goods_price%></em></val>债权金：<val>￥<em><%=goods_info.goods_price_zq%></em></val></p></div>
+	</div>
+	<div class="shuliang in">
+		数量：
+		<div class="num">
+			<span class="jian">-</span><input type="text" class="buy-num" id="buynum" value="1"/><span class="jia">+</span>
+		</div>
+	</div>
+	<div class="yunsong in">
+		<p>送至：<span>全国</span></p>
+		<p>运费：<span>买家承担运费</span></p>
+	</div>
+	<div class="shop in">
+		<%=store_info.store_name %>
+		<a href="go_store.html?store_id=<%=goods_info.store_id%>">进入店铺>></a>
+	</div>
+	<div class="detail in">
+		图文详情
+	</div>
+	
+
+	<iframe id="St" src="../../mobile/index.php?act=goods&op=goods_body&goods_id=<%=goods_info.goods_id%>" scrolling="no" frameborder="0" style="width: 100%;" onload="this.height=this.contentWindow.document.documentElement.scrollHeight">
+</iframe>
+</div>
+	<div class="spxq-footer">
+	
+	<% if (goods_info.is_virtual == '1') { %>
+		<span class="buy buy-now">立即购买</span>
+	<% } else if (goods_info.is_presell == '1') { %>
+		<span class="buy buy-now">预售购买</span>
+	<% } else if (goods_info.is_fcode == '1') { %>
+		<span class="buy buy-now">F码购买</span>
+	<% } else { %>
+		<span class="buy buy-now">立即购买</span>
+		<%if(goods_info.promotion_type!='groupbuy'){%>
+		<span class="gou add-to-cart">加入购物车</span>
+		<%}%>
+	<% } %>
+	
+</div>
+	
+	
+	
+	</script> 
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../js/config.js"></script>
+	<script type="text/javascript" src="../js/template.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/tmpl/common-top2.js"></script>
+	<script type="text/javascript" src="../js/layer/layer.js"></script>
+	<script type="text/javascript" src="../js/tmpl/product_detail.js"></script>
+	<style>
+	.layui-m-layerbtn span {
+    font-size: 30px;
+	}
+	.layui-m-layercont {
+    font-size: 30px;
+	}
+	.layui-m-layerbtn {
+    height: 70px;
+    line-height: 70px;
+	}
+	.layui-m-layer-msg .layui-m-layercont {
+    padding: 25px 30px;
+}
+	</style>
+</body>
+</html>

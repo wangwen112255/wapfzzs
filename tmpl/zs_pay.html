@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>债事备案信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/child.css">
+</head>
+<body>
+    
+		<header id="header"></header>
+       <div class="buys1-cnt buys1-address-cnt">
+           <h3 class="clearfix">债事备案信息</h3>
+           <ul class="buys-ycnt buys1-hide-detail">
+                <li class="clearfix">
+                    <span class="key fleft">申请单号：</span>
+                    <div class="value fleft" id="pay_id"></div>
+                </li>
+                <li class="clearfix">
+                    <span class="key fleft">债权人姓名：</span>
+                    <div class="value fleft" id="zq_name"></div>
+                </li>
+                <li class="clearfix">
+                    <span class="key fleft">债权人电话：</span>
+                    <div class="value fleft" id="zq_phone"></div>
+                </li>
+				<li class="clearfix">
+                    <span class="key fleft">债权人身份证号：</span>
+                    <div class="value fleft" id="zq_card"></div>
+                </li>
+				<li class="clearfix">
+                    <span class="key fleft">债务人姓名：</span>
+                    <div class="value fleft" id="zw_name"></div>
+                </li>
+				<li class="clearfix">
+                    <span class="key fleft">债务人电话：</span>
+                    <div class="value fleft" id="zw_phone"></div>
+                </li>
+				<li class="clearfix">
+                    <span class="key fleft">债务金额：</span>
+                    <div class="value fleft" id="total"></div>
+                </li>
+				<li class="clearfix">
+                    <span class="key fleft">审核状态：</span>
+                    <div class="value fleft" id="status"></div>
+                </li>
+           </ul>
+        </div>
+		
+        <div class="buys1-cnt zhifu">
+           <h3 class="clearfix">支付方式</h3>
+           <ul class="buys-ycnt" style="padding:0px;">
+                <li class="clearfix buys-yc-type">
+                    <label id="online">
+						<img src="../images/alipay.png" style="width:80px;margin: 5px 0px 0px 20px;">
+						<input type="hidden" id="alipay" class="payment zhong" value="alipay">
+						<img src="../images/queding.png" class="ali" style="width: 20px;float: right;margin: 13px;">
+                    </label>
+                </li>
+				<hr style="width:90%;border:none;border-top:1px solid #C1C1C1;">
+				<li class="clearfix buys-yc-type">
+                    <label id="online">
+						<img src="../images/wxpay.png" style="width:80px;margin: 5px 0px 0px 20px;">
+						<input type="hidden" id="wxpay" class="payment" value="wxpay">
+						<img src="../images/no.png" class="weixin" style="width: 20px;float: right;margin: 13px;">
+                    </label>
+                </li>
+           </ul>
+        </div>
+       
+       <div class="buys1-cnt zhifu">
+               <li class="bd-t-cc">
+                   <div class="buys-order-total">
+                       支付金额：<div style="display: inline;color: red;font-weight: bold;font-size: 20px;">￥<span id="total_price"></span></div>
+                   </div>
+               </li>
+               <li>
+                   <a href="javascript:void(0);" class="post-order" id="buy_step2">去支付</a>
+               </li>
+           </ul>
+       </div>
+    </div>
+    <div id="footer"></div>
+    <input type="hidden" name="address_id">
+    <input type="hidden" name="area_id">
+    <input type="hidden" name="city_id">
+    <input type="hidden" name="freight_hash">
+    <input type="hidden" name="vat_hash">
+    <input type="hidden" name="allow_offpay">
+    <input type="hidden" name="offpay_hash">
+    <input type="hidden" name="offpay_hash_batch">
+	<input type="hidden" name="invoice_id">
+	<input type="hidden" name="passwd_verify" value="0">
+	<input type="hidden" name="total_price">
+	<input type="hidden" name="available_rc_balance">
+	<input type="hidden" name="available_predeposit">
+
+    <script type="text/javascript" src="../js/config.js"></script>
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../js/tmpl/zs_pay.js"></script>
+	<script type="text/javascript" src="../js/tmpl/common-top.js"></script>
+    <!--<script type="text/javascript" src="../../js/tmpl/footer.js"></script>-->
+</body>
+</html>

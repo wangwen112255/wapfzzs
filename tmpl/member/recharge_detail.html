@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>债券金记录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/member.css">
+<link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+<link rel="stylesheet" href="../../css/hui2016/css/hui.css"/>
+<link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+
+
+
+</head>
+<style>
+.moneycenter{position: absolute;width: 240px;left:50%;margin-left:-120px;color:#fff !important;height: 80px;top:50%;margin-top:-50px;}
+.moneycenter p{text-align: center;    font-size: 1.4rem;}
+#this_recharge span{color:#fff;font-size: 2.4rem;text-align: center;
+display: block;};
+#this_recharge {text-align: center;};
+.log-list{ padding:10px;}
+.log-item{ border-bottom:#ccc 1px solid; line-height:30px; padding-bottom:5px; padding-top:5px;}
+
+.log-list .mx_log{ line-height:24px; padding-bottom:10px;}
+.log-list .mx_log span{ color:#f00}
+.log-item .log-desc{ line-height:24px;}
+
+.moneytop1{
+    padding: 5px;
+    line-height: 36px;
+    height: 50px;
+    font-size: 16px;
+    background: #1D8FE4;
+}
+.moneytop1 p{
+    width: 49%;height: 35px;margin-top:7.5px;float: left;text-align: center;font-size: 1.2rem;color:#fff;line-height: 35px;
+}
+.moneytop1 p a{color:#fff;letter-spacing: 2px;}
+.moneytop1 p .iconfont{font-size: 1.4rem}
+.moneytop1 p:last-child{
+    border-left:solid #fff 1px;}
+.hui-wrap a{color:#333 !important;font-size: 1.2rem}
+.HUI_List {
+    padding: 5px 0px;
+    border-bottom: solid 1px #e5e5e5;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.HUI_Wrap .iconfont{
+    font-size:1.8rem !important;
+    color:#c0000a !important;
+}
+.amount{
+    display: inline-block;
+    float: left;
+    position: absolute;
+    right: 30px;
+}
+.amounttext{
+    padding-left:15px !important;
+}
+</style>
+<body>
+<header id="header"></header>
+<div>
+
+<div class="moneytop1">
+    <p><a href="recharge_cz.html"><span class="iconfont icon-chongzhi2"></span>收入</a></p>
+    <p><a href="recharge_cz.html"><span class="iconfont icon-chongzhi1"></span>支出</a></p>
+</div>
+<div class="voucher-list-wp" id="log-list"></div>
+</div>
+
+<script type="text/html" id="log-list-tmpl">
+<div class="log-list">
+<% if (list && list.length > 0) { %>
+<div class="HUI_Wrap">
+<% for (var k in list) { var v = list[k]; %>
+<div class="HUI_List">
+        <ul>
+            <li><a href="javascript:hui.toast('hi...');" class="HUI_Arrow"><span class="iconfont icon-shouru"></span><span class="amounttext">支出总额</span> <!-- <%= tsToDateString(v.add_time) %> -->  <span class="amount"><%= v.amount%>元 <!-- <%= tsToDateString(v.add_time) %>　 --></span></a>
+         
+            </li>
+        </ul>
+</div>
+<!-- <div class="log-item">
+<div class="mx_log">时间：<%= tsToDateString(v.add_time) %>　　<%= v.c_type%>：<span><%= v.amount%>元</span></div>
+<div class="log-desc">[明细]:<%= v.description%></div>
+</div> -->
+<% } %>
+</div>
+    <% if (curpage >1 ) { %>
+    <div class="pagination mt10">
+        <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+        <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+    </div>
+    <% } %>
+<% } else { %>
+    <div class="no-record">
+        暂无记录
+    </div>
+<% } %>
+</div>
+
+</script>
+
+<div id="footer"></div>
+<script type="text/javascript" src="../../js/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/template.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/simple-plugin.js"></script>
+<!-- <script type="text/javascript" src="../../js/tmpl/common-top.js"></script> -->
+<script type="text/javascript" src="../../js/tmpl/recharge_list.js"></script>
+</body>
+</html>

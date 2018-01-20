@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 下拉菜单美化</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap" style="padding-top:100px;">
+	<button class="HUI_Button" style="margin:0px auto; margin-top:100px;" onclick="showValByButton();">获取select的值</button>
+</div>
+<!-- 保持在顶部的分类条件 为了便于理解样式直接写在了style属性内  -->
+<div style="height:50px; width:100%; background:#FFFFFF; border-bottom:1px solid #F3F3F3; position:absolute; left:0px; top:46px; z-index:9999;">
+	<div style="width:30%; height:50px; line-height:50px; text-align:center; float:left;">
+		<select id="select1">
+			<option value="1">价格最低</option>
+			<option value="2">价格最高</option>
+			<option value="3">综合排序</option>
+			<option value="4">推荐排序</option>
+		</select>
+	</div>
+	<div style="width:30%; height:50px; line-height:50px; text-align:center; float:left;">
+		<select id="select2">
+			<option value="1">陕西省</option>
+			<option value="2">河北省</option>
+			<option value="3">北京市</option>
+			<option value="4">河南省</option>
+		</select>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script>
+hui('#select1').selectBeautify(showVal);
+hui('#select2').selectBeautify(showVal, false);
+function showVal(val){
+	hui.toast('选项值 : ' + val);
+}
+function showValByButton(){
+	var val1 = hui('#select1').val();
+	var val2 = hui('#select2').val();
+	hui.toast('2个select的值: '+val1+' , '+val2);
+}
+</script>
+</body>
+</html>

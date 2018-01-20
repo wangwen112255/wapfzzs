@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+@media screen and (min-width:768px){
+   .box{
+	position: relative;
+	background: url(../img/bg.jpg) no-repeat;
+	width:100%;
+	height:50%; 
+	background-size:100% 100%;
+}
+	.top .t2{
+	font-size:2em;
+	color:white;
+	line-height:3.53em;
+	text-align:center;
+		margin-left: 20px;
+}
+	.top .t3 a img{
+	width: 30%;
+	height:30%;
+	padding-top: 1em;
+}
+	.touxiang{
+	border-radius: 100%;
+	width:102px;
+	height: 102px;
+	border: 2px solid #fff;
+	margin:0 auto;
+}
+	.name{font-size: 2.2em;
+	color:white;
+	line-height: 3.5em;
+	text-align: center;
+}
+	.infor {
+		padding: 14px 0;
+	border-top:1px solid white;
+	width: 100%; 
+	height: 10%;
+}
+	.infor .f1,.f2,.f3 ,.f4{
+	width:24%;
+	height: 10%;
+	float:left;
+}
+
+	.infor p { 
+		font-size: 1.2em;
+	color:#666666; 
+	margin: 0px;     
+}
+	.liebiao ul li {
+	padding-top: 40px;
+	padding-bottom: 40px;
+    display: inline;
+    float: left;
+	width: 33%;
+	height: 32%;
+	border-right: #ebebeb dashed 1px;
+	border-bottom: #ebebeb dashed 1px;
+}
+	
+	.liebiao ul li {
+	padding-top: 40px;
+	padding-bottom: 40px;
+    display: inline;
+    float: left;
+	width: 33%;
+	height: 32%;
+	border-right: #ebebeb dashed 2px;
+	border-bottom: #ebebeb dashed 2px;
+}
+	.liebiao p{
+	text-align: center;
+	font-size: 1.4em;
+	padding-top: 10px;
+}
+ .liebiao a img{
+	 width: 60px;
+	 height: 60px;
+	 cursor: pointer;
+	
+}
+}

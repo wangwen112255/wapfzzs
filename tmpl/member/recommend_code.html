@@ -1,0 +1,178 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>邀请好友</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<link rel="stylesheet" type="text/css" href="../../css/member.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../css/base.css"> -->
+<link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+<link rel="stylesheet" href="../../css/hui2016/css/hui.css"/>
+<link rel="stylesheet" href="../../css/layer/mobile/need/layer.css"/>
+<style type="text/css">
+   /* body{
+        overflow: hidden !important;
+    }*/
+    .HUI_List{
+
+        padding: 5px 12px;
+        width: 200px;
+        height: 150px;
+        margin:auto auto;
+    }
+    img{height:180px;width:180px;margin:0px auto;margin-left:10px;}
+    h1{
+        font-size: 2.4rem;
+        color: #333;
+        padding-bottom: 20px;
+        font-weight: bold;
+        }
+    h3{
+    width: 230px;
+    margin-left: auto;
+    text-align: center;
+    margin: 0px auto;
+    color:#666;
+    font-size: 1.2rem;
+    padding-top:8;
+    }
+    .HUI_MemberShiwu{
+        position: absolute;
+        bottom: 0px;
+       
+
+    }
+    a{
+        font-size: 1.4rem !important;
+        color:#333 !important;
+    }
+    .HUI_Icons_List span .iconfont{
+        font-size:2.8rem !important;
+    }
+    .HUI_Icons_List{
+        width:280px;
+        margin: auto auto;
+    }
+    #code{
+        width: 100%;
+        height: 315px;
+        background: #fff;
+        position: absolute;
+        bottom:0px;
+        margin-bottom:-200px;
+        z-index: 999999;
+        transition:top 5s linear;   
+        display: none; 
+    }
+  
+    #code img{
+        width: 200px;
+        margin:auto;
+        height: 200px;
+        background: #fff;
+        display: block;
+    }
+    .ceil{
+        padding-top: 10px;
+        border-top: 1px #c9c7c8 solid;
+        margin-top: 15px;
+        text-align: center;
+        color: #666;
+        font-weight: normal;
+        font-size: 1.6rem;
+        line-height: 25px;
+    }
+    #mask{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #666;
+        opacity: 0.5;
+        z-index: 1111;
+        top:0px;
+        display: none;
+    }
+ 
+</style>
+
+
+</head>
+<style>
+
+</style>
+<body>
+<header id="header"></header>
+<div class="HUI_Wrap">
+    <div class="HUI_List">
+    <img src="images/yaoqing.png" alt="赶快分享吧">
+    </div>
+    <div class="HUI_List" style="height:200px;width:250px;margin-top: 40px;padding-top: 5px;">
+    <h1>邀请好友注册富之债事</h1>
+    <h3>好友注册并进行升级后,你可以获取奖励</h3>
+    <h3><a href="recommend_rule.html">查看活动细则></a></h3>
+    <!-- <img src="images/yaoqing.png" alt="赶快分享吧"> -->
+    <!-- <p style="margin-left:10px;"><h3>赶快分享您的推荐码吧</h3></p> -->
+    </div>
+</div>
+<div class="HUI_Wrap HUI_MemberShiwu" >
+  <div class="HUI_Icons_List">
+    <ul>
+      <li>
+        <span><a ><span class=" "></span></a></span>
+        <h1></h1>
+      </li>
+      <li>
+        <span><a href="recharge_cz.html"><span class="color-2 iconfont icon-chongzhi"></span></a></span>
+        <h1>已邀请</h1>
+      </li>
+     
+      <li>
+        <span><a id="myrecommend" href="javascript:void(0)"><span class="color-1 iconfont icon-jilu"></span></a></span>
+        <h1>邀请码</h1>
+      </li>
+      <li>
+        <span><a><span ></span></a></span>
+        <h1></h1>
+      </li>
+
+      </ul>
+      </div>
+      </div>
+      <div id="mask"></div>
+      <div id="code">
+      <h1 class="ceil" style="border-top:0px solid #fff;margin-top: 0px">长按将二维码分享给好友</h1>
+          <img id='codelink' src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://fzzs.quanyihengtong.com/wap/tmpl/member/recommend_preprocessing.php?name=">
+          <h1 class="ceil" id="ceil">取消</h1>
+      </div>
+<div id="footer"></div>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/template.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+<script type="text/javascript" src="../../css/hui/js/hui.js"></script>
+<script type="text/javascript" src="../../css/layer/layer.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        $("#codelink").attr('src',$("#codelink").attr('src')+localStorage.getItem("name"));
+        $('#myrecommend').click(function(){
+            $("#mask").show();
+            $("#code").animate({'marginBottom':"0px"}).show();
+            // $("p").
+            });
+        $('#ceil').click(function(){
+            $(this).parent().animate({'marginBottom':"-200px"}).hide();
+             $("#mask").hide();
+        })
+        
+        })
+   
+</script>
+</body>
+</html>
+

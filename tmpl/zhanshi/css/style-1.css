@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+@media  (min-width:768px) and (max-width:1200px) {
+	.bg5txtbox{
+	width:80%;
+	height:70%;
+	position:relative;
+	margin:0 auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	
+	
+}
+.bg5txt1{
+	width:80%;
+	height:80%;
+	
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:30;
+	display:none;
+	margin: 0 auto;
+}
+.bg5txt2{
+	width:50%;
+	height:50%;
+	position:absolute;
+	right:0;
+	bottom:0;
+	z-index:29;
+	display:none;
+	margin: 0 auto;
+}
+}
+

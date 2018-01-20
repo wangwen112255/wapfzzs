@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - switch开关</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:30px 20px;">
+		<div class="HUI_Switch" id="HUI_Switch"><span>OFF</span><div class="HUI_SwitchIn"></div></div>
+	</div>
+	<div style="padding:0px 20px;">
+		<button type="button" onclick="getVal();" class="HUI_Button HUI_FR">获取开关的值</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+hui.ready(function(){hui('#HUI_Switch').switchBox();});
+function getVal(){
+	var val = hui('#HUI_Switch').getSwitchVal();
+	if(val){
+		hui.toast('on');
+	}else{
+		hui.toast('off');
+	}
+}
+</script>
+</body>
+</html>

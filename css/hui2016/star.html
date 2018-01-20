@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 星级评价插件</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:30px 18px;" id="start1"></div>
+	<div style="padding:0px 18px;">
+		<button type="button" id="btn1" class="HUI_Button HUI_FR">获取选择的值</button>
+	</div>
+	<div style="padding:30px 18px;" id="start2"></div>
+	<div style="padding:0px 18px;">
+		<button type="button" id="btn2" class="HUI_Button HUI_FR">获取选择的值</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script>
+hui('#start1').star(5, function(num){hui.toast('您选择了'+num+'星');});
+hui('#btn1').click(function(){
+	var starVal = hui('#start1').getStarVal();
+	if(starVal < 1){hui.alert('请选择星级'); return;}
+	hui.alert(starVal + '星');
+});
+//第2个 演示完整参数 体现个性化配置
+hui('#start2').star(6, function(num){hui.toast('您选择了'+num+'星');}, 50, '#CCCCCC', '#900');
+hui('#btn2').click(function(){
+	var starVal = hui('#start2').getStarVal();
+	if(starVal < 1){hui.alert('请选择星级'); return;}
+	hui.alert(starVal + '星');
+});
+</script>
+</body>
+</html>

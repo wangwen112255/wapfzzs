@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - 上拉加载</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div class="HUI_List" id="list1"></div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+var page = 1;
+hui.plusReady(function(){
+	loadByPage();
+	hui.loadMore(loadByPage);
+});
+function loadByPage(){
+	hui.get('http://hoa.hcoder.net/index.php?user=hcoder&pwd=hcoder&m=list1&page='+page, function(data){
+		page++;
+		//判断是否加载全部
+		if(data != 'null'){
+			hui.endLoadMore();
+			var ul = document.createElement('ul');
+	        var arr  = data.split('--hcSplitor--'), html = '';
+	        for(var i = 0; i < arr.length; i++){html += '<li><a>'+arr[i]+'</a></li>';}
+	        ul.innerHTML = html;
+			hui(ul).appendTo(hui('#list1'));
+		}else{
+			hui.endLoadMore(true);
+		}
+	});
+}
+</script>
+</body>
+</html>

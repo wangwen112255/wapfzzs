@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+<style>
+*{color:#FFFFFF;}
+a{color:#FFFFFF;}
+</style>
+</head>
+<body style="background:#333333;">
+<div class="HUI_Wrap">
+	<div style="padding:12px;">
+		<br />侧滑菜单示例，您可以在这里放置任何内容；
+	</div>
+	<div class="HUI_List">
+		<ul>
+			<li><a href="javascript:hui.open('list.html');" class="HUI_Arrow">功能菜单1</a></li>
+			<li><a href="javascript:void(0);">功能菜单2</a></li>
+			<li><a href="javascript:void(0);">功能菜单3</a></li>
+			<li><a href="javascript:void(0);">功能菜单4</a></li>
+		</ul>
+	</div>
+	<div style="padding:10px;">
+		<button type="button" class="HUI_Button" style="width:100%;" onclick="closeMenu();">关闭菜单</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+function closeMenu(){
+	var pW = plus.webview.currentWebview().opener();
+	pW.evalJS('hui.Back();');
+}
+</script>
+</body>
+</html>

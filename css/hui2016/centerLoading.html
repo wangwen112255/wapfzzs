@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+</head>
+<body>
+<div id="HUI_Header">
+	<h1>HUI - loading</h1>
+	<div id="HUI_Back"></div>
+</div>
+<div class="HUI_Wrap">
+	<div style="padding:28px 25px;">
+		点击按钮展示loading，系统会在3秒后自动关闭loading
+	</div>
+	<div style="padding:0px 25px;">
+		<button type="button" onclick="showLoading();" class="HUI_Button">点击这里试试</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/hui.js"></script>
+<script type="text/javascript">
+function showLoading(){
+	hui.centerLoading();
+	setTimeout(function(){hui.centerLoading(true);}, 3000);
+}
+</script>
+</body>
+</html>
