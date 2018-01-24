@@ -2,7 +2,7 @@
 * @Author: ZMZHSQ11
 * @Date:   2018-01-20 16:24:46
 * @Last Modified by:   ZMZHSQ11
-* @Last Modified time: 2018-01-20 16:25:39
+* @Last Modified time: 2018-01-24 09:34:17
 */
 $.fn.serializeObject = function()
 {
@@ -21,10 +21,10 @@ $.fn.serializeObject = function()
     return o;
 };
 $(function(){
-    var key = getcookie('key');
-    if(key==''){
-        window.location.href = '/shop/index.php?act=login&op=index';
-    }
+    // var key = getcookie('key');
+    // if(key==''){
+    //     window.location.href = '/shop/index.php?act=login&op=index';
+    // }
     
     
     $('#this_button').click(function(){

@@ -13,9 +13,14 @@ $(function (){
             +'</a>'
         +'</div>'
     +'</div>';
-	
+	   var tmpl3 ='<ul class="clearfix">'
+            +'<li class="footer-li1 "><a href="/wap"><dl><dt><i class="iconfont iion">&#xe67a;</i></dt><dd>首页</dd></dl></a></li>'  
+            +'<li class="footer-li1"><a href="../../shopindex.html"><dl><dt><i class="iconfont icon-gouwuche1"></i></dt><dd>商城</dd></dl></a></li>'
+            +'<li class="footer-li1"><a href="../cart_list.html"><dl><dt><i class="iconfont icon-dizhiguanli2"></i></dt><dd>附近</dd></dl></a></li>'
+            +'<li class="footer-li1"><a href="member.html?act=member"><dl><dt><i class="iconfont iion">&#xe6a8;</i></dt><dd>个人中心</dd></dl></a></li>'
+            +'</ul>';
 	var tmpl2 ='<ul class="clearfix">'
-        +'<li class="footer-li1 on"><a href="/"><dl><dt><i class="iconfont iion">&#xe67a;</i></dt><dd>首页</dd></dl></a></li>'  
+        +'<li class="footer-li1"><a href="/wap"><dl><dt><i class="iconfont iion">&#xe67a;</i></dt><dd>首页</dd></dl></a></li>'  
         +'<li class="footer-li1"><a href="tmpl/product_first_categroy.html"><dl><dt><i class="iconfont iion">&#xe6d1;</i></dt><dd>分类</dd></dl></a></li>'
 		+'<li class="footer-li1"><a href="tmpl/cart_list.html"><dl><dt><i class="iconfont iion">&#xe726;</i></dt><dd>购物车</dd></dl></a></li>'
 		+'<li class="footer-li1"><a href="tmpl/member/member.html?act=member"><dl><dt><i class="iconfont iion">&#xe6a8;</i></dt><dd>个人中心</dd></dl></a></li>'
@@ -23,10 +28,12 @@ $(function (){
 	var render = template.compile(tmpl);
 	var html = render();
 	if(act && act == "member"){
-		$("#footer").html(tmpl);
+		$("#footer").html(tmpl3);
 	}else{
-		$("#footer").html(tmpl2);
+        $("#footer").html(tmpl2);
 	}
+   
+
     //回到顶部
     $(".gotop").click(function (){
         $(window).scrollTop(0);

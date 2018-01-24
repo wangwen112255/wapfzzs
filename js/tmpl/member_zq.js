@@ -212,14 +212,7 @@ $(function(){
             
             return false;
 	});
-	function bodyScale(){
-	var devicewidth=document.documentElement.clientWidth;
-	var scale=devicewidth/640;
-	document.body.style.zoom=scale;
-}
-window.onload=window.onresize=function(){
-//	bodyScale();
-}
+
 	$("#file1 input").change(function(){	 
 	 	var file = this.files[0]; 
 	    //这里我们判断下类型如果不是图片就返回 去掉就可以上传任意文件   
@@ -393,13 +386,5 @@ function getObjectURL(file) {
  return url ;
 }
 
-var userScalable = "no";
-var ins = "";
-(function() {
-	if (window.devicePixelRatio === 1.5) {
-		userScalable = "yes";
-		ins = "initial-scale=0.5"
-	}
-	var text = "<meta content='"+ins+", target-densitydpi=device-dpi, width=640,user-scalable=" + userScalable + "' name='viewport'>";
-	document.write(text);
-})();
+
+

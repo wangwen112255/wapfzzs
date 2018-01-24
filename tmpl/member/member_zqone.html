@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <title>债务信息登记</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/light/dist/css/light7.css">
+    <link rel="stylesheet" type="text/css" href="../../css/wangui//font/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../../css/light/dist/css/light7-swiper.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../css/wangui/hui.css"> -->
+    <script type="text/javascript" src="../../css/wangui/hui.js"></script>
+    <script type="text/javascript" src="../../css/wangui/hui-form.js"></script>
+    <script type="text/javascript" src="../../css/light/dist/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../css/light/dist/js/light7.js"></script>
+     <script type="text/javascript" src="../../css/light/dist/js/light7-city-picker.min.js"></script>
+    <script type="text/javascript" src="../../css/light/dist/js/light7-swiper.min.js"></script>
+
+      
+    <style>
+    .list-block {
+      margin: 1.0rem 0;
+     
+    }
+     .iconfont {
+        width: 1.45rem;
+        height: 1.45rem;
+        /*background-image: url("../img/i-form-tel.png");*/
+    }
+    #danbao{
+      display: none;
+    }
+    #huiImgCuter{width:80%; height:80%; position:absolute; left:10%; top:10%; z-index:9; background:rgb(255,255,255,0); border:1px solid #FFFFFF;}
+    .huiCuterMask{width:100%; height:10px; position:absolute; left:0px; top:0px; z-index:8; background:rgba(0,0,0,0.8);}
+    #huiImgCutImgIn{width:100%;}
+    #huiImgCutImgIn img{width:100%;}
+    #huiCuterCanvas{position:fixed; display:none; z-index:20; top:100px; right:10px; width:100px; border:1px solid #FFFFFF; font-size:0px;}
+    #huiCuterCanvas canvas{width:100%;}
+    .huiCuterSelectImg{width:100; text-align:center; background:#F4F5F6;}
+    #huiImgCutImgIn img {
+        width: 100%;
+        height: 200px;
+    }
+    </style>
+  
+  
+</head>
+<body>
+
+
+
+<div class="page-group">
+   
+    <div class="page">
+    
+      <header class="bar bar-nav"> 
+       <a class="button button-link button-nav pull-left back" href="member_zq.html">
+            <span class="icon icon-left"></span>
+            返回
+          </a>
+        <button id="nextone" class="button button-link button-nav pull-right">
+          下一步
+          <span class="icon icon-right"></span>
+        </button>
+        <h1 class="title">债务方信息登记</h1>
+      </header>
+   
+      <div class="content">
+      <form action="" id="signupFormone" method="post">
+      <div class="list-block">
+          <ul>
+          
+            <script type="text/html" id="zqone">
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">姓名</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg" value="<%= zw_name %>" checkData="^([\u4e00-\u9fa5]){2,7}$"  value="" checkMsg="请正确输入债务方姓名" name="zw_name" placeholder="请输入债权方姓名" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-tel"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">手机号</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg" value="<%= zw_mobile %>" checkData="^1(3|4|5|7|8)\d{9}$" checkMsg="请输入正确的手机号"   name="zw_mobile" placeholder="请输入债权方手机号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">证件号</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg" value="<%= zw_numcard %>"  checkData="^\d{17}(\d|x)$" checkMsg="请输入正确的证件号"   name="zw_numcard" placeholder="请输入债权方证件号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-address"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">通讯地址</div>
+                  <div class="item-input">
+                    <input type="text" id='address' checkType="string"  value="<%= zw_address %>"checkData="2,20"  checkMsg="请选择正确的地址"   name="zw_address" placeholder="请选择通讯地址" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-marriage"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">婚姻状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_marriage" checkType="string"  value="<%= zw_marriage %>"checkData="2,20"   checkMsg="请选择债权人婚姻状况"  name="zw_marriage" placeholder="请选择债权人婚姻状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-educations"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">学历状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_education" checkType="string" value="<%= zw_education %>" checkData="2,20" checkMsg="请选择债权人学历状况"  name="zw_education" placeholder="请选择债权人学历状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-job"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">工作状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_job" checkType="string" checkData="2,20" value="<%= zw_job %>"  checkMsg="请选择债权人工作状况"  name="zw_job" placeholder="请选择债权人工作状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-health"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">身体状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_health" checkType="string" checkData="2,20"  value="<%= zw_health %>"  checkMsg="请选择债权人身体状况"  name="zw_health" placeholder="请选择债权人身体状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-house"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">房产状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_house" checkType="string" checkData="2,20" value="<%= zw_house %>"  checkMsg="请选择债权人房产状况"  name="zw_house" placeholder="请选择债权人房产状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+            <li>
+                <div class="item-content">
+                  <div class="item-media"><i class="icon icon-form-danbao"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title label">是否有担保方</div>
+                    <div class="item-input">
+                      <label class="label-switch">
+                        <input type="checkbox" name="isdanbao"  id="isdanbao" <% if(isdanbao=='on'){ %>checked<% }%> >
+                        <div class="checkbox"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </li>
+           
+            <div id="danbao">
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-danbao"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">担保类型</div>
+                  <div class="item-input">
+                    <input type="text" id="danbaotype" checkType="strings" checkData="4" value="<%= danbaotype %>"  checkMsg="请选择担保类型"  name="danbaotype" placeholder="请选择担保类型" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">担保方名称</div>
+                  <div class="item-input">
+                    <input type="text" checkType="regs"  checkData="^([\u4e00-\u9fa5]){2,7}$"  checkMsg="请输入担保名称"  name="gu_name" placeholder="请输入担保方方姓名" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-tel"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">联系电话</div>
+                  <div class="item-input">
+                    <input type="text"   checkType="regs"  checkData="^1(3|4|5|7|8)\d{9}$" checkMsg="请输入正确的手机号"  name="gu_mobile" placeholder="请输入担保方联系方式" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">证件号/营业执照</div>
+                  <div class="item-input">
+                    <input type="text" checkType="regs"   checkData="^\d{17}(\d|x)$" checkMsg="请输入证件号或组织机构代码"   name="gu_numcard" placeholder="请输入正确的担保方证件号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            </script>
+            <div id="showzqone"></div>
+           </div>
+      </ul>
+     
+  
+     </div>
+
+      </form>
+     
+     </div>
+    
+  </div>
+    <div class="page" id="member_zqtwo">
+    
+      <header class="bar bar-nav">
+       <a class="button button-link button-nav pull-left" href="member_zqone.html">
+            <span class="icon icon-left"></span>
+            返回
+          </a>
+        <button id="next" class="button button-link button-nav pull-right">
+          点击完成
+          <span class="icon icon-right"></span>
+        </button>
+        <h1 class="title">上传资料</h1>
+      </header>
+   
+      <div class="content">
+      <!-- <div class="hui-wrap">
+          <!-- 图片裁切核心区域  -->
+        <form action="" id="signupFormtwo" method="post">
+          <div class="card facebook-card">
+            <input type="file" class="hui-img-cut-file" accept="image/png,image/gif" style="display:none;" />
+            <!-- 图片展示核心区  -->
+            <div class="huiCuterSelectImg" style="position:relative">
+                <div style="line-height:100px; padding-top:10px; font-size:100px; color:#B8BBBF;">+</div>
+                <div style="line-height:50px; font-size:16px; color:#B8BBBF;">选择选择图片</div>
+                <div class="huiImgCutShow" style="position:absolute; height:230px;top:0px;font-size:0px;"></div>
+                <input type="hidden" name="card_img_1" value="">
+            </div>
+            <div class="card-footer no-border">
+              <a href="#" class="link"></a>
+              <a href="#" class="link">请上传债权方的正面身份证照片,点击更换</a>
+              <a href="#" class="link"></a>
+            </div>
+      </div> 
+          <div class="card facebook-card">
+            <input type="file" class="hui-img-cut-file" accept="image/png,image/gif" style="display:none;" />
+            <!-- 图片展示核心区  -->
+            <div class="huiCuterSelectImg" style="position:relative">
+                <div style="line-height:100px; padding-top:10px; font-size:100px; color:#B8BBBF;">+</div>
+                <div style="line-height:50px; font-size:16px; color:#B8BBBF;">选择选择图片</div>
+                <div class="huiImgCutShow" style="position:absolute; height:230px;top:0px;font-size:0px;"></div>
+                <input type="hidden" name="card_img_2" value="" >
+            </div>
+            <div class="card-footer no-border">
+              <a href="#" class="link"></a>
+              <a href="#" class="link">请上传债权方的反面身份证照片,点击更换</a>
+              <a href="#" class="link"></a>
+            </div>
+      </div> 
+          <div class="card facebook-card">
+            <input type="file" class="hui-img-cut-file" accept="image/png,image/gif" style="display:none;" />
+            <!-- 图片展示核心区  -->
+            <div class="huiCuterSelectImg" style="position:relative">
+                <div style="line-height:100px; padding-top:10px; font-size:100px; color:#B8BBBF;">+</div>
+                <div style="line-height:50px; font-size:16px; color:#B8BBBF;">选择选择图片</div>
+                <div class="huiImgCutShow" style="position:absolute; height:230px;top:0px;font-size:0px;"></div>
+                <input type="hidden" name="card_img_3" value="" >
+            </div>
+            <div class="card-footer no-border">
+              <a href="#" class="link"></a>
+              <a href="#" class="link">请上传务方的正面身份证照片,点击更换</a>
+              <a href="#" class="link"></a>
+            </div>
+      </div> 
+          
+              <div class="card facebook-card">
+                <input type="file" class="hui-img-cut-file" accept="image/png,image/gif" style="display:none;" />
+                <!-- 图片展示核心区  -->
+                <div class="huiCuterSelectImg" style="position:relative">
+                    <div style="line-height:100px; padding-top:10px; font-size:100px; color:#B8BBBF;">+</div>
+                    <div style="line-height:50px; font-size:16px; color:#B8BBBF;">选择选择图片</div>
+                    <div class="huiImgCutShow" style="position:absolute; height:230px;top:0px;font-size:0px;"></div>
+                    <input type="hidden" name="card_img_4" value="">
+                </div>
+                <div class="card-footer no-border">
+                  <a href="#" class="link"></a>
+                  <a href="#" class="link">请上传债务方的正面身份证照片,点击更换</a>
+                  <a href="#" class="link"></a>
+                </div>
+          </div> 
+              <div class="card facebook-card">
+                <input type="file" class="hui-img-cut-file" accept="image/png,image/gif" style="display:none;" />
+                <!-- 图片展示核心区  -->
+                <div class="huiCuterSelectImg" style="position:relative">
+                    <div style="line-height:100px; padding-top:10px; font-size:100px; color:#B8BBBF;">+</div>
+                    <div style="line-height:50px; font-size:16px; color:#B8BBBF;">选择选择图片</div>
+                    <div class="huiImgCutShow" style="position:absolute; height:230px;top:0px;font-size:0px;"></div>
+                    <input type="hidden" name="card_img_4" value="">
+                </div>
+                <div class="card-footer no-border">
+                  <a href="#" class="link"></a>
+                  <a href="#" class="link">请上传债合同照片1,点击更换</a>
+                  <a href="#" class="link"></a>
+                </div>
+          </div> 
+              
+                  <div class="card facebook-card">
+                    <input type="file" class="hui-img-cut-file" accept="image/png,image/gif" style="display:none;" />
+                    <!-- 图片展示核心区  -->
+                    <div class="huiCuterSelectImg" style="position:relative">
+                        <div style="line-height:100px; padding-top:10px; font-size:100px; color:#B8BBBF;">+</div>
+                        <div style="line-height:50px; font-size:16px; color:#B8BBBF;">选择选择图片</div>
+                        <div class="huiImgCutShow" style="position:absolute; height:230px;top:0px;font-size:0px;"></div>
+                        <input type="hidden" name="card_img_4" value="">
+                    </div>
+                    <div class="card-footer no-border">
+                      <a href="#" class="link"></a>
+                      <a href="#" class="link">请上传债合同照片2,,点击更换</a>
+                      <a href="#" class="link"></a>
+                    </div>
+              </div> 
+              <div class="content-block">
+                 <div class="row">
+                   <div class="col-50"><a href="#" class="button button-big button-fill button-danger">重新填写</a></div>
+                   <div class="col-50"><a href="#" class="button button-big button-fill button-success">点击完成</a></div>
+
+                 </div>
+               </div>
+
+      </form>
+     
+     </div>
+    
+  </div>
+  </div>
+
+  
+  <script type="text/javascript" src="../../js/common.js"></script>
+   <script type="text/javascript" src="../../js/tmpl/member_zqwap.js"></script>
+
+     <script type="text/javascript" src="../../js/template.js"></script>
+  <script type="text/javascript">
+  // console.log(localStorage.getItem('zq'))
+  $(function(){
+
+
+    var zqoneobj=JSON.parse(localStorage.getItem('zqone'));
+    if(!zqoneobj)
+    zqoneobj={"name":""}
+    console.log(zqoneobj);
+    var html = template.render('zqone', zqoneobj);
+    $("#showzqone").html(html);
+    if(zqoneobj.isdanbao=="on")
+      $("#danbao").show();
+    $('#isdanbao').change(function(){
+      $("#danbao").toggle();
+        if($("input[name='gu_name']").attr('checkType')=='regs'){
+        $("input[name='gu_name'],input[name='gu_mobile'],input[name='gu_numcard']").attr('checkType','reg');
+        $("#danbaotype").attr("checkType",'string');
+       }else{
+        $("input[name='gu_name'],input[name='gu_mobile'],input[name='gu_numcard']").attr('checkType','regs');
+        $("#danbaotype").attr("checkType",'string');
+
+       }
+       });
+
+    $("#address").cityPicker({
+      toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择债务方地址</h1>\
+      </header>'
+    });
+    $("#zw_marriage").picker({
+      toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-left"></button>\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择债务方婚姻状况</h1>\
+      </header>',
+      cols: [
+        {
+          textAlign: 'center',
+          values: [' 未婚', '已婚', '不清楚', ]
+        }
+      ]
+    });
+    $("#zw_education").picker({
+      toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-left"></button>\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择债务方教育状况</h1>\
+      </header>',
+      cols: [
+        {
+          textAlign: 'center',
+          values: [' 硕士及以上', '本科', '专科','高中及以下' ]
+        }
+      ]
+    });
+    $("#danbaotype").picker({
+      toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-left"></button>\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择担保类型</h1>\
+      </header>',
+      cols: [
+        {
+          textAlign: 'center',
+          values: [' 个人担保', '企业担保' ]
+        }
+      ]
+    });
+    $("#zw_job").picker({
+      toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-left"></button>\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择债务方工作状况</h1>\
+      </header>',
+      cols: [
+        {
+          textAlign: 'center',
+          values: [' 教师', '建筑工程师', '公务员','财务会计','软件设计研发','销售顾问','行政人事','金融期货' ]
+          
+        }
+      ]
+    });
+    $("#zw_health").picker({
+      toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-left"></button>\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择债务方身体状况</h1>\
+      </header>',
+      cols: [
+        {
+          textAlign: 'center',
+          values: [' 优秀', '良好', '差劲','不清楚' ]
+        }
+      ]
+    });
+    $("#zw_house").picker({
+      toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-left"></button>\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择债务方房产状况</h1>\
+      </header>',
+      cols: [
+        {
+          textAlign: 'center',
+          values: [' 有房子', '无房子', '不清楚', ]
+        }
+      ]
+    });
+
+    hui.formInit();
+    hui('#nextone').click(function(){
+        var res = huiFormCheck('#signupFormone');
+          if(res){
+          console.log(JSON.stringify($("#signupFormone").serializeObject()))
+          var zqone=JSON.stringify($("#signupFormone").serializeObject());
+          localStorage.setItem('zqone',zqone)
+          $.router.loadPage("#member_zqtwo");
+
+         }
+
+     });
+
+
+
+  })
+ 
+
+  </script>
+     <script type="text/javascript">
+     //全局化剪裁对象
+     var imgCuter = null;
+     //绑定选择图片事件
+     hui('.huiCuterSelectImg').click(function(){
+         var a = document.createEvent("MouseEvents");
+     　　a.initEvent("click", true, true);  
+     // 　　document.getElementById("hui-img-cut-file").dispatchEvent(a);
+        $(this).prev()[0].dispatchEvent(a);
+     });
+
+
+  $('.hui-img-cut-file').change(function(){
+        var thisdom=$(this);
+      
+         // hui.loading('加载图片');
+         var reader = new FileReader();
+         reader.onloadstart=function(e){
+            $.showPreloader("图片选择中，请勿点击");
+            // $.toast("图片选择成功");
+
+          }
+         reader.onload = function(e){
+             // alert(e.target.result)
+            thisdom.next().find('.huiImgCutShow').css({'fontSize':'0px','height':'auto'});
+            thisdom.next().find('.huiImgCutShow').html('<div id="huiImgCutImgIn"><img src="'+e.target.result+'" /></div>');
+            thisdom.next().find('input').val(e.target.result);
+              $.hidePreloader();
+             hui.closeLoading();
+         };
+         reader.onerror=function(e){
+            $.showPreloader();
+            // $.toast("图片选择失败");
+          }
+         if(this.files[0]){
+             reader.readAsDataURL(this.files[0]);
+         }else{
+             hui.closeLoading();
+         }
+     });
+   
+     </script>
+    <script type="text/javascript">
+      hui.formInit();
+      hui('#next').click(function(){
+          var res = huiFormCheck('#signupFormtwo');
+            // location.href='member_zqtwo.html'
+    console.log(JSON.stringify($("#signupFormtwo").serializeObject()))
+
+        
+          });
+
+
+    </script>
+
+
+  </body>
+  </html>
+
+ 
+

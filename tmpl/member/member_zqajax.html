@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <title>债务信息登记</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/light/dist/css/light7.css">
+    <link rel="stylesheet" type="text/css" href="../../css/wangui//font/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../../css/light/dist/css/light7-swiper.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../css/wangui/hui.css"> -->
+    <script type="text/javascript" src="../../css/wangui/hui.js"></script>
+    <script type="text/javascript" src="../../css/wangui/hui-form.js"></script>
+    <script type="text/javascript" src="../../css/light/dist/js/jquery.min.js"></script>
+    <!-- <script type="text/javascript"  src="../../css/light/dist/js/zt.js"></script> -->
+    <script type="text/javascript" src="../../css/light/dist/js/light7.js"></script>
+    <script type="text/javascript" src="../../css/light/dist/js/light7-swiper.min.js"></script>
+     <script type="text/javascript" src="../../css/light/dist/js/light7-city-picker.min.js"></script>
+
+
+      
+    <style>
+   
+    #coverthingparent{
+      display: none;
+    }
+    .list-block {
+      margin: 1.0rem 0;
+     
+    }
+     .iconfont {
+        width: 1.45rem;
+        height: 1.45rem;
+        /*background-image: url("../img/i-form-tel.png");*/
+    }
+
+   #danbao{
+      display: none;
+    }
+    </style>
+  
+  
+</head>
+<body>
+
+
+
+<div class="page-group">
+   
+    <div class="page">
+    
+      <header class="bar bar-nav">
+       <!--  <button class="button button-link button-nav pull-left back">
+          <a href="javascript:window.history.back(-1)"><span class="icon icon-left"></span>
+          返回</a>
+        </button> -->
+         <a class="button button-link button-nav pull-left back" href="member.html">
+      <span class="icon icon-left"></span>
+      返回
+    </a>
+        <button id="next" class="button button-link button-nav pull-right">
+          下一步
+          <span class="icon icon-right"></span>
+        </button>
+        <h1 class="title">债权方信息登记</h1>
+      </header>
+   
+      <div class="content">
+      <form action="" id="signupForm" method="post">
+      <div class="list-block">
+          <ul>
+          
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-total"></i><!-- <i class="icon icon-form-name"></i> --></div>
+                <div class="item-inner">
+                  <div class="item-title label">债权金额</div>
+                  <div class="item-input">
+                    <input name="total" type="text" checkType="int" checkData="2,12"  checkMsg="请输入2-12位的整数金额" placeholder="请输入债权金额">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+            <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                    <div class="item-inner">
+                      <div class="item-title label">借款时间</div>
+                      <div class="item-input">
+                        <input type="text"  id="createtime" name='createtime'    checkType="string" checkData="16"  checkMsg="请选择正确的借款时间" placeholder="请选择正确的借款时间" value="2015-12-12 08:30">
+                      </div>
+                    </div>
+                  </div>
+             
+            </li>
+            <li>
+             <div class="item-content">
+                     <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                     <div class="item-inner">
+                       <div class="item-title label">还款时间</div>
+                       <div class="item-input">
+                         <input type="text"  id="returntime" name='returntime' checkType="string" checkData="16"  checkMsg="请选择正确的还款时间"    placeholder="请输入正确的还款时间" value="2017-12-30 08:30">
+                       </div>
+                     </div>
+                   </div>
+            </li>
+            <li>
+                <div class="item-content">
+                  <div class="item-media"><i class="icon icon-form-cover"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title label">有无抵押物</div>
+                    <div class="item-input">
+                      <label class="label-switch">
+                        <input type="checkbox" name="iscover" id="iscover">
+                        <div class="checkbox"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </li>
+         <li id='coverthingparent'>
+           <div class="item-content">
+             <div class="item-media"><i class="icon icon-form-cover"></i></div>
+             <div class="item-inner">
+               <div class="item-title label">抵押物品</div>
+               <div class="item-input">
+                 <input type="text" id='coverthing' checkType="strings" checkData="2,30"  checkMsg="请输入抵押物品,r如果没有请取消"  name="coverthing" placeholder="请输入债权方姓名" class="">
+               </div>
+             </div>
+           </div>
+         </li>
+            <li>
+                <div class="item-content">
+                  <div class="item-media"><i class="icon icon-form-law"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title label">是否诉讼</div>
+                    <div class="item-input">
+                      <label class="label-switch">
+                        <input type="checkbox" name="islaw">
+                        <div class="checkbox"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </li>
+
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">姓名</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg" checkData="^([\u4e00-\u9fa5]){2,7}$"  checkMsg="请输入正确的债权方姓名"  name="name" placeholder="请输入债权方姓名" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-tel"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">手机号</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg"  checkData="^1(3|4|5|7|8)\d{9}$" checkMsg="请输入正确的手机号"  name="mobile" placeholder="请输入债权方手机号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">证件号</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg" checkData="^\d{17}(\d|x)$"  checkMsg="请输入正确的证件号码"   name="numcard" placeholder="请输入债权方证件号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+           
+  
+           
+      </ul>
+     
+  
+     </div>
+
+      </form>
+     
+     </div>
+    
+  </div>
+
+    <div class="page" id="router2">
+    
+      <header class="bar bar-nav"> 
+       <a class="button button-link button-nav pull-left back" href="member_zq.html">
+            <span class="icon icon-left"></span>
+            返回
+          </a>
+        <button id="next" class="button button-link button-nav pull-right">
+          下一步
+          <span class="icon icon-right"></span>
+        </button>
+        <h1 class="title">债务方信息登记</h1>
+      </header>
+   
+      <div class="content">
+      <form action="" id="signupFormone" method="post">
+      <div class="list-block">
+          <ul>
+          
+            
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">姓名</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg" checkData="^([\u4e00-\u9fa5]){2,7}$"  checkMsg="请正确输入债务方姓名" name="zw_name" placeholder="请输入债权方姓名" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-tel"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">手机号</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg"  checkData="^1(3|4|5|7|8)\d{9}$" checkMsg="请输入正确的手机号"   name="zw_mobile" placeholder="请输入债权方手机号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">证件号</div>
+                  <div class="item-input">
+                    <input type="text" checkType="reg"  checkData="^\d{17}(\d|x)$" checkMsg="请输入正确的证件号"   name="zw_numcard" placeholder="请输入债权方证件号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-address"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">通讯地址</div>
+                  <div class="item-input">
+                    <input type="text" id='address' checkType="string" checkData="2,20"  checkMsg="请选择正确的地址"   name="zw_address" placeholder="请选择通讯地址" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-marriage"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">婚姻状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_marriage" checkType="string" checkData="2,20"   checkMsg="请选择债权人婚姻状况"  name="mobile" placeholder="请选择债权人婚姻状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-educations"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">学历状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_education" checkType="string" checkData="2,20" checkMsg="请选择债权人学历状况"  name="zw_education" placeholder="请选择债权人学历状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-job"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">工作状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_job" checkType="string" checkData="2,20"  checkMsg="请选择债权人工作状况"  name="zw_job" placeholder="请选择债权人工作状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-health"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">身体状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_health" checkType="string" checkData="2,20"   checkMsg="请选择债权人身体状况"  name="zw_health" placeholder="请选择债权人身体状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+           <li>
+             <div class="item-content">
+               <div class="item-media"><i class="icon icon-form-house"></i></div>
+               <div class="item-inner">
+                 <div class="item-title label">房产状况</div>
+                 <div class="item-input">
+                   <input type="text" id="zw_house" checkType="string" checkData="2,20"  checkMsg="请选择债权人房产状况"  name="zw_house" placeholder="请选择债权人房产状况" class="">
+                 </div>
+               </div>
+             </div>
+           </li>
+            <li>
+                <div class="item-content">
+                  <div class="item-media"><i class="icon icon-form-danbao"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title label">是否有担保人</div>
+                    <div class="item-input">
+                      <label class="label-switch">
+                        <input type="checkbox" name="isdanbao" id="isdanbao">
+                        <div class="checkbox"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </li>
+            <div id="danbao">
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">担保方姓名</div>
+                  <div class="item-input">
+                    <input type="text" checkType="regs"  checkData="^([\u4e00-\u9fa5]){2,7}$"  checkMsg="请输入担保方姓名,如不清楚请取消担保方"  name="gu_name" placeholder="请输入担保方方姓名" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-tel"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">担保方手机号</div>
+                  <div class="item-input">
+                    <input type="text"   checkType="regs"  checkMsg="请输入正确的手机号"  name="gu_mobile" placeholder="请输入正确的担保方手机号,如不清楚请取消担保方" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">担保方证件号</div>
+                  <div class="item-input">
+                    <input type="text" checkType="regs"   checkData="^\d{17}(\d|x)$" checkMsg="请输入正确的证件号,如不清楚请取消担保方"   name="gu_numcard" placeholder="请输入正确的担保方证件号" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+           </div>
+      </ul>
+     
+  
+     </div>
+
+      </form>
+     
+     </div>
+    
+  </div>
+  </div>
+
+  <script type="text/javascript" src="../../js/common.js"></script>
+  <script type="text/javascript" src="../../js/tmpl/member_zqwap.js"></script>
+  <script type="text/javascript">
+  $(function(){
+   var  infostring=JSON.stringify($("#validation").serializeObject());
+   localStorage.setItem('info',infostring);
+   $("#returntime").datetimePicker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择正确的还款时间</h1>\
+     </header>'
+   });
+   $("#createtime").datetimePicker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择正确的借款时间</h1>\
+     </header>'
+   });
+   $('#isdanbao').change(function(){
+     $("#danbao").toggle();
+       if($("input[name='gu_name']").attr('checkType')=='regs'){
+       $("input[name='gu_name'],input[name='gu_mobile'],input[name='gu_numcard']").attr('checkType','reg');
+      }else{
+       $("input[name='gu_name'],input[name='gu_mobile'],input[name='gu_numcard']").attr('checkType','regs');
+      }
+      });
+
+   $("#address").cityPicker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择债务方地址</h1>\
+     </header>'
+   });
+   $("#zw_marriage").picker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-left"></button>\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择债务方婚姻状况</h1>\
+     </header>',
+     cols: [
+       {
+         textAlign: 'center',
+         values: [' 未婚', '已婚', '不清楚', ]
+       }
+     ]
+   });
+   $("#zw_education").picker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-left"></button>\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择债务方教育状况</h1>\
+     </header>',
+     cols: [
+       {
+         textAlign: 'center',
+         values: [' 硕士及以上', '本科', '专科','高中及以下' ]
+       }
+     ]
+   });
+   $("#zw_job").picker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-left"></button>\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择债务方工作状况</h1>\
+     </header>',
+     cols: [
+       {
+         textAlign: 'center',
+         values: [' 教师', '建筑工程师', '公务员','财务会计','软件设计研发','销售顾问','行政人事','金融期货' ]
+         
+       }
+     ]
+   });
+   $("#zw_health").picker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-left"></button>\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择债务方身体状况</h1>\
+     </header>',
+     cols: [
+       {
+         textAlign: 'center',
+         values: [' 优秀', '良好', '差劲','不清楚' ]
+       }
+     ]
+   });
+   $("#zw_house").picker({
+     toolbarTemplate: '<header class="bar bar-nav">\
+     <button class="button button-link pull-left"></button>\
+     <button class="button button-link pull-right close-picker">确定</button>\
+     <h1 class="title">请选择债务方房产状况</h1>\
+     </header>',
+     cols: [
+       {
+         textAlign: 'center',
+         values: [' 有房子', '无房子', '不清楚', ]
+       }
+     ]
+   });
+  })
+
+  $('#iscover').change(function(){
+    $("#coverthingparent").toggle();
+    var thiss=$("#coverthing");
+      if(thiss.attr('checkType')=='strings'){
+      thiss.attr('checkType','string');
+     }else{
+      thiss.attr('checkType','strings');
+     }
+     })
+
+    hui.formInit();
+    hui('#next').click(function(){
+      var res = huiFormCheck('#signupForm');
+        // location.href='member_zqone.html'
+        // if(res){
+          // console.log(JSON.stringify($("#signupForm").serializeObject()))
+        // location.href='member_zqone.html';
+        $.router.loadPage("member_zqone.html");
+   
+
+      });
+
+
+
+ //   hui('#nextone').click(function(){
+ //       // var res = huiFormCheck('#signupFormone');
+ // //          if(res){
+ // // console.log(JSON.stringify($("#signupFormone").serializeObject()))
+ //         // location.href='member_zqtwo.html';
+ //         alert(0)
+ //         $.router.loadPage("member_zqtwo.html");
+
+ // //        }
+
+ //       });
+
+
+ //     var imgCuter = null;
+ //     //绑定选择图片事件
+ //     hui('.huiCuterSelectImg').click(function(){
+ //         var a = document.createEvent("MouseEvents");
+ //     　　a.initEvent("click", true, true);  
+ //     // 　　document.getElementById("hui-img-cut-file").dispatchEvent(a);
+ //        $(this).prev()[0].dispatchEvent(a);
+ //     });
+
+
+ //  $('.hui-img-cut-file').change(function(){
+ //        var thisdom=$(this);
+      
+ //         // hui.loading('加载图片');
+ //         var reader = new FileReader();
+ //         reader.onloadstart=function(e){
+ //            $.showPreloader("图片选择中，请勿点击");
+ //            // $.toast("图片选择成功");
+
+ //          }
+ //         reader.onload = function(e){
+ //             // alert(e.target.result)
+ //            thisdom.next().find('.huiImgCutShow').css({'fontSize':'0px','height':'auto'});
+ //            thisdom.next().find('.huiImgCutShow').html('<div id="huiImgCutImgIn"><img src="'+e.target.result+'" /></div>');
+ //            thisdom.next().find('input').val(e.target.result);
+ //              $.hidePreloader();
+ //             hui.closeLoading();
+ //         };
+ //         reader.onerror=function(e){
+ //            $.showPreloader();
+ //            // $.toast("图片选择失败");
+ //          }
+ //         if(this.files[0]){
+ //             reader.readAsDataURL(this.files[0]);
+ //         }else{
+ //             hui.closeLoading();
+ //         }
+ //     });
+   
+     </script>
+
+
+ 
+
+  </body>
+  </html>
+
+ 
+

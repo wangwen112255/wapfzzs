@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <title>债务信息登记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="../../css/new_main.css" />
+    <link rel="stylesheet" href="../../css/main.css" />
+     <link rel="stylesheet" href="../../css/wizard/assets/formvalidation/formValidation.min.css">
+    <link rel="stylesheet" href="../../css/wizard/css/wizard.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/sui/sui.css">
+    <link rel="stylesheet" type="text/css" href="../../css/layui/css/layui.css">
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.jqprint-0.3.js"></script>
+    <script src="../../css/wizard/jquery-wizard.min.js"></script>
+     <script src="../../css/wizard/assets/formvalidation/formValidation.min.js"></script>
+    <script type="text/javascript" src="../../css/wizard/assets/formvalidation/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../css/wizard/assets/formvalidation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../css/bootstrap/bootstraps.min.js"></script>
+    <script type="text/javascript" src="../../css/layui/layui.js"></script>
+      
+    <style>
+    #servingForm select.input-medium{width:115px;}
+    #servingForm select.input-medium:first-child{width:113px;}
+    #servingForm .img-round{margin-bottom: 10px;}
+    #servingForm .sui-msg{box-shadow: 0 1px 3px rgba(0,0,0,.2);border:1px solid #ddd;border-radius: 2px;}
+    #servingForm .sui-msg:before{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 6px;
+        border-right-color: #ddd;
+        left: -12px;
+        top: 7px;
+    }
+    #view tr{
+       font-size: 12px !important;
+       font-family: "宋体"  !important;
+
+    }
+    #view tr td{
+     height: 38px !important;
+    padding:0px !important;
+    }
+    .imgshow{
+        height: 80px;
+        /*height: 100%;*/
+        width:90%;
+        margin:0px auto;
+    }
+    
+    #servingForm .sui-msg:after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 6px;
+        border-right-color: #fffff1;
+        left: -10px;
+        top: 7px;
+    }
+
+    .form-horizontal .controls > a:first-child,
+    .form-horizontal .controls > span:first-child{display: inline-block;padding-top: 3px;} /* 表单的内容区如果一开始就是文字，应该和左边水平对齐 */
+    /* 原bs里面的缩略图样式 */
+    .img-round{border-radius: 3px;display:block;padding:3px;border:1px solid #ccc;position: relative;}
+    .img-round .upload-label{position: absolute;display:inline-block;padding:5px 0;width:70%;border:1px solid #ccc;left:15%;top:50%;margin-top:-15px;;background-color:#fff;text-align: center;}
+    .controls .sub-controls-title{margin:15px 0;}
+    /*防守打法*/
+    .zx-main .item input {
+        width: 300px;
+        height: 57px;
+        border: 1px solid #d9d9d9;
+        font-size: 1.6em;
+        margin-left:20px;
+    }
+    .file{
+        position: relative;
+    }
+    .file input{
+        position: absolute;
+        font-size: 80px;
+        width:100px;
+        height:100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+    .zx-main .item span {
+        display: inline-block;
+        font-size: 22px;
+        line-height: 60px;
+        color: #666;
+        width: 240px;
+        text-align:right;
+    }
+    .zx-main p {
+        font-size: 20px;
+        line-height: 74px;
+        text-indent: 1em;
+        color: #333;
+        font-weight: bold;
+    }
+    .zx-main .item span i{
+        color: red;
+    }
+    section {
+      margin: 60px;
+    }
+    .wizard-steps {
+        display: table;
+        width: 100%;
+    }
+
+    .wizard-steps > li.current, .wizard-steps > li.done {
+        background: #41b3f9;
+        color: #ffffff;
+    }
+    .wizard-steps > li.done {
+        background: #7ace4c;
+    }
+    .wizard-steps > li {
+        display: table-cell;
+        padding: 10px 20px;
+        background: #f7fafc;
+        line-height: 40px;
+        text-align: center;
+         font-size: 18px
+    }
+    .wizard-buttons > a:first-child {
+        padding: 8px 20px;
+        margin-right: 5px;
+        border: 1px solid #41b3f9;
+        border-radius: 20px;
+        background: #41b3f9;
+        color: #fff;
+        font-size: 16px;
+    }
+    .wizard-buttons {
+        margin-left: 75px;
+    }
+     .wizard-buttons > a:nth-child(2) {
+        padding: 8px 20px;
+        margin-right: 5px;
+        border: 1px solid #7ace4c;
+        border-radius: 20px;
+        background: #7ace4c;
+        color: #fff;
+        font-size: 16px;
+    }
+     .wizard-buttons > a:nth-child(3) {
+        padding: 8px 20px;
+        margin-right: 5px;
+        border: 1px solid #c0000a;
+        border-radius: 20px;
+        background: #c0000a;
+        color: #fff;
+        font-size: 16px;
+    }
+    .wizard-steps > li.current h4, .wizard-steps > li.done h4 {
+        color: #ffffff;
+    }
+    .wizard-steps > li.current span, .wizard-steps > li.done span {
+        border-color: #ffffff;
+        color: #ffffff;
+    }
+    .wizard-steps > li span {
+        border-radius: 100%;
+        border: 1px solid rgba(120, 130, 140, 0.13);
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 9px;
+        margin-right: 8px;
+        text-align: center;
+       
+    }
+    .wizard-content {
+        padding: 25px;
+        border-color: rgba(120, 130, 140, 0.13);
+        margin-bottom: 30px;
+    }
+  .current {
+      color: #fff !important;
+  }
+  .controls select{
+ 
+        width: 120px;
+        height: 38px;
+        margin-top: 15px;
+    }
+  #address .layui-unselect{
+  display: none;
+  }
+  .layui-input-block {
+      /*margin-left: 110px;*/
+      min-height: 36px;
+      /*margin-top: 8px;*/
+      margin-left: 0px;
+  }
+  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+     
+      padding-right: 0px !important;
+      }
+      .sui-form input[type="text"]{
+        height: 40px !important;
+      }
+      .sui-form .help-block{
+        color:#a94442;
+        font-size: 12px;
+      }
+      .has-success .control-label{
+        color:#333;
+      }
+      .fileimg{
+        width: 106px;
+        height: 106px;
+        position: relative;
+        top:42px;
+        margin-left:20px;
+        margin-right:20px;
+
+      }
+      .aftertext{
+        top: 10px;
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+      }
+    </style>
+  
+  
+</head>
+<body style="background: #fff;overflow-x: hidden;">
+<header id="header"></header>
+
+</head>
+
+<body>
+
+
+<div class="container">
+  <section>
+    <div id="exampleValidator" class="wizard">
+      <ul class="wizard-steps" role="tablist">
+        <li class="active" role="tab">
+          第一步:填写债权人信息
+        </li>
+        <li role="tab">
+          第二步:填写债务人信息
+        </li>
+        <li role="tab">
+          第三步:债务情况
+        </li>
+        <li role="tab">
+          第四步:上传资料
+        </li>
+
+      </ul>
+      <form id="validation" class="form-horizontal layui-form sui-form form-horizontal">
+        <div class="wizard-content">
+          <div class="wizard-pane active" role="tabpanel">
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债权金额:</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="请输入正确债权金额" name="amount" id="amount" />
+              </div>
+                <div class="col-sm-2"><span class="aftertext">(本金加利息)</span></div>
+            </div>  
+            <div class="form-group">
+              <label class="col-xs-3 control-label">借款时间:</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="请选择正确的借款时间" name="createtime" id="createtime" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label">还款时间:</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="请选择正确的还款时间" name="returntime" id="returntime" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债权方姓名:</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="name" id="name" placeholder="请输入正确的债权方姓名" />
+              </div>
+              <div class="col-sm-2"><span class="aftertext">(被欠钱的一方)</span></div>
+
+            </div>
+               <div class="form-group">
+              <label class="col-xs-3 control-label">债权方手机号:</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="请输入正确的债权方手机号"/>
+              </div>
+              <div class="col-sm-2"><button class="btn btn-primary">获取验证码</button></div>
+            </div> 
+               <div class="form-group">
+              <label class="col-xs-3 control-label"></label>
+              <div class="col-sm-2">
+                <input type="text" placeholder="请输入正确的验证码" class="form-control" name="code" id="code" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债权方证件号:</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="请输入正确的证件号" name="numcard" id="numcard" />
+              </div>
+            </div>
+            
+
+          </div>
+          <div class="wizard-pane" role="tabpanel">
+             <div class="form-group">
+               <label class="col-xs-3 control-label">债务方姓名:</label>
+               <div class="col-sm-5">
+                 <input type="text" class="form-control" name="zw_name" id="zw_name" placeholder="请输入正确的债务方姓名" />
+               </div>
+                <div class="col-sm-2"><span class="aftertext">(欠钱的一方)</span></div>
+             </div>
+                <div class="form-group">
+               <label class="col-xs-3 control-label">债务方手机号:</label>
+               <div class="col-sm-5">
+                 <input type="text" class="form-control" name="zw_mobile" id="zw_mobile" placeholder="请输入正确的债务方手机号"/>
+               </div>
+   
+             </div> 
+             
+             <div class="form-group">
+               <label class="col-xs-3 control-label">债务方证件号:</label>
+               <div class="col-sm-5">
+                 <input type="text" class="form-control" placeholder="请输入正确的证件号" name="zw_numcard" id="zw_numcard" />
+               </div>
+             </div>
+           <!--    <div class="control-group">
+                <label class="control-label" for="form001">债务方地址：</label>
+                <div class="controls" id="address">
+                   <div data-toggle="distpicker" style="display: inline;">
+                       <select class="form-control"  id="province" name="province"></select>
+                       <select class="form-control"  id="city" name="city"></select>
+                       <select class="form-control" id="district" name="district" ></select>
+                   </div>
+                 
+                </div>
+            </div> -->
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债务方地址:</label>
+              <div class="col-sm-6 layui-input-block">
+                    <div class="controls" id="address">
+                       <div data-toggle="distpicker" style="display: inline;">
+                           <select class="form-control"  id="province" name="province"></select>
+                           <select class="form-control"  id="city" name="city"></select>
+                           <select class="form-control" id="district" name="district" ></select>
+                       </div>
+                     
+                    </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债务方婚姻状况:</label>
+              <div class="col-sm-6 layui-input-block">
+                    <input type="radio" name="zw_marriage" value="0" title="未婚" checked>
+                    <input type="radio" name="zw_marriage" value="1" title="已婚" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债务方工作状况:</label>
+              <div class="col-sm-6 layui-input-block">
+                  <input type="radio" name="zw_job" title="教师" value="0">
+                  <input type="radio" name="zw_job" title="工程师" value="1" checked>
+                  <input type="radio" name="zw_job" title="公务员" value="2">
+              </div>
+            </div>
+           
+            
+            
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债务方身体状况:</label>
+              <div class="col-sm-6 layui-input-block">
+                   <input type="radio" name="zw_education" value="0" title="硕士及以上" checked>
+                   <input type="radio" name="zw_education" value="1" title="本科" >
+                   <input type="radio" name="zw_education" value="2" title="专科">
+                   <input type="radio" name="zw_education" value="3" title="高中及以下">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-xs-3 control-label">债务方身体状况:</label>
+              <div class="col-sm-6 layui-input-block">
+                <input type="radio" name="zw_health" value="0" title="优秀" checked >
+                      <input type="radio" name="zw_health" value="1" title="良好" >
+                      <input type="radio" name="zw_health" value="2" title="差劲" >
+                      <input type="radio" name="zw_health" value="3" title="不了解" >
+              </div>
+            </div>
+
+             <div class="form-group">
+               <label class="col-xs-3 control-label">债务方房产状况:</label>
+               <div class="col-sm-6 layui-input-block">
+                   <input type="radio" name="zw_house" value="0" title="有房" checked>
+                     <input type="radio" name="zw_house" value="1" title="无房" >
+                     <input type="radio" name="zw_house" value="2" title="不了解" >
+               </div>
+             </div>
+         
+            
+          </div>
+          
+          <div class="wizard-pane" role="tabpanel">
+              <div class="form-group">
+                <label class="col-xs-3 control-label">担保方姓名:</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" name="gu_name" id="gu_name" placeholder="请输入正确的担保方姓名" />
+                </div>
+                <div class="col-sm-2"><span class="aftertext">(选填)</span></div>
+              </div>
+                 <div class="form-group">
+                <label class="col-xs-3 control-label">担保方手机号:</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" name="gu_mobile" id="gu_mobile" placeholder="请输入正确的担保方手机号"/>
+                </div>
+                <div class="col-sm-2"><span class="aftertext">(选填)</span></div>
+               
+              </div> 
+              
+              <div class="form-group">
+                <label class="col-xs-3 control-label">担保方证件号:</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" placeholder="请输入正确的证件号" name="gu_numcard" id="gu_numcard" />
+                </div>
+                <div class="col-sm-2"><span class="aftertext">(选填)</span></div>
+        
+              </div>
+              <div class="form-group">
+                <label class="col-xs-3 control-label">担保方可否联系:</label>
+                <div class="col-sm-6 layui-input-block">
+                   <input type="radio" name="iscontact" value="0" title="可以" checked>
+                   <input type="radio" name="iscontact" value="1" title="不可以" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-xs-3 control-label">担保当经济状况:</label>
+                <div class="col-sm-6 layui-input-block">
+                   <input type="radio" name="gu_economy" value="0" title="条件好" checked>
+                   <input type="radio" name="gu_economy" value="1" title="条件中等" >
+                   <input type="radio" name="gu_economy" value="2" title="条件差" >
+                   <input type="radio" name="gu_economy" value="3" title="不了解" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-xs-3 control-label">抵押物可否抵债:</label>
+                <div class="col-sm-6 layui-input-block">
+                     <input type="radio" name="iscover" value="0" title="可以" checked>
+                     <input type="radio" name="iscover" value="1" title="不可以" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-xs-3 control-label">诉讼与否:</label>
+                <div class="col-sm-6 layui-input-block">
+                     <input type="radio" name="islaw" value="0" title="已上诉" checked>
+                     <input type="radio" name="islaw" value="1" title="未上诉" >
+                </div>
+              </div> 
+              
+          
+          </div>
+          <div class="wizard-pane" role="tabpanel">
+            <div class="zx-main">
+
+                
+            
+                    
+                    <div class="hetong item">
+                        <p class="title2">借款合同扫描件:</p>
+                        <div id="file1" class="file1 file">
+                        <input type="file" name="zw_image_1" id="zw_image_1" accept="image/*"  style="width:108px;"/>
+                        <div style="display:none"><input type='hidden' name="zw_img_1" class='zw_img_1' /></div>
+                        
+                        <span class="ff ff1"></span>
+                        </div>
+                        <div id="file4" class="file4 file">
+                        <input type="file" name="zw_image_2" id="zw_image_2" accept="image/*"  style="width:108px;"/>
+                        <div style="display:none"><input type='hidden' name="zw_img_2" class='zw_img_2' /></div>
+                        
+                        <span class="ff ff4"></span>
+                        </div>
+                        <div id="file5" class="file5 file" >
+                        <input type="file" name="zw_image_3" id="zw_image_3" accept="image/*"  style="width:108px;"/>
+                        <div style="display:none"><input type='hidden' name="zw_img_3" class='zw_img_3' /></div>
+                        
+                        <span class="ff ff5"></span>
+                        </div>
+                        <div id="file5" class="file5 file" >
+                        <input type="file" name="zw_image_3" id="zw_image_3" accept="image/*"  style="width:108px;"/>
+                        <div style="display:none"><input type='hidden' name="zw_img_3" class='zw_img_3' /></div>
+                        
+                        <span class="ff ff5"></span>
+                        </div>
+                      <!--   <div id="file6" class="file6 file">
+                        <input type="file" name="zw_image_4" id="zw_image_4" accept="image/*"  style="width:108px;"/>
+                        <div style="display:none"><input type='hidden' name="zw_img_4" class='zw_img_4' /></div>
+                        
+                        <span class="ff ff6"></span>
+                        </div> -->
+                       <!--  <div id="file7" class="file7 file">
+                        <input type="file" name="zw_image_5" id="zw_image_5" accept="image/*"  style="width:108px;"/>
+                        <div style="display:none"><input type='hidden' name="zw_img_5" class='zw_img_5' /></div>
+                        
+                        <span class="ff ff7"></span>
+                        </div> -->
+                    </div>
+                    <div class="idpic item">
+                        <p class="title2">债权人身份证照片:</p>
+                        <div id="file2" class="file2 file">
+                            <input type="file" name="card_img_1" id="card_img_1" accept="image/*" style="width:108px;" />
+                            <div style="display:none"><input type='hidden' name="card_img1" class='card_img1' /></div>
+                            <span class="ff ff2"></span>
+                        </div>
+                        <div id="file3" class="file3 file">
+                            <input type="file" name="card_img_2" id="card_img_2" accept="image/*" style="width:108px;" />
+                            <div style="display:none"><input type='hidden' name="card_img2" class='card_img2' /></div>
+                            <span class="ff ff3"></span>
+                        </div>
+                        <div id="file3" class="file3 file">
+                            <img class="fileimg" src="../../images/card1.jpg">
+                        </div>
+                        <div id="file3" class="file3 file">
+                            <img class="fileimg" src="../../images/card2.jpg">
+                        </div>
+                        
+                    </div>
+                    <div class="idpic item">
+                        <p class="title2">债务人身份证照片:</p>
+                        <div id="file8" class="file8 file">
+                            <input type="file" name="card_img_3" id="card_img_3" accept="image/*" style="width:108px;" />
+                            <div style="display:none"><input type='hidden' name="card_img3" class='card_img3' /></div>
+                            <span class="ff ff8"></span>
+                        </div>
+                        <div id="file9" class="file9 file">
+                            <input type="file" name="card_img_4" id="card_img_4" accept="image/*" style="width:108px;" />
+                            <div style="display:none"><input type='hidden' name="card_img4" class='card_img4' /></div>
+                            <span class="ff ff9"></span>
+                        </div>
+                       <div id="file9" class="file9 file">
+                           <img class="fileimg" src="../../images/card1.jpg">
+                           
+                       </div>                        <div id="file9" class="file9 file">
+                            <img class="fileimg" src="../../images/card2.jpg">
+                            
+                        </div>
+                        
+                    </div>
+                   <!--  <div class="tj_name item">
+                        <span class="title"><i>&nbsp;&nbsp;</i>推荐人:</span>
+                        <input type="text" name="tj_name" id="tj_name" value="" />
+                    </div> -->
+                    <!-- <p></p> -->
+                   <div class="control-group" style="margin-left:-65px;margin-top:20px;">
+                       <label  class="control-label" for="form001">推荐人:</label>
+                       <div class="controls">
+                           <input class="input-xlarge input-fat" type="text" name="tj_name" id="tj_name">
+                          <span class="btn-text"></span>
+                        
+                       </div>
+                   </div>
+                   
+                    <div style="font-size:20px; margin-left: 100px; margin-top: 30px;display: none;"><input type="checkbox" checked="checked" style="width:25px;height:25px;">并同意<a href="../../world/服务协议.doc">《服务协议》</a></div>
+                <!--     <input type="submit" id="this_button" value="提交申请"/> -->
+                
+            </div>
+               
+            
+          
+          </div>
+        </div>
+      </form>
+
+    </div>
+ 
+   
+
+    <script type="text/javascript">
+      (function() {
+        $('#exampleValidator').wizard({
+          onInit: function() {
+          
+            $('#validation').formValidation({
+              framework: 'bootstrap',
+              fields: {
+                amount: {
+                  validators: {
+                    notEmpty: {
+                      message: '请务必输入债权金额'
+                    },
+                    stringLength: {
+                      min: 1,
+                      max: 12,
+                      message: '债权金额是1至12位的数字'
+                    },
+                    digits:{
+                      message:'请输入正确的债权金额'
+                    }
+                    
+                  }
+                },
+                // returntime:{
+                //   validators:{
+                //     notEmpty:{
+                //       message:'请选择正确的还款时间'
+                //     }
+                //   }
+                // },
+                province:{
+                  validators:{
+                    notEmpty:{
+                      message:'请选择正确的省份'
+                    }
+                  }
+                },
+                city:{
+                  validators:{
+                    notEmpty:{
+                      message:'请选择正确的城市'
+                    }
+                  }
+                },
+                district:{
+                  validators:{
+                    notEmpty:{
+                      message:'请选择正确的区域'
+                    }
+                  }
+                },
+                code:{
+                  validators:{
+                    notEmpty:{
+                      message:'请务必输入验证码'
+                    },
+                    stringLength: {
+                      min: 4,
+                      max: 4,
+                      message: '验证码长度不正确'
+                    },
+                  }
+                },
+                // createtime:{
+                //   validators:{
+                //     notEmpty:{
+                //       message:'请选择正确的还款时间'
+                //     }
+                //   }
+                // },
+                name: {
+                  validators: {
+                    notEmpty: {
+                      message: '请务必输入债权方姓名'
+                    },
+                    regexp: {
+                    regexp: /^([\u4e00-\u9fa5]){2,7}$/,
+                    message: '请输入正确的债权方姓名'
+                  }
+                  }
+                },
+                mobile: {
+                  validators: {
+                    notEmpty: {
+                      message: '请务必输入债权方手机号'
+                    },
+                    regexp: {
+                    regexp: /^1(3|4|5|7|8)\d{9}$/,
+                    message: '请输入正确的债权方手机号'
+                  }
+                  }
+                },
+                numcard: {
+                  validators: {
+                    notEmpty: {
+                      message: '请务必输入债权方证件号'
+                    },
+                    regexp: {
+                    regexp:  /^\d{17}(\d|x)$/i,
+                    message: '请输入正确的债权方证件号'
+                  }
+                  }
+                },
+                zw_name: {
+                  validators: {
+                    notEmpty: {
+                      message: '请务必输入债务方姓名'
+                    },
+                    regexp: {
+                    regexp: /^([\u4e00-\u9fa5]){2,7}$/,
+                    message: '请输入正确的债务方姓名'
+                  }
+                  }
+                },
+                zw_mobile: {
+                  validators: {
+                    notEmpty: {
+                      message: '请务必输入债务方手机号'
+                    },
+                    regexp: {
+                    regexp: /^1(3|4|5|7|8)\d{9}$/,
+                    message: '请输入正确的债务方手机号'
+                  }
+                  }
+                },
+                zw_numcard: {
+                  validators: {
+                    notEmpty: {
+                      message: '请务必输入债务方证件号'
+                    },
+                    regexp: {
+                    regexp:  /^\d{17}(\d|x)$/i,
+                    message: '请输入正确的债务方证件号'
+                  }
+                  }
+                },
+                gu_name: {
+                  validators: {
+                    // notEmpty: {
+                    //   message: '请尽量输入担保方姓名'
+                    // },
+                    regexp: {
+                    regexp: /^([\u4e00-\u9fa5]){2,7}$/,
+                    message: '请输入正确的担保方姓名'
+                  }
+                  }
+                },
+                gu_mobile: {
+                  validators: {
+                    // notEmpty: {
+                    //   message: '请务必输入担保方手机号'
+                    // },
+                    regexp: {
+                    regexp: /^1(3|4|5|7|8)\d{9}$/,
+                    message: '请输入正确的担保方手机号'
+                  }
+                  }
+                },
+                gu_numcard: {
+                  validators: {
+                    // notEmpty: {
+                    //   message: '请务必输入担保方证件号'
+                    // },
+                    regexp: {
+                    regexp:  /^\d{17}(\d|x)$/i,
+                    message: '请输入正确的担保方证件号'
+                  }
+                  }
+                },
+                
+                
+               
+              
+
+              }
+            });
+          },
+          validator: function() {
+            var fv = $('#validation').data('formValidation');
+            var $this = $(this);
+            // Validate the container
+            fv.validateContainer($this);
+            var isValidStep = fv.isValidContainer($this);
+            if (isValidStep === false || isValidStep === null) {
+              layer.msg("请检查输入内容,完善资料后再继续操作")
+              return false;
+            }
+            return true;
+          },
+          onFinish: function() {
+            $('#validation').submit();
+            // alert('finish');
+          }
+        });
+      })();
+
+    </script>
+     
+    <script>
+    //Demo
+    layui.use('form', function(){
+      var form = layui.form;
+      
+      //监听提交
+    
+    });
+    var myDate=new Date();
+    var nowtime=myDate.getFullYear()+'-'+(myDate.getMonth()+1)+"-"+myDate.getDay();
+    var returntime=nowtime;
+    var createtime="1970-12-12";
+    layui.use('laydate', function(){
+      var laydate = layui.laydate;
+    
+      //执行一个laydate实例
+      laydate.render({
+        elem: '#returntime' ,
+        done: function(value, date, endDate){
+            returntime=value;
+        },
+        max: nowtime,
+        min:createtime, 
+      });
+    });
+
+    layui.use('laydate', function(){
+      var laydate = layui.laydate;
+      
+      //执行一个laydate实例
+      laydate.render({
+        elem: '#createtime',
+         done: function(value, date, endDate){
+             createtime=value;
+         },
+         max: returntime,
+      });
+    });
+
+
+    </script>
+    
+  </section>
+
+</div>
+ 
+ 
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/distpicker.js"></script>
+    <script type="text/javascript" src="../../js/datePicker.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/layer/layer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/member_zq.js"></script>
+  
+  
+</body>
+</html>
