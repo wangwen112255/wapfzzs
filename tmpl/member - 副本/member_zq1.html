@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <title>债权咨询</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    
+	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    <link rel="stylesheet" href="../../icon/iconfont.css" />
+    <link rel="stylesheet" href="../../css/new_main.css" />
+	<link rel="stylesheet" href="../../css/main.css" />
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+	<style>
+	.zx-main .item input {
+		width: 348px;
+		height: 57px;
+		border: 1px solid #d9d9d9;
+		font-size: 1.6em;
+		margin-left:30px;
+	}
+	.file{
+		position: relative;
+	}
+	.file input{
+		position: absolute;
+		font-size: 80px;
+		width:108px;
+		height:100px;
+		right: 0;
+		top: 0;
+		opacity: 0;
+	}
+	.zx-main .item span {
+		display: inline-block;
+		font-size: 22px;
+		line-height: 60px;
+		color: #666;
+		width: 220px;
+	}
+	</style>
+</head>
+<body style="background: #fff;overflow-x: hidden;">
+<header id="header"></header>
+
+<form id="form1" method="post">
+<div class="zx-main">
+	<div><p style="font-size:16px;color:red;line-height:20px;margin-top:10px;">请认真阅读以下文字：</p>
+		<p style="font-size:16px;line-height:20px;text-index:0;">我们需要全面了解您的债权情况，请您认真填写。我们会保护您的隐私。带星号（*）的为必填项；您的信息填写越完整，系统模拟评级越高，越能快速处理不良债权！</p>
+	</div>
+	<p>债权信息登记</p>
+		<div class="name1 item">
+			
+			<span class="title">债权人姓名</span>
+			<input type="text" name="name" id="name" value="" /><span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div class="num2 item">
+			<span class="title">债权人手机号</span>
+			<input type="text" name="mobile" id="mobile" value="" /><span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div class="num1 item">
+			<span class="title">债权人身份证号码</span>
+			<input type="text" name="numcard" id="numcard" value="" /><span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div class="name2 item">
+			<span class="title">债务人姓名</span>
+			<input type="text" name="zw_name" id="zw_name" value="" /><span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div class="num2 item">
+			<span class="title">债务人手机号</span>
+			<input type="text" name="zw_mobile" id="zw_mobile" value="" /><span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div class="num1 item">
+			<span class="title">债务人身份证号码</span>
+			<input type="text" name="zw_numcard" id="zw_numcard" value="" />
+		</div>
+		<div class="tj_name item">
+			<span class="title">借款时间</span>
+			<input name="loantime" id="loantime" value="" /><span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div class="hetong item">
+			<span class="title2">借款合同扫描件</span>
+			<div id="file1" class="file1 file">
+			<input type="file" name="zw_image_1" id="zw_image_1" accept="image/*"  style="width:108px;"/>
+			<div style="display:none"><input type='hidden' name="zw_img_1" class='zw_img_1' /></div>
+			
+			<span class="ff ff1"></span>
+			</div>
+			<div id="file4" class="file4 file">
+			<input type="file" name="zw_image_2" id="zw_image_2" accept="image/*"  style="width:108px;"/>
+			<div style="display:none"><input type='hidden' name="zw_img_2" class='zw_img_2' /></div>
+			
+			<span class="ff ff4"></span>
+			</div>
+			<div id="file5" class="file5 file" style="margin: 30px 0px 0px 85px;">
+			<input type="file" name="zw_image_3" id="zw_image_3" accept="image/*"  style="width:108px;"/>
+			<div style="display:none"><input type='hidden' name="zw_img_3" class='zw_img_3' /></div>
+			
+			<span class="ff ff5"></span>
+			</div>
+			<div id="file6" class="file6 file">
+			<input type="file" name="zw_image_4" id="zw_image_4" accept="image/*"  style="width:108px;"/>
+			<div style="display:none"><input type='hidden' name="zw_img_4" class='zw_img_4' /></div>
+			
+			<span class="ff ff6"></span>
+			</div>
+			<div id="file7" class="file7 file">
+			<input type="file" name="zw_image_5" id="zw_image_5" accept="image/*"  style="width:108px;"/>
+			<div style="display:none"><input type='hidden' name="zw_img_5" class='zw_img_5' /></div>
+			
+			<span class="ff ff7"></span>
+			</div>
+		</div>
+		<div class="idpic item">
+			<span class="title2">债权人身份证扫描件</span>
+			<div id="file2" class="file2 file">
+				<input type="file" name="card_img_1" id="card_img_1" accept="image/*" style="width:108px;" />
+				<div style="display:none"><input type='hidden' name="card_img1" class='card_img1' /></div>
+				<span class="ff ff2"></span>
+			</div>
+			<div id="file3" class="file3 file">
+				<input type="file" name="card_img_2" id="card_img_2" accept="image/*" style="width:108px;" />
+				<div style="display:none"><input type='hidden' name="card_img2" class='card_img2' /></div>
+				<span class="ff ff3"></span>
+			</div>
+			<span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div class="idpic item">
+			<span class="title2">债务人身份证扫描件</span>
+			<div id="file8" class="file8 file">
+				<input type="file" name="card_img_3" id="card_img_3" accept="image/*" style="width:108px;" />
+				<div style="display:none"><input type='hidden' name="card_img3" class='card_img3' /></div>
+				<span class="ff ff8"></span>
+			</div>
+			<div id="file9" class="file9 file">
+				<input type="file" name="card_img_4" id="card_img_4" accept="image/*" style="width:108px;" />
+				<div style="display:none"><input type='hidden' name="card_img4" class='card_img4' /></div>
+				<span class="ff ff9"></span>
+			</div>
+			
+		</div>
+		<div class="tj_name item">
+			<span class="title">推荐人</span>
+			<input type="text" name="tj_name" id="tj_name" value="" />
+		</div>
+		<div class="tj_name item">
+			<span class="title">备案网点</span>
+			<div data-toggle="distpicker" style="display: inline;">
+				<select class="form-control" id="province" name="province"></select>
+				<select class="form-control" id="city" name="city"></select>
+				
+			</div>
+		</div>
+		<div class="money item">
+			<span class="title">债务金额</span>
+			<input type="text" name="amount" id="amount" value="" /><span style="width: 30px;color: red;position: relative;right: 10px;">*</span>
+		</div>
+		<div style="font-size:20px;"><input type="checkbox" checked="checked" style="width:25px;height:25px;">并同意<a href="">《债权转让协议》</a></div>
+		<input type="submit" id="this_button" value="提交申请"/>
+	
+</div>
+</form>
+
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/distpicker.js"></script>
+<script type="text/javascript" src="../../js/datePicker.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top2.js"></script>
+	<script type="text/javascript" src="../../js/layer/layer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/member_zq.js"></script>
+	<script>
+	var calendar = new datePicker();
+calendar.init({
+	'trigger': '#loantime', /*按钮选择器，用于触发弹出插件*/
+	'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+	'minDate':'1900-1-1',/*最小日期*/
+	'maxDate':'2100-12-31',/*最大日期*/
+	'onSubmit':function(){/*确认时触发事件*/
+		var theSelectData=calendar.value;
+	},
+	'onClose':function(){/*取消时触发事件*/
+	}
+});
+	
+	</script>
+</body>
+</html>

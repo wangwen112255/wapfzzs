@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui"/>
+<!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览-->
+<meta name="format-detection" content="telephone=no" />
+<!--告诉设备忽略将页面中的数字识别为电话号码-->
+<title>我的推荐记录</title>
+<link rel="stylesheet" href="../../css/er/style.css">
+<!-- <link rel="stylesheet" href="../../css/er/ipad-css.css"> -->
+<!-- <link rel="stylesheet" href="../../css/er/ipad-pro.css"> -->
+<link rel="stylesheet" href="../../css/reset.css"/>
+<link rel="stylesheet" href="../../css/member.css"/>
+ <link rel="stylesheet" href="../../css/hui2016/css/hui.css"/>
+    <link rel="stylesheet" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+<style type="text/css">
+.log-item{ border-bottom:#ccc 1px solid; line-height:30px; padding-bottom:5px; padding-top:5px;}
+.log-list .mx_log{ line-height:24px; padding-bottom:10px;}
+.log-list .mx_log span{ color:#f00}
+.log-item .log-desc{ line-height:24px;}
+  /*   .HUI_List{
+      border-top:12px solid #E4E3E6;
+     } */
+ .HUI_Textright{ display: inline-block;
+    position: absolute;
+    right: 30px;
+    font-size: 1.2rem;
+    }
+
+
+</style>
+</head>
+
+<body>
+
+    <div class="kuang">
+        <header id="header"></header>
+          <div class="HUI_Wrap" style="background: #fff;border-top:8px solid #E4E3E6">
+              
+             
+        </div>
+        <div id="inviter-list"></div>
+        <script type="text/html" id="inviter-list-tmpl">
+      <div class="log-list">
+      <% if (list && list.length > 0) { %>
+      <div class="HUI_Wrap">
+      <% for (var k in list) { var v = list[k]; %>
+      <div class="HUI_List">
+          <ul>
+              <li style="position: relative;"><a href="javascript:hui.toast('不能查看用户详细信息');" class="HUI_Arrow"><%=v.member_name %>
+              <span class="HUI_Number"><%= v.role %></span>
+              <span class="HUI_Textright" id="username"><%= v.crtime %></span></a></li>
+           
+          </ul>
+      </div>
+    
+      <!-- <div class="log-item">
+      <div class="mx_log">时间：<%= tsToDateString(v.add_time) %>　　<%= v.c_type%>：<span><%= v.amount%>元</span></div>
+      <div class="log-desc">[明细]:<%= v.description%></div>
+      </div> -->
+      <% } %>
+      </div>
+          <% if (curpage >1 ) { %>
+          <div class="pagination mt10">
+              <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+              <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+          </div>
+          <% } %>
+      <% } else { %>
+          <div class="no-record">
+              暂无记录
+          </div>
+      <% } %>
+      </div>
+
+        </script>
+
+       
+</div>
+</div>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="../../js/zepto.min.js"></script> -->
+<script type="text/javascript" src="../../js/template.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+<script type="text/javascript" src="../../css/hui/js/hui.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<!-- <script type="text/javascript" src="../../js/tmpl/recommend_list.js"></script> -->
+<script type="text/javascript">
+
+   $(function() {
+    var key = getcookie('key');
+    // console.log(key);
+    // if (key == '') {
+    //     window.location.href = WapSiteUrl+'/tmpl/member/login.html';
+    //     // return;
+    // }
+
+    var page = pagesize;
+    var curpage = 1;
+    var hasMore = true;
+    function initPage(page,curpage) {
+        $.ajax({
+            type:'post',
+            url:ApiUrl+"/index.php?act=member_recommend&op=recommend_list&page="+page+"&curpage="+curpage,
+            data:{key:key},
+            dataType:'json',
+            success:function(result){
+
+                checklogin(result.login); //检测是否登录了
+                var data = result.datas;
+                data.hasmore = result.hasmore; //是不是可以用下一页的功能，传到页面里去判断下一页是否可以用
+                data.WapSiteUrl = WapSiteUrl; //页面地址
+                data.curpage = curpage; //当前页，判断是否上一页的disabled是否显示
+                data.ApiUrl = ApiUrl;
+                data.key = getcookie('key');
+
+                template.helper('tsToDateString', function (t) {
+                    var d = new Date(parseInt(t) * 1000);
+                    var s = '';
+                    s += d.getFullYear() + '年';
+                    s += (d.getMonth() + 1) + '月';
+                    s += d.getDate() + '日';
+                    return s;
+                });
+
+                var html = template.render('inviter-list-tmpl', data);
+                $("#inviter-list").html(html);
+                // $("#this_recharge span").html(data.y_charge);
+                //下一页
+                $(".next-page").click(nextPage);
+
+                //上一页
+                $(".pre-page").click(prePage);
+
+                $(window).scrollTop(0);
+            }
+        });
+    }
+
+    // 初始化页面
+    initPage(page, curpage);
+
+    // 下一页
+    function nextPage() {
+        var hasMore = $(this).attr("has_more");
+        if (hasMore == "true") {
+            curpage++;
+            initPage(page, curpage);
+        }
+    }
+
+    // 上一页
+    function prePage() {
+        if (curpage > 1) {
+            $(this).removeClass("disabled");
+            curpage--;
+            initPage(page, curpage);
+        }
+    }
+
+});
+
+</script>
+</body>
+</html>
+

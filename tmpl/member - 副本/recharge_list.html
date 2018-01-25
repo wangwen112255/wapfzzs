@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>债券金记录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/member.css">
+<link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="../../css/hui/css/hui2016.css"/>
+    <link rel="stylesheet" href="../../css/hui2016/css/hui.css"/>
+
+
+</head>
+<style>
+.moneycenter{position: absolute;width: 240px;left:50%;margin-left:-120px;color:#fff !important;height: 80px;top:50%;margin-top:-50px;}
+.moneycenter p{text-align: center;    font-size: 1.4rem;}
+#this_recharge span{color:#fff;font-size: 2.4rem;text-align: center;
+display: block;};
+#this_recharge {text-align: center;};
+.log-list{ padding:10px;}
+.log-item{ border-bottom:#ccc 1px solid; line-height:30px; padding-bottom:5px; padding-top:5px;}
+
+.log-list .mx_log{ line-height:24px; padding-bottom:10px;}
+.log-list .mx_log span{ color:#f00}
+.log-item .log-desc{ line-height:24px;}
+.moneytop{
+    padding: 0px 10px;
+    line-height: 36px;
+    height: 200px;
+    font-size: 16px;
+    background: #1D8FE4;
+    position: relative;
+    border-bottom:solid #fff 1px;
+}
+.moneytop1{
+    padding: 5px;
+    line-height: 36px;
+    height: 50px;
+    font-size: 16px;
+    background: #1D8FE4;
+}
+.moneytop1 p{
+    width: 49%;height: 35px;margin-top:7.5px;float: left;text-align: center;font-size: 1.2rem;color:#fff;line-height: 35px;
+}
+.moneytop1 p a{color:#fff;letter-spacing: 2px;}
+.moneytop1 p .iconfont{font-size: 1.4rem}
+.moneytop1 p:last-child{
+    border-left:solid #fff 1px;}
+.hui-wrap a{color:#333 !important;font-size: 1.2rem}
+</style>
+<body>
+<header id="header"></header>
+<div>
+<div class="moneytop">
+<div class="moneycenter">
+<p>可用余额(元)</p>
+<div id="this_recharge"><span></span></div>
+</div>
+</div>
+<div class="moneytop1">
+    <p><a href="recharge_cz.html"><span class="iconfont icon-chongzhi2"></span>充值</a></p>
+    <p><a href="recharge_cz.html"><span class="iconfont icon-chongzhi1"></span>提现</a></p>
+</div>
+
+</div>
+<!-- <div class="hui-wrap">
+    <div class="hui-list">
+        <ul>
+            <li><a href="recharge_detail.html" class="hui-arrow">账单明细</a></li>
+            <li><a href="" class="hui-arrow">提现记录</a></li>
+            <li><a href="" class="hui-arrow">我要备案</a></li>
+        </ul>
+    </div>
+</div> -->
+<div class="HUI_Wrap">
+    <div class="HUI_List">
+        <ul>
+            <li><a href="recharge_detail.html" class="HUI_Arrow"> 账单明细</a></li>
+            <li><a href="javascript:hui.toast('正在开发中...');" class="HUI_Arrow"> 提现记录</a></li>
+            <li><a href="voucher_list.html" class="HUI_Arrow"> 我要备案债权</a></li>
+            
+        </ul>
+    </div>
+</div>
+<script type="text/html" id="log-list-tmpl">
+<div class="log-list">
+<% if (list && list.length > 0) { %>
+
+<% for (var k in list) { var v = list[k]; %>
+<div class="log-item">
+<div class="mx_log">时间：<%= tsToDateString(v.add_time) %>　　<%= v.c_type%>：<span><%= v.amount%>元</span></div>
+<div class="log-desc">[明细]:<%= v.description%></div>
+</div>
+<% } %>
+	<% if (curpage >1 ) { %>
+    <div class="pagination mt10">
+        <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+        <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+    </div>
+	<% } %>
+<% } else { %>
+    <div class="no-record">
+        暂无记录
+    </div>
+<% } %>
+</div>
+
+</script>
+<div id="footer"></div>
+<script type="text/javascript" src="../../js/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/template.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/simple-plugin.js"></script>
+<!-- <script type="text/javascript" src="../../js/tmpl/common-top.js"></script> -->
+<script type="text/javascript" src="../../js/tmpl/recommend_list.js"></script>
+<script type="text/javascript" src="../../css/hui/js/hui.js"></script>
+</body>
+</html>

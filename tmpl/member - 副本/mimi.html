@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <title>债务信息登记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="../../css/new_main.css" />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css" /> -->
+     <link rel="stylesheet" href="../../css/wizard/assets/formvalidation/formValidation.min.css">
+     <link rel="stylesheet" href="../../css/wizard/assets/formvalidation/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/wizard/css/wizard.min.css">
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    
+    <script src="../../css/wizard/jquery-wizard.min.js"></script>
+     <script src="../../css/wizard/assets/formvalidation/formValidation.min.js"></script>
+    <script type="text/javascript" src="../../css/wizard/assets/formvalidation/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../../css/sui/sui.css">
+    
+      
+    <style>
+    #servingForm select.input-medium{width:115px;}
+    #servingForm select.input-medium:first-child{width:113px;}
+    #servingForm .img-round{margin-bottom: 10px;}
+    #servingForm .sui-msg{box-shadow: 0 1px 3px rgba(0,0,0,.2);border:1px solid #ddd;border-radius: 2px;}
+    #servingForm .sui-msg:before{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 6px;
+        border-right-color: #ddd;
+        left: -12px;
+        top: 7px;
+    }
+    #servingForm .sui-msg:after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 6px;
+        border-right-color: #fffff1;
+        left: -10px;
+        top: 7px;
+    }
+
+    .form-horizontal .controls > a:first-child,
+    .form-horizontal .controls > span:first-child{display: inline-block;padding-top: 3px;} /* 表单的内容区如果一开始就是文字，应该和左边水平对齐 */
+    /* 原bs里面的缩略图样式 */
+    .img-round{border-radius: 3px;display:block;padding:3px;border:1px solid #ccc;position: relative;}
+    .img-round .upload-label{position: absolute;display:inline-block;padding:5px 0;width:70%;border:1px solid #ccc;left:15%;top:50%;margin-top:-15px;;background-color:#fff;text-align: center;}
+    .controls .sub-controls-title{margin:15px 0;}
+    /*防守打法*/
+    .zx-main .item input {
+        width: 300px;
+        height: 57px;
+        border: 1px solid #d9d9d9;
+        font-size: 1.6em;
+        margin-left:20px;
+    }
+    .file{
+        position: relative;
+    }
+    .file input{
+        position: absolute;
+        font-size: 80px;
+        width:100px;
+        height:100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+    .zx-main .item span {
+        display: inline-block;
+        font-size: 22px;
+        line-height: 60px;
+        color: #666;
+        width: 240px;
+        text-align:right;
+    }
+    .zx-main .item span i{
+        color: red;
+    }
+    section {
+      margin: 60px;
+    }
+    .wizard-steps {
+        display: table;
+        width: 100%;
+    }
+
+    .wizard-steps > li.current, .wizard-steps > li.done {
+        background: #41b3f9;
+        color: #ffffff;
+    }
+    .wizard-steps > li.done {
+        background: #7ace4c;
+    }
+    .wizard-steps > li {
+        display: table-cell;
+        padding: 10px 20px;
+        background: #f7fafc;
+    }
+    .wizard-steps > li.current h4, .wizard-steps > li.done h4 {
+        color: #ffffff;
+    }
+    .wizard-steps > li.current span, .wizard-steps > li.done span {
+        border-color: #ffffff;
+        color: #ffffff;
+    }
+    .wizard-steps > li span {
+        border-radius: 100%;
+        border: 1px solid rgba(120, 130, 140, 0.13);
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 9px;
+        margin-right: 8px;
+        text-align: center;
+    }
+    .wizard-content {
+        padding: 25px;
+        border-color: rgba(120, 130, 140, 0.13);
+        margin-bottom: 30px;
+    }
+
+    </style>
+</head>
+<body style="background: #fff;overflow-x: hidden;">
+<header id="header"></header>
+<div class="container">
+
+  <section>
+   
+ 
+    <div id="exampleValidator" class="wizard">
+      <ul class="wizard-steps" role="tablist">
+        <li class="active" role="tab">
+          Step 1
+        </li>
+        <li role="tab">
+          Step 2
+        </li>
+        <li role="tab">
+          Step 3
+        </li>
+        <li role="tab">
+          Step 4
+        </li>
+
+      </ul>
+      <form id="validation" class="form-horizontal">
+        <div class="wizard-content">
+          <div class="wizard-pane active" role="tabpanel">
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Username</label>
+              <div class="col-xs-5">
+                <input type="text" class="form-control" name="username" />
+              </div>
+            </div>
+
+          </div>
+          <div class="wizard-pane" role="tabpanel">
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Email address</label>
+              <div class="col-xs-5">
+                <input type="text" class="form-control" name="email" />
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-pane" role="tabpanel">
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Password</label>
+              <div class="col-xs-5">
+                <input type="password" class="form-control" name="password" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript">
+      (function() {
+        $('#exampleValidator').wizard({
+          onInit: function() {
+            $('#validation').formValidation({
+              framework: 'bootstrap',
+              fields: {
+                username: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The username is required'
+                    },
+                    stringLength: {
+                      min: 6,
+                      max: 30,
+                      message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                      regexp: /^[a-zA-Z0-9_\.]+$/,
+                      message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                  }
+                },
+                email: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The email address is required'
+                    },
+                    emailAddress: {
+                      message: 'The input is not a valid email address'
+                    }
+                  }
+                },
+                password: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The password is required'
+                    },
+                    different: {
+                      field: 'username',
+                      message: 'The password cannot be the same as username'
+                    }
+                  }
+                }
+              }
+            });
+          },
+          validator: function() {
+            var fv = $('#validation').data('formValidation');
+            var $this = $(this);
+            // Validate the container
+            fv.validateContainer($this);
+            var isValidStep = fv.isValidContainer($this);
+            if (isValidStep === false || isValidStep === null) {
+              return false;
+            }
+            return true;
+          },
+          onFinish: function() {
+            $('#validation').submit();
+            alert('finish');
+          }
+        });
+      })();
+    </script>
+  </section>
+
+</div>
+
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/distpicker.js"></script>
+    <script type="text/javascript" src="../../js/datePicker.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/layer/layer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/member_zq.js"></script>
+    <script>
+    var calendar = new datePicker();
+calendar.init({
+    'trigger': '#loantime', /*按钮选择器，用于触发弹出插件*/
+    'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+    'minDate':'1900-1-1',/*最小日期*/
+    'maxDate':'2100-12-31',/*最大日期*/
+    'onSubmit':function(){/*确认时触发事件*/
+        var theSelectData=calendar.value;
+    },
+    'onClose':function(){/*取消时触发事件*/
+    }
+});
+    
+    </script>
+</body>
+</html>

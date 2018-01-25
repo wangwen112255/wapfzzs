@@ -2,7 +2,7 @@
 * @Author: ZMZHSQ11
 * @Date:   2018-01-20 16:24:46
 * @Last Modified by:   ZMZHSQ11
-* @Last Modified time: 2018-01-24 09:34:17
+* @Last Modified time: 2018-01-25 15:04:07
 */
 $.fn.serializeObject = function()
 {
@@ -155,6 +155,7 @@ $(function(){
         }
         // console.log(typeof($("#validation").serializeArray()))
         var  infostring=JSON.stringify($("#validation").serializeObject());
+        console.log(infostring)
         localStorage.setItem('info',infostring);
         // console.log(localStorage.getItem('info'));
         var options = {
@@ -399,13 +400,13 @@ function getObjectURL(file) {
  return url ;
 }
 
-var userScalable = "no";
-var ins = "";
-(function() {
-    if (window.devicePixelRatio === 1.5) {
-        userScalable = "yes";
-        ins = "initial-scale=0.5"
-    }
-    var text = "<meta content='"+ins+", target-densitydpi=device-dpi, width=640,user-scalable=" + userScalable + "' name='viewport'>";
-    document.write(text);
-})();
+// var userScalable = "no";
+// var ins = "";
+// (function() {
+//     if (window.devicePixelRatio === 1.5) {
+//         userScalable = "yes";
+//         ins = "initial-scale=0.5"
+//     }
+//     var text = "<meta content='"+ins+", target-densitydpi=device-dpi, width=640,user-scalable=" + userScalable + "' name='viewport'>";
+//     document.write(text);
+// })();

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <title>加盟商信息报备</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/member.css">
+	<link rel="stylesheet" href="../../icon/iconfont.css" />
+	<link rel="stylesheet" href="../../css/new_main.css" />
+	<link rel="stylesheet" href="../../css/main.css" />
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+	<link rel="Shortcut Icon" href="../../img/biaoti.jpg" />
+	<style>
+	.zx-main .item input {
+		width: 300px;
+		height: 57px;
+		border: 1px solid #d9d9d9;
+		font-size: 1.6em;
+		margin-left:20px;
+	}
+	.file{
+		position: relative;
+	}
+	.file input{
+		position: absolute;
+		font-size: 80px;
+		width:100px;
+		height:100px;
+		right: 0;
+		top: 0;
+		opacity: 0;
+	}
+	.zx-main .item span {
+		display: inline-block;
+		font-size: 22px;
+		line-height: 60px;
+		color: #666;
+		width: 240px;
+		text-align:right;
+	}
+	.zx-main .item span i{
+		color: red;
+	}
+	</style>
+</head>
+<body style="background: #fff;overflow-x: hidden;">
+<header></header>
+
+<form id="form1" method="post" action="../../../mobile/control/member_index11.php">
+<div class="zx-main">
+	<img src="../../img/tupian.png" style="width:40%; height: 40%; margin-top:10px; margin-left:10px;">
+		<div class="name1 item" style=" margin-top:50px;">
+			<span style="margin-left:-40px;"><i>&nbsp;&nbsp;</i>加盟商姓名:</span>
+			<input type="text" name="name" id="name" value="" />
+		</div>
+		<div class="num2 item">
+			<span style="margin-left:-40px;"><i>&nbsp;&nbsp;</i>手机号码:</span>
+			<input type="text" name="mobile" id="mobile" value="" />
+		</div>
+		<div class="tj_name item">
+			<span class="title" style="margin-left:-40px;"><i>&nbsp;&nbsp;</i>加盟类型:</span>
+			 <div data-toggle="distpicker" style="display: inline;">
+          		<input name="act" type="radio" value="区域加盟商 " checked="checked" style="width:25px;"/>区域加盟商
+				<input name="act" type="radio" value="推荐会员" style="width:25px;"/>推荐会员
+				<input name="act" type="radio" value="推荐管家"  style="width:25px;"/>推荐管家
+        	</div>
+
+		</div>
+		<div class="tj_name item" style="margin-top: -15px;">
+			<span class="title" style="margin-left:-40px;"><i>&nbsp;&nbsp;</i></span>
+			<div data-toggle="distpicker" style="display: inline;">
+				<input name="act" type="radio" value="养老驿站" style="width:25px;"/>养老驿站
+				<input name="act" type="radio" value="日间照料中心"  style="width:25px;"/>日间照料中心
+			</div>
+		</div>
+		<div class="tj_name item">
+			<span class="title" style="margin-left:-40px;"><i>&nbsp;&nbsp;</i>推荐人:</span>
+			<input type="text" name="tj_name" id="tj_name" value="" />
+		</div>
+		<div class="num2 item">
+			<span style="margin-left:-40px;"><i>&nbsp;&nbsp;</i>推荐人手机号:</span>
+			<input type="text" name="zw_mobile" id="zw_mobile" value="" />
+		</div>
+		<div class="tj_name item">
+			<span class="title" style="margin-left:-80px;"><i>&nbsp;&nbsp;</i>开设地区:</span>
+			<div data-toggle="distpicker" style="display: inline;">
+				<select class="form-control" id="province" name="province"></select>
+				<select class="form-control" id="city" name="city"></select>
+				<select class="form-control" id="district" name="district" ></select>
+			</div>
+		</div>
+		<input type="submit" value="提交申请"/>
+		<img src="../../img/foot1.jpg" style=" width:100%; height: 40%; margin-top: 10px;">
+</div>
+</form>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../../js/distpicker.js"></script>
+	<script type="text/javascript" src="../../js/datePicker.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top2.js"></script>
+	<script type="text/javascript" src="../../js/layer/layer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/member_report.js"></script>
+	<script>
+	var calendar = new datePicker();
+	calendar.init({
+	'trigger': '#loantime', /*按钮选择器，用于触发弹出插件*/
+	'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+	'minDate':'1900-1-1',/*最小日期*/
+	'maxDate':'2100-12-31',/*最大日期*/
+	'onSubmit':function(){/*确认时触发事件*/
+		var theSelectData=calendar.value;
+	},
+	'onClose':function(){/*取消时触发事件*/
+	}
+});
+
+	</script>
+</body>
+</html>

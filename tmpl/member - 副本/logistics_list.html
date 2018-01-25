@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物流详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+<!--//zmr>v30-->
+    <header id="header"></header>
+    <div class="order-list-wp" id="order-list"></div>
+    <script type="text/html" id="order-list-tmpl">
+        <div class="order-list">
+            <%if (order_group_list.length >0){%>
+                <ul>
+                    <%for(var i = 0;i<order_group_list.length;i++){
+						var orderlist = order_group_list[i].order_list;
+                    %>
+					 <%if ($getLocalTime(order_group_list[i].add_time) == "2017年10月28日 22:53"){%>
+                        <li class="green-order-skin">
+                            <div class="order-ltlt">
+                                <p>
+                                    下单时间：
+                                   <%=$getLocalTime(order_group_list[i].add_time)%> 
+                                </p>
+                            </div>
+                                <div class="order-lcnt">
+                                    <div class="order-lcnt-shop">
+                                        <p>店铺名称：权益亨通</p>
+                                        <p>订单编号：9000000000122901</p>
+                                    </div>
+                                    <div class="order-shop-pd">
+                                       
+                                    </div>
+                                    <div class="order-shop-total">
+                                        1111111
+                                    </div>
+                                </div>
+                        </li>
+						<%}%>
+                    <%}%>
+                </ul>
+            <%}else {%>
+                <div class="no-record">
+                    暂无记录
+                </div>
+            <%}%>
+        </div>
+    </script>
+    <div id="footer"></div>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+	<script type="text/javascript" src="../../js/layer/layer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/order_list.js"></script>
+</body>
+</html>

